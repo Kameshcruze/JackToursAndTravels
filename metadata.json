@@ -1,0 +1,6 @@
+{
+  "name": "Jack Tours & Travels - Chennai to Tirupati Packages & Outstation Cabs",
+  "description": "Premier travel and cab rental service in Chennai specializing in Tirupati VIP Darshan packages, South India temple tours, and outstation car rentals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
