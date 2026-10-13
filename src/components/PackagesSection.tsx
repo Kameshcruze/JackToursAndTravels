@@ -8,7 +8,6 @@ import {
   Eye,
   ShieldCheck,
   Award,
-  Star,
   Sparkles
 } from 'lucide-react';
 import { TOUR_PACKAGES, TourPackage, createWhatsAppLink } from '../data/travelData';
@@ -185,7 +184,6 @@ Please confirm cab availability and darshan slot.`;
                     <div className="absolute bottom-4 left-4 right-4 text-white">
                       <div className="flex items-center gap-2 mb-1.5">
                         <div className="flex items-center gap-1 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded-md text-amber-400 text-xs font-extrabold">
-                          <Star className="w-3.5 h-3.5 fill-amber-400" />
                           <span>{pkg.rating}</span>
                           <span className="text-slate-300 font-normal">({pkg.reviewsCount} reviews)</span>
                         </div>

@@ -62,3 +62,94 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+/* Infinite Marquee Animations */
+@keyframes infiniteScrollLtr {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+@keyframes infiniteScrollRtl {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-infinite-scroll-ltr {
+  display: flex;
+  width: max-content;
+  animation: infiniteScrollLtr 38s linear infinite;
+  will-change: transform;
+}
+
+.animate-infinite-scroll-ltr:hover {
+  animation-play-state: paused;
+}
+
+.animate-infinite-scroll-rtl {
+  display: flex;
+  width: max-content;
+  animation: infiniteScrollRtl 38s linear infinite;
+  will-change: transform;
+}
+
+.animate-infinite-scroll-rtl:hover,
+.animate-infinite-scroll-rtl:active,
+.animate-infinite-scroll-rtl:focus-within {
+  animation-play-state: paused;
+}
+
+/* Card Shimmer Sheen & Subtle Pulse */
+@keyframes shimmerPass {
+  0% {
+    transform: translateX(-150%);
+  }
+  50%, 100% {
+    transform: translateX(250%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmerPass 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes pulseSoft {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.08);
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulseSoft 2.5s ease-in-out infinite;
+}
+
+/* Scroll reveal text animation */
+@keyframes textRevealUp {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.97);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-text-reveal {
+  animation: textRevealUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity, filter;
+}

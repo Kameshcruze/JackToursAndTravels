@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { 
   Calculator, 
   MapPin, 
@@ -155,16 +155,43 @@ I used your online Fare Estimator:
 
 Please confirm exact fare and cab allotment for this route.`;
 
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
+  const [isHeadingVisible, setIsHeadingVisible] = useState(false);
+
+  useEffect(() => {
+    const el = headingRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsHeadingVisible(true);
+        }
+      },
+      { threshold: 0.25, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="calculator" className="py-12 sm:py-20 lg:py-24 bg-slate-50 border-b border-slate-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 overflow-hidden">
           <span className="text-[11px] font-bold text-blue-600 uppercase tracking-widest block mb-2">
             Transparent Pricing
           </span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          <h2 
+            ref={headingRef}
+            className={`text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight transition-all duration-700 ${
+              isHeadingVisible
+                ? 'animate-text-reveal opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-6 scale-[0.98]'
+            }`}
+          >
             Instant Trip Cost & Fare Estimator
           </h2>
           <p className="mt-2 text-xs sm:text-sm text-slate-500 font-normal">

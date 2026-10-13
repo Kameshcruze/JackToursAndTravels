@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import { X, CheckCircle, MessageCircle, Phone, MapPin, Calendar, Car } from 'lucide-react';
+import { 
+  X, 
+  MessageCircle, 
+  Phone, 
+  MapPin, 
+  Calendar, 
+  Car, 
+  User, 
+  Navigation, 
+  ChevronDown 
+} from 'lucide-react';
 import { 
   CHENNAI_PICKUP_ZONES, 
   FLEET_VEHICLES, 
@@ -111,7 +121,7 @@ Please confirm driver allotment and route quotation.`;
   };
 
   return (
-    <div className="fixed inset-0 z-[60] overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[60] overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
       <div 
         className="bg-white w-full max-w-lg rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-100 overflow-hidden max-h-[92vh] flex flex-col"
         role="dialog"
@@ -120,7 +130,7 @@ Please confirm driver allotment and route quotation.`;
         {/* Header */}
         <div className="bg-slate-900 text-white p-4 sm:p-6 flex items-center justify-between border-b border-slate-800 shrink-0">
           <div>
-            <span className="text-[11px] font-bold text-blue-400 uppercase tracking-widest block mb-1">
+            <span className="text-[11px] font-bold text-blue-400 uppercase tracking-widest block mb-0.5">
               Reservation Desk
             </span>
             <h3 className="text-lg sm:text-xl font-extrabold text-white">
@@ -129,7 +139,7 @@ Please confirm driver allotment and route quotation.`;
           </div>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-white p-1 rounded-full transition-colors"
+            className="text-slate-400 hover:text-white p-1.5 rounded-full hover:bg-slate-800 transition-colors"
             aria-label="Close Modal"
           >
             <X className="w-5 h-5" />
@@ -137,7 +147,7 @@ Please confirm driver allotment and route quotation.`;
         </div>
 
         {/* Content */}
-        <div className="p-4 sm:p-7 overflow-y-auto">
+        <div className="p-4 sm:p-6 overflow-y-auto">
           {submitted ? (
             <div className="text-center py-6 space-y-4">
               <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
@@ -172,8 +182,9 @@ Please confirm driver allotment and route quotation.`;
               {/* Tour Package / Route with Custom Location Option */}
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
-                    Tour Package or Custom Destination
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                    <Navigation className="w-3.5 h-3.5 text-blue-600" />
+                    <span>Tour Package / Route</span>
                   </label>
                   <button
                     type="button"
@@ -183,7 +194,7 @@ Please confirm driver allotment and route quotation.`;
                         setCustomService('');
                       }
                     }}
-                    className="text-[11px] font-bold text-blue-600 hover:text-blue-700 underline"
+                    className="text-[11px] font-semibold text-blue-600 hover:text-blue-700 underline shrink-0 ml-2"
                   >
                     {isCustomServiceMode ? "Choose fixed package" : "Type custom destination"}
                   </button>
@@ -196,7 +207,7 @@ Please confirm driver allotment and route quotation.`;
                       placeholder="e.g. Chennai to Vellore Golden Temple / Bangalore / Custom Route"
                       value={customService}
                       onChange={(e) => setCustomService(e.target.value)}
-                      className="w-full bg-slate-50 border border-blue-400 focus:border-blue-600 rounded-2xl px-4 py-2.5 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-600 outline-none"
+                      className="w-full h-11 bg-slate-50 border border-blue-400 focus:border-blue-600 rounded-xl sm:rounded-2xl px-3.5 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-600/20 outline-none"
                       autoFocus
                     />
                     <p className="text-[11px] text-slate-500">
@@ -204,31 +215,34 @@ Please confirm driver allotment and route quotation.`;
                     </p>
                   </div>
                 ) : (
-                  <select
-                    value={service}
-                    onChange={(e) => {
-                      if (e.target.value === 'Outstation Custom Route') {
-                        setIsCustomServiceMode(true);
-                        setCustomService('');
-                      } else {
-                        setService(e.target.value);
-                      }
-                    }}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-2.5 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-600"
-                  >
-                    {TOUR_PACKAGES.map((p) => (
-                      <option key={p.id} value={p.title}>{p.title}</option>
-                    ))}
-                    <option value="Outstation Custom Route">✨ Other Custom Outstation Route (Type details)</option>
-                    <option value="Chennai Airport Pickup / Drop">Chennai Airport Transfer</option>
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={service}
+                      onChange={(e) => {
+                        if (e.target.value === 'Outstation Custom Route') {
+                          setIsCustomServiceMode(true);
+                          setCustomService('');
+                        } else {
+                          setService(e.target.value);
+                        }
+                      }}
+                      className="w-full h-11 bg-slate-50 border border-slate-200 rounded-xl sm:rounded-2xl px-3.5 pr-9 text-xs font-semibold text-slate-800 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 outline-none appearance-none transition-all"
+                    >
+                      {TOUR_PACKAGES.map((p) => (
+                        <option key={p.id} value={p.title}>{p.title}</option>
+                      ))}
+                      <option value="Outstation Custom Route">✨ Other Custom Outstation Route (Type details)</option>
+                      <option value="Chennai Airport Pickup / Drop">Chennai Airport Transfer</option>
+                    </select>
+                    <ChevronDown className="w-4 h-4 text-slate-400 pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2" />
+                  </div>
                 )}
               </div>
 
               {/* Pickup Area with Custom Type-in Support */}
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1">
+              <div>
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
                     <MapPin className="w-3.5 h-3.5 text-blue-600" />
                     <span>Pickup Location</span>
                   </label>
@@ -240,7 +254,7 @@ Please confirm driver allotment and route quotation.`;
                         setCustomPickup('');
                       }
                     }}
-                    className="text-[11px] font-bold text-blue-600 hover:text-blue-700 underline"
+                    className="text-[11px] font-semibold text-blue-600 hover:text-blue-700 underline shrink-0 ml-2"
                   >
                     {isCustomPickupMode ? "Select preset area" : "Type custom address"}
                   </button>
@@ -253,14 +267,14 @@ Please confirm driver allotment and route quotation.`;
                       placeholder="e.g. 15th Cross St, Besant Nagar / Hotel Grand Chola / Your House Address"
                       value={customPickup}
                       onChange={(e) => setCustomPickup(e.target.value)}
-                      className="w-full bg-slate-50 border border-blue-400 focus:border-blue-600 rounded-2xl px-4 py-2.5 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-600 outline-none"
+                      className="w-full h-11 bg-slate-50 border border-blue-400 focus:border-blue-600 rounded-xl sm:rounded-2xl px-3.5 text-xs font-semibold text-slate-800 focus:ring-2 focus:ring-blue-600/20 outline-none"
                     />
                     <p className="text-[11px] text-slate-500">
                       We offer doorstep pickup across Chennai city, suburbs, airport & railway stations.
                     </p>
                   </div>
                 ) : (
-                  <div className="space-y-1.5">
+                  <div className="relative">
                     <select
                       value={pickup}
                       onChange={(e) => {
@@ -271,20 +285,21 @@ Please confirm driver allotment and route quotation.`;
                           setCustomPickup('');
                         }
                       }}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-3 py-2 text-xs font-medium text-slate-800"
+                      className="w-full h-11 bg-slate-50 border border-slate-200 rounded-xl sm:rounded-2xl px-3.5 pr-9 text-xs font-medium text-slate-800 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 outline-none appearance-none transition-all"
                     >
                       {CHENNAI_PICKUP_ZONES.map((zone) => (
                         <option key={zone} value={zone}>{zone}</option>
                       ))}
                       <option value="Other (Custom Address / Area)">📍 Type Custom Street Address / Specific Locality</option>
                     </select>
+                    <ChevronDown className="w-4 h-4 text-slate-400 pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2" />
                   </div>
                 )}
               </div>
 
               {/* Optional Custom Drop Location */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 flex items-center gap-1">
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-emerald-600" />
                   <span>Specific Drop Point / Hotel (Optional)</span>
                 </label>
@@ -293,80 +308,90 @@ Please confirm driver allotment and route quotation.`;
                   placeholder="e.g. Tirumala CRO Office / Hotel Bliss Tirupati / ECR Resort"
                   value={dropLocation}
                   onChange={(e) => setDropLocation(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-3.5 py-2 text-xs text-slate-800 placeholder:text-slate-400"
+                  className="w-full h-11 bg-slate-50 border border-slate-200 rounded-xl sm:rounded-2xl px-3.5 text-xs text-slate-800 placeholder:text-slate-400 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 outline-none transition-all"
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center gap-1">
-                    <Calendar className="w-3.5 h-3.5 text-blue-600" />
-                    <span>Travel Date</span>
+              {/* Perfectly Aligned 2x2 Grid for Date, Vehicle, Name, and Phone */}
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                {/* 1. Travel Date */}
+                <div className="min-w-0">
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center gap-1.5 h-4">
+                    <Calendar className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                    <span className="truncate">Travel Date</span>
                   </label>
                   <input
                     type="date"
                     min={new Date().toISOString().split('T')[0]}
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-3 py-2 text-xs font-medium text-slate-800"
+                    className="w-full h-11 bg-slate-50 border border-slate-200 rounded-xl sm:rounded-2xl px-3 text-xs font-medium text-slate-800 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 outline-none transition-all"
                     required
                   />
                 </div>
 
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center gap-1">
-                    <Car className="w-3.5 h-3.5 text-blue-600" />
-                    <span>Cab Model</span>
+                {/* 2. Cab Model */}
+                <div className="min-w-0">
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center gap-1.5 h-4">
+                    <Car className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                    <span className="truncate">Cab Model</span>
                   </label>
-                  <select
-                    value={vehicle}
-                    onChange={(e) => setVehicle(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-3 py-2 text-xs font-medium text-slate-800"
-                  >
-                    {FLEET_VEHICLES.map((v) => (
-                      <option key={v.id} value={v.name}>{v.name.split('/')[0]} ({v.capacity.split(' ')[0]}S)</option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={vehicle}
+                      onChange={(e) => setVehicle(e.target.value)}
+                      className="w-full h-11 bg-slate-50 border border-slate-200 rounded-xl sm:rounded-2xl px-3 pr-8 text-xs font-medium text-slate-800 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 outline-none appearance-none transition-all truncate"
+                    >
+                      {FLEET_VEHICLES.map((v) => (
+                        <option key={v.id} value={v.name}>{v.name.split('/')[0]} ({v.capacity.split(' ')[0]}S)</option>
+                      ))}
+                    </select>
+                    <ChevronDown className="w-4 h-4 text-slate-400 pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2" />
+                  </div>
                 </div>
-              </div>
 
-              <div className="grid grid-cols-2 gap-3 pt-1">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                    Your Name
+                {/* 3. Your Name */}
+                <div className="min-w-0">
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center gap-1.5 h-4">
+                    <User className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                    <span className="truncate">Your Name</span>
                   </label>
                   <input
                     type="text"
                     placeholder="Full Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-3.5 py-2.5 text-xs text-slate-800"
+                    className="w-full h-11 bg-slate-50 border border-slate-200 rounded-xl sm:rounded-2xl px-3 sm:px-3.5 text-xs text-slate-800 placeholder:text-slate-400 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 outline-none transition-all"
                   />
                 </div>
 
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                    Mobile Phone *
+                {/* 4. Mobile Phone */}
+                <div className="min-w-0">
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center gap-1.5 h-4">
+                    <Phone className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                    <span className="truncate">Mobile Phone *</span>
                   </label>
                   <input
                     type="tel"
                     placeholder="10-digit number"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-3.5 py-2.5 text-xs text-slate-800"
+                    className="w-full h-11 bg-slate-50 border border-slate-200 rounded-xl sm:rounded-2xl px-3 sm:px-3.5 text-xs text-slate-800 placeholder:text-slate-400 focus:bg-white focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 outline-none transition-all"
                     required
                   />
                 </div>
               </div>
 
               {error && (
-                <div className="text-xs text-red-600 font-semibold">{error}</div>
+                <div className="text-xs text-red-600 font-semibold bg-red-50 p-2.5 rounded-xl border border-red-200">
+                  {error}
+                </div>
               )}
 
-              <div className="pt-3">
+              <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-3.5 px-5 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-xs sm:text-sm font-bold shadow-lg shadow-blue-500/25 transition-transform active:scale-95 flex items-center justify-center gap-2"
+                  className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-xs sm:text-sm font-bold shadow-lg shadow-blue-500/25 transition-transform active:scale-95 flex items-center justify-center gap-2"
                 >
                   <MessageCircle className="w-4 h-4 text-white" />
                   <span>Confirm on WhatsApp (Instant Response)</span>

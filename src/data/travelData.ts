@@ -338,7 +338,7 @@ export const FLEET_VEHICLES: Vehicle[] = [
     fuelType: "Clean Diesel / Petrol",
     baseRatePerKm: 12,
     tirupatiPackageRate: 5999,
-    imageUrl: "/images/swift-dzire.jpg",
+    imageUrl: "/images/swift-dzire.webp",
     features: ["Fastag Enabled", "GPS Tracking", "Bottled Water & Tissues", "Mobile Charging Port", "Music System"],
     idealFor: "Couples, small families of 3-4, airport transfers & quick 1-day Tirupati VIP darshan."
   },
@@ -352,7 +352,7 @@ export const FLEET_VEHICLES: Vehicle[] = [
     fuelType: "Smooth Smart Hybrid / Diesel",
     baseRatePerKm: 16,
     tirupatiPackageRate: 7499,
-    imageUrl: "/images/ertiga.jpg",
+    imageUrl: "/images/Kia-carens.webp",
     features: ["Split Folding Rear Seats", "Spacious Legroom", "Dual Airbags", "Smooth Suspension for Hills", "USB Fast Chargers"],
     idealFor: "Medium families of 4-6 members seeking high comfort and extra luggage space at great value."
   },
@@ -366,7 +366,7 @@ export const FLEET_VEHICLES: Vehicle[] = [
     fuelType: "Powerful 2.4L Diesel / Hybrid",
     baseRatePerKm: 19,
     tirupatiPackageRate: 8999,
-    imageUrl: "/images/innova-crysta.jpg",
+    imageUrl: "/images/innovo-hycross.webp",
     features: ["Captain Recliner Seats", "Superior Ghat Road Stability", "Ultra-Silent Cabin", "Premium Leatherette Upholstery", "First Aid Kit"],
     idealFor: "Senior citizens, NRI families, and pilgrims demanding the gold standard in highway safety & ride comfort."
   },
@@ -380,7 +380,7 @@ export const FLEET_VEHICLES: Vehicle[] = [
     fuelType: "Heavy Duty Turbo Diesel",
     baseRatePerKm: 24,
     tirupatiPackageRate: 13999,
-    imageUrl: "/images/tempo-traveller.jpg",
+    imageUrl: "/images/force-tt.webp",
     features: ["2x1 Pushback Recliner Seats", "LED TV & Audio System", "Curtains & Ambient Mood Lights", "High Ceiling Stand-up Cabin", "Experienced Hill Driver"],
     idealFor: "Joint family pilgrimages, corporate temple trips, marriage party transport & multi-day South India tours."
   },
@@ -394,7 +394,7 @@ export const FLEET_VEHICLES: Vehicle[] = [
     fuelType: "Mercedes-derived CRDi Engine",
     baseRatePerKm: 32,
     tirupatiPackageRate: 18999,
-    imageUrl: "/images/urbania.jpg",
+    imageUrl: "/images/Force-urbania.webp",
     features: ["European Monocoque Safety", "Plush Aircraft-style Seating", "Individual Reading Lamps & USB-C", "Panaromic Tinted Windows", "Ultra-low NVH"],
     idealFor: "High-profile VIPs, foreign tourists, and exclusive spiritual gatherings."
   }

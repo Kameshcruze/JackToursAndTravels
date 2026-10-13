@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, ShieldCheck, Quote } from 'lucide-react';
+import { ShieldCheck, Quote } from 'lucide-react';
 import { TESTIMONIALS } from '../data/travelData';
 
 export const Testimonials: React.FC = () => {
@@ -29,10 +29,10 @@ export const Testimonials: React.FC = () => {
             >
               <div>
                 <div className="flex items-center justify-between mb-3 sm:mb-4">
-                  <div className="flex items-center gap-1 text-amber-400">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-amber-400 text-amber-400" />
-                    ))}
+                  <div className="flex items-center gap-1.5">
+                    <span className="px-2.5 py-0.5 rounded-full bg-amber-50 border border-amber-200/60 text-amber-700 text-xs font-bold">
+                      {review.rating}.0 / 5.0 Rating
+                    </span>
                   </div>
                   <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-slate-200" />
                 </div>

@@ -1,19 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
-  ArrowRight, 
   MapPin, 
   Calendar, 
   Users, 
   Car, 
   Plane,
   ShieldCheck, 
-  Clock, 
-  Sparkles,
-  Heart,
-  ChevronDown
+  Clock,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { CHENNAI_PICKUP_ZONES, FLEET_VEHICLES, TOUR_PACKAGES, createWhatsAppLink } from '../data/travelData';
 import { ImageWithFallback } from './ImageWithFallback';
+
+const HERO_SLIDES = [
+  {
+    id: 'banner-h',
+    url: '/Homepage_banner/H.png',
+    heading: 'Common Temple Tour',
+    tagline: 'Customized spiritual temple circuit across South India with door-to-door cab service',
+    badge: 'Popular Pilgrimage Circuit',
+    packageTitle: 'Kumbakonam Navagraha Circuit (9 Planet Temples)',
+    defaultVehicle: 'Toyota Innova Crysta',
+    estimatedPrice: 17999
+  },
+  {
+    id: 'banner-h1',
+    url: '/Homepage_banner/H1.png',
+    heading: 'One Day Chennai to Tirupati Tour',
+    tagline: 'Same-day round trip with doorstep pickup, breakfast, lunch & smooth ghat travel',
+    badge: 'Best Seller • 1-Day Return',
+    packageTitle: 'Chennai to Tirupati 1-Day VIP Package',
+    defaultVehicle: 'Toyota Innova Crysta',
+    estimatedPrice: 5999
+  },
+  {
+    id: 'banner-h2',
+    url: '/Homepage_banner/H2.png',
+    heading: 'VIP Tirupati Tour',
+    tagline: 'Premium VIP Special Entry Darshan assistance, sanitized luxury cabs & priority coordinator',
+    badge: 'Exclusive VIP Darshan',
+    packageTitle: 'Chennai to Tirupati 1-Day VIP Package',
+    defaultVehicle: 'Toyota Innova Crysta',
+    estimatedPrice: 8999
+  }
+];
 
 interface HeroProps {
   onQuickBook: (data: {
@@ -41,6 +73,52 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
   });
   const [vehicleType, setVehicleType] = useState('innova-crysta');
   const [passengers, setPassengers] = useState(4);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlayPaused, setIsAutoPlayPaused] = useState(false);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  // Preload all banner images for instantaneous auto-switch
+  useEffect(() => {
+    HERO_SLIDES.forEach(slide => {
+      const img = new Image();
+      img.src = slide.url;
+    });
+  }, []);
+
+  useEffect(() => {
+    if (isAutoPlayPaused) return;
+    const interval = setInterval(() => {
+      setCurrentSlide(prev => (prev + 1) % HERO_SLIDES.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isAutoPlayPaused]);
+
+  const handlePrevSlide = () => {
+    setCurrentSlide(prev => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  };
+
+  const handleNextSlide = () => {
+    setCurrentSlide(prev => (prev + 1) % HERO_SLIDES.length);
+  };
+
+  // Mobile Touch Swipe Handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+    setIsAutoPlayPaused(true);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    setIsAutoPlayPaused(false);
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (diff > 45) {
+      handleNextSlide(); // Swiped left -> next photo
+    } else if (diff < -45) {
+      handlePrevSlide(); // Swiped right -> prev photo
+    }
+    setTouchStartX(null);
+  };
 
   const handleTabChange = (tab: 'tirupati' | 'outstation' | 'temple' | 'airport') => {
     setActiveTab(tab);
@@ -90,85 +168,131 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
     <section className="relative">
       
       {/* ----------------- TOP HERO PANORAMA ----------------- */}
-      <div className="relative min-h-[460px] sm:min-h-[560px] lg:min-h-[620px] flex items-center overflow-hidden bg-slate-900">
+      <div 
+        className="relative w-full aspect-[2/1] sm:aspect-[2.3/1] lg:aspect-[2.5/1] min-h-[190px] sm:min-h-[340px] max-h-[580px] flex items-center overflow-hidden bg-transparent"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         
-        {/* Background Scenic Photography (Clean, Bright, Mediterranean/Tirumala Hills style) */}
-        <div className="absolute inset-0 z-0">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=1600&auto=format&fit=crop"
-            alt="Scenic Travel Panorama"
-            fallbackTitle="Your Journey, Our Passion"
-            className="w-full h-full object-cover brightness-[0.92] contrast-[1.05]"
-          />
-          {/* Subtle light gradient overlay so the text pops cleanly */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent sm:hidden" />
+        {/* Background Scenic Photography (3 Rotating Images from Homepage_banner) */}
+        <div 
+          className="absolute inset-0 z-0 select-none overflow-hidden bg-transparent"
+          onMouseEnter={() => setIsAutoPlayPaused(true)}
+          onMouseLeave={() => setIsAutoPlayPaused(false)}
+        >
+          {HERO_SLIDES.map((slide, index) => {
+            const isActive = index === currentSlide;
+            return (
+              <div
+                key={slide.id}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                }`}
+              >
+                <img
+                  src={slide.url}
+                  alt={slide.heading}
+                  className="w-full h-full object-cover object-center brightness-[0.96] contrast-[1.03]"
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    if (!target.dataset.triedFallback) {
+                      target.dataset.triedFallback = '1';
+                      target.src = slide.url;
+                    }
+                  }}
+                />
+
+                {/* Soft gradient overlay for text readability without obscuring photo */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/40 to-transparent sm:bg-radial sm:from-transparent sm:via-slate-950/40 sm:to-slate-950/75 bg-slate-950/30" />
+
+                {/* Slide Caption Wording and Book Now Button - Middle Alignment */}
+                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-4 sm:p-8 md:p-12 text-center pointer-events-none">
+                  <div className="pointer-events-auto flex flex-col items-center max-w-2xl mx-auto space-y-2.5 sm:space-y-4">
+                    {/* Badge - without any star or sparkle icon */}
+                    <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-amber-400 text-slate-950 text-[11px] sm:text-xs font-extrabold uppercase tracking-wider shadow-md">
+                      <span>{slide.badge}</span>
+                    </div>
+
+                    {/* Main Sentence / Wording requested by user */}
+                    <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight drop-shadow-lg text-center">
+                      {slide.heading}
+                    </h2>
+
+                    {/* Descriptive sentence */}
+                    <p className="text-[11px] sm:text-sm md:text-base text-slate-200 max-w-lg font-medium drop-shadow-md text-center line-clamp-2">
+                      {slide.tagline}
+                    </p>
+
+                    {/* Book Now Button Below the Sentence - Centered */}
+                    <div className="pt-1 sm:pt-2 flex justify-center">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          onQuickBook({
+                            serviceType: slide.packageTitle,
+                            pickupLocation: CHENNAI_PICKUP_ZONES[0],
+                            date,
+                            vehicleType: slide.defaultVehicle,
+                            passengers: 4,
+                            name: 'Devotee / Traveler',
+                            phone: '',
+                            estimatedPrice: slide.estimatedPrice
+                          });
+                        }}
+                        className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg sm:rounded-xl bg-amber-400 hover:bg-amber-300 active:scale-95 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-500/30 transition-all duration-200 cursor-pointer group"
+                      >
+                        <span>Book Now</span>
+                        <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 transition-transform" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        {/* Hero Content Left Aligned */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20 lg:py-24 w-full">
-          <div className="max-w-xl space-y-4 sm:space-y-5">
-            
-            {/* Cursive Handwriting script with flight path dotted curve & paper plane */}
-            <div className="flex items-center gap-2 sm:gap-3">
-              <span className="font-handwriting text-xl sm:text-3xl text-blue-600 font-bold tracking-wide">
-                Explore. Dream. Discover.
-              </span>
-              
-              {/* Dotted flight path line with airplane */}
-              <div className="flex items-center text-blue-500">
-                <svg className="w-12 sm:w-16 h-4 text-blue-500" viewBox="0 0 100 25" fill="none">
-                  <path d="M0 20 Q50 0, 100 15" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
-                </svg>
-                <Plane className="w-3.5 sm:w-4 h-3.5 sm:h-4 fill-blue-500 rotate-45 -ml-1 text-blue-600" />
-              </div>
-            </div>
+        {/* Previous and Next Navigation Buttons */}
+        <button
+          type="button"
+          onClick={handlePrevSlide}
+          aria-label="Previous slide"
+          className="absolute left-2 sm:left-4 lg:left-6 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-slate-950/60 hover:bg-slate-900/90 text-white flex items-center justify-center backdrop-blur-md border border-white/20 shadow-lg hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
+        >
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+        </button>
 
-            {/* Main Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-[68px] font-black tracking-[-0.03em] text-slate-900 leading-[1.12]">
-              Your Journey, <br className="hidden sm:inline" />
-              Our <span className="text-blue-600">Passion.</span>
-            </h1>
+        <button
+          type="button"
+          onClick={handleNextSlide}
+          aria-label="Next slide"
+          className="absolute right-2 sm:right-4 lg:right-6 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-slate-950/60 hover:bg-slate-900/90 text-white flex items-center justify-center backdrop-blur-md border border-white/20 shadow-lg hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
+        >
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+        </button>
 
-            {/* Subtitle */}
-            <p className="text-xs sm:text-base text-slate-600 leading-relaxed font-normal max-w-md">
-              Discover sacred temples, amazing heritage, and unforgettable pilgrimage experiences with doorstep Chennai pickup.
-            </p>
-
-            {/* CTA Button */}
-            <div className="pt-1 sm:pt-2">
-              <a
-                href="#destinations"
-                className="inline-flex items-center gap-2.5 sm:gap-3 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm tracking-tight shadow-lg shadow-blue-600/25 transition-transform active:scale-95 group"
-              >
-                <span>Explore Destinations</span>
-                <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white text-blue-600 flex items-center justify-center font-bold text-xs group-hover:translate-x-0.5 transition-transform">
-                  ➔
-                </span>
-              </a>
-            </div>
-
-            {/* Social Proof Avatars Row */}
-            <div className="pt-2 sm:pt-4 flex items-center gap-3">
-              <div className="flex -space-x-2 overflow-hidden">
-                <img className="inline-block h-8 w-8 sm:h-9 sm:w-9 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=120&auto=format&fit=crop" alt="Traveler" />
-                <img className="inline-block h-8 w-8 sm:h-9 sm:w-9 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=120&auto=format&fit=crop" alt="Traveler" />
-                <img className="inline-block h-8 w-8 sm:h-9 sm:w-9 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=120&auto=format&fit=crop" alt="Traveler" />
-                <img className="inline-block h-8 w-8 sm:h-9 sm:w-9 rounded-full ring-2 ring-white object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=120&auto=format&fit=crop" alt="Traveler" />
-              </div>
-              <div className="text-left text-xs">
-                <div className="font-bold text-slate-900">20K+ Happy Pilgrims</div>
-                <div className="text-slate-500 text-[11px]">Trusted by devotees worldwide</div>
-              </div>
-            </div>
-
-          </div>
+        {/* Bottom Slide Indicators */}
+        <div className="absolute bottom-2.5 sm:bottom-4 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1.5 sm:gap-2">
+          {HERO_SLIDES.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => setCurrentSlide(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`transition-all duration-300 rounded-full cursor-pointer ${
+                idx === currentSlide
+                  ? 'w-6 sm:w-8 h-1.5 sm:h-2 bg-amber-400 shadow-md'
+                  : 'w-1.5 sm:w-2 h-1.5 sm:h-2 bg-white/50 hover:bg-white/80'
+              }`}
+            />
+          ))}
         </div>
 
       </div>
 
       {/* ----------------- FLOATING SEARCH WIDGET ----------------- */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 sm:-mt-16 lg:-mt-20 relative z-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 sm:-mt-8 lg:-mt-12 relative z-20">
         <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl shadow-slate-200/60 p-4 sm:p-7 border border-slate-100">
           
           {/* Top Category Tabs */}
