@@ -10,13 +10,12 @@ interface ItineraryModalProps {
 export const ItineraryModal: React.FC<ItineraryModalProps> = ({ packageData, onClose }) => {
   if (!packageData) return null;
 
-  const whatsAppMsg = `Hi Jack Tours & Travels,
+  const whatsAppMsg = `Hi Shri Vari Travels,
 I reviewed the detailed itinerary for:
 *Package:* ${packageData.title}
 *Duration:* ${packageData.duration}
-*Starting Price:* ₹${packageData.priceSedan.toLocaleString('en-IN')} (Sedan) / ₹${packageData.priceInnova.toLocaleString('en-IN')} (Innova)
 
-Please share availability and booking details.`;
+Please share cab availability, darshan coordination and booking details.`;
 
   return (
     <div className="fixed inset-0 z-[60] overflow-y-auto bg-black/60 backdrop-blur-md flex items-center justify-center p-4">
@@ -117,16 +116,9 @@ Please share availability and booking details.`;
 
         {/* Modal Footer */}
         <div className="p-4 sm:p-6 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="text-xs text-slate-500 text-center sm:text-left">
-            <span>Starting from </span>
-            <span className="text-base font-black text-slate-900 font-mono">
-              ₹{packageData.priceSedan.toLocaleString('en-IN')}
-            </span>
-            <span> (Sedan) / </span>
-            <span className="text-base font-black text-slate-900 font-mono">
-              ₹{packageData.priceInnova.toLocaleString('en-IN')}
-            </span>
-            <span> (Innova)</span>
+          <div className="text-xs text-slate-600 font-medium flex items-center gap-1.5 text-center sm:text-left">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+            <span>Doorstep Chennai pickup, highway tolls &amp; permits included</span>
           </div>
 
           <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 sm:gap-2.5 w-full sm:w-auto">

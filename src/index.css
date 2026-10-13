@@ -153,3 +153,48 @@
   animation: textRevealUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   will-change: transform, opacity, filter;
 }
+
+/* Animated Cool Text Shadow & Divine Ambient Glow for Hero Banner */
+@keyframes textShadowGlow {
+  0%, 100% {
+    text-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.95),
+      0 4px 16px rgba(0, 0, 0, 0.8),
+      0 0 20px rgba(245, 158, 11, 0.45),
+      0 0 45px rgba(217, 119, 6, 0.25);
+    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.7));
+  }
+  50% {
+    text-shadow: 
+      0 2px 6px rgba(0, 0, 0, 1),
+      0 6px 22px rgba(0, 0, 0, 0.9),
+      0 0 35px rgba(251, 191, 36, 0.85),
+      0 0 65px rgba(245, 158, 11, 0.55),
+      0 0 95px rgba(251, 191, 36, 0.3);
+    filter: drop-shadow(0 5px 18px rgba(245, 158, 11, 0.45));
+  }
+}
+
+@keyframes btnPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 18px rgba(245, 158, 11, 0.45), 0 4px 14px rgba(0, 0, 0, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 32px rgba(251, 191, 36, 0.85), 0 6px 22px rgba(0, 0, 0, 0.55);
+  }
+}
+
+.hero-heading-glow {
+  font-family: 'Outfit', sans-serif;
+  animation: textShadowGlow 3.5s ease-in-out infinite;
+}
+
+.hero-badge-glow {
+  font-family: 'Outfit', sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.hero-btn-glow {
+  font-family: 'Outfit', sans-serif;
+  animation: btnPulseGlow 3s ease-in-out infinite;
+}

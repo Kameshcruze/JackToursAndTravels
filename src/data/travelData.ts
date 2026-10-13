@@ -92,7 +92,7 @@ export const TOUR_PACKAGES: TourPackage[] = [
     originalPrice: 6999,
     rating: 4.9,
     reviewsCount: 1420,
-    imageUrl: "https://images.unsplash.com/photo-1621847468516-1ed5d0df56fe?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "/images/tirupati-vip.webp",
     tagline: "Most Booked: Doorstep Chennai pickup, breakfast, lunch, ₹300 VIP Special Entry Darshan & 2 Laddus included",
     pickupInfo: "Doorstep pickup anywhere in Chennai between 04:30 AM – 05:30 AM",
     highlightPoints: [
@@ -141,7 +141,7 @@ export const TOUR_PACKAGES: TourPackage[] = [
     originalPrice: 11999,
     rating: 4.8,
     reviewsCount: 890,
-    imageUrl: "https://images.unsplash.com/photo-1620766165457-a8025baa82e0?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "/Shrikalahasti.webp",
     tagline: "Relaxed spiritual tour covering Tirumala Balaji, Padmavathi Temple & Kalahasti Rahu-Ketu Sarpa Dosha Pooja",
     pickupInfo: "Doorstep pickup in Chennai at 06:00 AM on Day 1",
     highlightPoints: [
@@ -185,7 +185,7 @@ export const TOUR_PACKAGES: TourPackage[] = [
     originalPrice: 19999,
     rating: 4.9,
     reviewsCount: 640,
-    imageUrl: "https://images.unsplash.com/photo-1609766857041-ed402ea8069a?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "/kumbakonam.webp",
     tagline: "Sacred astrological pilgrimage covering all 9 Planetary Temples in Tamil Nadu with expert local driver",
     pickupInfo: "Doorstep pickup in Chennai at 05:00 AM",
     highlightPoints: [
@@ -222,7 +222,7 @@ export const TOUR_PACKAGES: TourPackage[] = [
     originalPrice: 7999,
     rating: 4.8,
     reviewsCount: 520,
-    imageUrl: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "/pondy-mahaballipuram.webp",
     tagline: "Picturesque East Coast Road (ECR) drive covering UNESCO monolithic sculptures, French Colony, and Auroville",
     pickupInfo: "Pickup anywhere along Chennai / ECR / Airport at 07:30 AM",
     highlightPoints: [
@@ -260,7 +260,7 @@ export const TOUR_PACKAGES: TourPackage[] = [
     originalPrice: 5999,
     rating: 4.9,
     reviewsCount: 480,
-    imageUrl: "https://images.unsplash.com/photo-1600100397608-f010f443b2f5?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "/Kanchipuram-VelloreGoldenTemple.webp",
     tagline: "Sacred day tour to the City of 1,000 Temples and the awe-inspiring 1.5-tonne pure gold temple at Vellore",
     pickupInfo: "Doorstep pickup in Chennai at 06:00 AM",
     highlightPoints: [
@@ -299,7 +299,7 @@ export const TOUR_PACKAGES: TourPackage[] = [
     originalPrice: 6499,
     rating: 4.9,
     reviewsCount: 710,
-    imageUrl: "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "/arunachaleswarar.webp",
     tagline: "Seek blessings at the divine Agni Lingam & Ramanasramam with seamless Girivalam circuit flexibility",
     pickupInfo: "Flexible departure tailored to your preferred Darshan or Pournami timing",
     highlightPoints: [
@@ -421,7 +421,7 @@ export const DESTINATIONS_EXPLORE: DestinationCard[] = [
     distance: "145 km from Chennai",
     driveTime: "3.5 hrs drive",
     tagline: "Sacred Seven Hills of Lord Venkateswara",
-    imageUrl: "https://images.unsplash.com/photo-1621847468516-1ed5d0df56fe?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "/images/tirupati-vip.webp",
     startingPrice: 5999,
     highlight: "VIP Darshan + 2 Laddus",
     category: "pilgrimage"
@@ -433,7 +433,7 @@ export const DESTINATIONS_EXPLORE: DestinationCard[] = [
     distance: "55 km from Chennai",
     driveTime: "1.5 hrs drive",
     tagline: "UNESCO 7th Century Shore Temple & Pancha Rathas",
-    imageUrl: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "/pondy-mahaballipuram.webp",
     startingPrice: 2499,
     highlight: "Scenic ECR Drive",
     category: "heritage"
@@ -445,7 +445,7 @@ export const DESTINATIONS_EXPLORE: DestinationCard[] = [
     distance: "160 km from Chennai",
     driveTime: "3.5 hrs drive",
     tagline: "French White Town, Promenade Beach & Auroville",
-    imageUrl: "https://images.unsplash.com/photo-1589793463308-658ed42e524e?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "/pondicherry.webp",
     startingPrice: 4499,
     highlight: "French Heritage & Seaside",
     category: "heritage"
@@ -457,7 +457,7 @@ export const DESTINATIONS_EXPLORE: DestinationCard[] = [
     distance: "115 km from Chennai",
     driveTime: "3.0 hrs drive",
     tagline: "Vayu Sthalam & Sacred Rahu-Ketu Sarpa Dosha Kshetram",
-    imageUrl: "https://images.unsplash.com/photo-1620766165457-a8025baa82e0?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "/Shrikalahasti.webp",
     startingPrice: 5499,
     highlight: "Rahu Ketu Pooja",
     category: "pilgrimage"
@@ -469,7 +469,7 @@ export const DESTINATIONS_EXPLORE: DestinationCard[] = [
     distance: "290 km from Chennai",
     driveTime: "6.5 hrs drive",
     tagline: "Brihadeeswarar Temple (Big Temple) & 9 Navagraha Stalam",
-    imageUrl: "https://images.unsplash.com/photo-1609766857041-ed402ea8069a?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "/kumbakonam.webp",
     startingPrice: 17999,
     highlight: "9 Planet Astrological Circuit",
     category: "pilgrimage"
@@ -481,7 +481,7 @@ export const DESTINATIONS_EXPLORE: DestinationCard[] = [
     distance: "75 km from Chennai",
     driveTime: "2.0 hrs drive",
     tagline: "City of 1000 Temples & Sripuram 1.5-Tonne Pure Gold Temple",
-    imageUrl: "https://images.unsplash.com/photo-1600100397608-f010f443b2f5?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "/Kanchipuram-VelloreGoldenTemple.webp",
     startingPrice: 4999,
     highlight: "Kamakshi Amman & Golden Temple",
     category: "pilgrimage"
@@ -493,7 +493,7 @@ export const DESTINATIONS_EXPLORE: DestinationCard[] = [
     distance: "195 km from Chennai",
     driveTime: "4.5 hrs drive",
     tagline: "Agni Lingam, Ramanasramam & 14 km Sacred Girivalam",
-    imageUrl: "https://images.unsplash.com/photo-1596401057633-54a8fe8ef647?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "/arunachaleswarar.webp",
     startingPrice: 5499,
     highlight: "Girivalam & Agni Sthalam",
     category: "pilgrimage"
@@ -529,7 +529,7 @@ export const TESTIMONIALS: Testimonial[] = [
     location: "Kallang, Singapore (NRI Visit)",
     tourTaken: "Tirupati & Srikalahasti 2-Day Tour",
     rating: 5,
-    review: "As NRIs visiting Chennai for a 5-day holiday, Jack Tours handled our entire Tirupati and Kalahasti pooja smoothly. Transparent rates, no hidden toll demands, and spotless AC cab with working child seat hooks. Recommended to all Singapore Tamilians.",
+    review: "As NRIs visiting Chennai for a 5-day holiday, Shri Vari Travels handled our entire Tirupati and Kalahasti pooja smoothly. Transparent rates, no hidden toll demands, and spotless AC cab with working child seat hooks. Recommended to all Singapore Tamilians.",
     date: "January 2026",
     verified: true
   },
@@ -577,7 +577,7 @@ export const FAQ_DATA: FaqItem[] = [
   {
     id: "faq-4",
     question: "Are Tolls, Interstate Andhra Tax, and Driver Beta included in the fare?",
-    answer: "Yes! At Jack Tours & Travels, our package fares are 100% transparent and all-inclusive. All toll plaza charges on NH-716, Interstate Andhra Pradesh Border Road Permit Tax, Tirumala Ghat parking, and Driver Bata (food and allowance) are included in the package quote.",
+    answer: "Yes! At Shri Vari Travels, our package fares are 100% transparent and all-inclusive. All toll plaza charges on NH-716, Interstate Andhra Pradesh Border Road Permit Tax, Tirumala Ghat parking, and Driver Bata (food and allowance) are included in the package quote.",
     category: "booking"
   },
   {
@@ -588,7 +588,7 @@ export const FAQ_DATA: FaqItem[] = [
   },
   {
     id: "faq-6",
-    question: "How do we confirm our booking with Jack Tours & Travels?",
+    question: "How do we confirm our booking with Shri Vari Travels?",
     answer: "You can book in under 2 minutes through WhatsApp or phone call. Simply provide your preferred date, passenger count, pickup address, and Aadhaar details for darshan coordination. A small advance confirms your reserved sanitized cab.",
     category: "booking"
   },

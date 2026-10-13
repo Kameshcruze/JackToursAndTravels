@@ -106,7 +106,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     setError('');
     setSubmitted(true);
 
-    const msg = `Hi Jack Tours & Travels!
+    const msg = `Hi Shri Vari Travels!
 I want to confirm my cab booking:
 *Customer:* ${name || 'Pilgrim Devotee / Traveler'}
 *Phone:* ${phone}

@@ -107,7 +107,7 @@ export default function App() {
         {/* 8. Devotee Tirupati Guide (Dress Code, Aadhaar, Mottai, Laddus) */}
         <TirupatiGuide />
 
-        {/* 9. Value Proposition: Why Choose Jack Tours */}
+        {/* 9. Value Proposition: Why Choose Shri Vari Travels */}
         <WhyChooseUs />
 
         {/* 10. Pilgrim Testimonials & Social Proof */}

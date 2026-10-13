@@ -1,17 +1,152 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Users, 
   Clock, 
   ShieldCheck, 
-  ChevronRight,
-  Sparkles
+  ChevronRight
 } from 'lucide-react';
 
 export const TrustStats: React.FC = () => {
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
+  // References to observe when the section/cards enter the viewport
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const cardsRef = useRef<HTMLDivElement | null>(null);
+  const hasStartedRef = useRef(false);
+  const animFrameRef = useRef<number | null>(null);
+
+  // Numerical values tracked during the count-up animation
+  const [countDevotees, setCountDevotees] = useState(0);
+  const [countRating, setCountRating] = useState(0.0);
+  const [countOntime, setCountOntime] = useState(0);
+  const [countYears, setCountYears] = useState(0);
+  const [hasFinished, setHasFinished] = useState(false);
+
+  const startCountUp = () => {
+    if (hasStartedRef.current) return;
+    hasStartedRef.current = true;
+
+    // Check for prefers-reduced-motion
+    const isReduced = typeof window !== 'undefined' && 
+      window.matchMedia && 
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (isReduced) {
+      setCountDevotees(12500);
+      setCountRating(4.9);
+      setCountOntime(100);
+      setCountYears(14);
+      setHasFinished(true);
+      return;
+    }
+
+    const duration = 1800; // ~1.8 seconds smooth animation
+    let startTime: number | null = null;
+
+    // Smooth cubic deceleration easing
+    const easeOutCubic = (t: number): number => 1 - Math.pow(1 - t, 3);
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOutCubic(progress);
+
+      // 12,500+ animate from 0 to 12,500
+      const currentDevotees = Math.min(12500, Math.round(easedProgress * 12500));
+      setCountDevotees(currentDevotees);
+
+      // 4.9 / 5 animate from 0.0 to 4.9
+      const currentRating = Math.min(4.9, parseFloat((easedProgress * 4.9).toFixed(1)));
+      setCountRating(currentRating);
+
+      // 100% animate from 0% to 100%
+      const currentOntime = Math.min(100, Math.round(easedProgress * 100));
+      setCountOntime(currentOntime);
+
+      // 14+ Years animate from 0 to 14
+      const currentYears = Math.min(14, Math.round(easedProgress * 14));
+      setCountYears(currentYears);
+
+      if (progress < 1) {
+        animFrameRef.current = requestAnimationFrame(animate);
+      } else {
+        // Guarantee final exact targets
+        setCountDevotees(12500);
+        setCountRating(4.9);
+        setCountOntime(100);
+        setCountYears(14);
+        setHasFinished(true);
+      }
+    };
+
+    animFrameRef.current = requestAnimationFrame(animate);
+  };
+
+  useEffect(() => {
+    if (hasStartedRef.current) return;
+
+    // Check visibility via viewport bounding box
+    const checkVisibility = () => {
+      if (hasStartedRef.current) return;
+      const target = cardsRef.current || sectionRef.current;
+      if (!target) return;
+      const rect = target.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      // Trigger when the section top reaches inside the viewport
+      if (rect.top <= vh * 0.95 && rect.bottom >= 0) {
+        startCountUp();
+      }
+    };
+
+    // 1. Intersection Observer trigger
+    let observer: IntersectionObserver | null = null;
+    const targetElement = cardsRef.current || sectionRef.current;
+
+    if (typeof IntersectionObserver !== 'undefined' && targetElement) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              startCountUp();
+              if (observer) observer.disconnect();
+              break;
+            }
+          }
+        },
+        {
+          root: null,
+          threshold: 0.05, // Trigger as soon as 5% becomes visible
+        }
+      );
+      observer.observe(targetElement);
+    }
+
+    // 2. Direct checks on mount and slightly delayed (handles fast renders / pre-scrolled pages)
+    checkVisibility();
+    const timer1 = setTimeout(checkVisibility, 150);
+    const timer2 = setTimeout(checkVisibility, 500);
+
+    // 3. Fallback scroll/touch listeners in case IntersectionObserver has delay or container nesting
+    window.addEventListener('scroll', checkVisibility, { passive: true });
+    window.addEventListener('resize', checkVisibility, { passive: true });
+    window.addEventListener('touchmove', checkVisibility, { passive: true });
+
+    return () => {
+      if (observer) observer.disconnect();
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      window.removeEventListener('scroll', checkVisibility);
+      window.removeEventListener('resize', checkVisibility);
+      window.removeEventListener('touchmove', checkVisibility);
+      if (animFrameRef.current) {
+        cancelAnimationFrame(animFrameRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="relative py-14 sm:py-20 lg:py-24 overflow-hidden border-b border-slate-200/60 bg-slate-50">
+    <section ref={sectionRef} className="relative py-14 sm:py-20 lg:py-24 overflow-hidden border-b border-slate-200/60 bg-slate-50">
       {/* ---------------- SECTION 2 BACKGROUND IMAGE (Home-sec2_bg.webp) ---------------- */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <img 
@@ -71,7 +206,7 @@ export const TrustStats: React.FC = () => {
         </div>
 
         {/* ---------------- 4 DISTINCTIVE TRUST CARDS ---------------- */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
           
           {/* ================= CARD 1: 12,500+ Devotee Assured ================= */}
           <div 
@@ -90,9 +225,9 @@ export const TrustStats: React.FC = () => {
                 </span>
               </div>
 
-              {/* Stat Metric */}
-              <div className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-none">
-                12,500+
+              {/* Stat Metric with Scroll-triggered Count-Up */}
+              <div className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-none tabular-nums">
+                {countDevotees.toLocaleString('en-US')}{countDevotees >= 12500 ? '+' : ''}
               </div>
 
               {/* Title */}
@@ -151,9 +286,9 @@ export const TrustStats: React.FC = () => {
                 </span>
               </div>
 
-              {/* Stat Metric */}
-              <div className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-none">
-                4.9 / 5
+              {/* Stat Metric with Scroll-triggered Count-Up */}
+              <div className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-none tabular-nums">
+                {countRating.toFixed(1)} / 5
               </div>
 
               {/* Title */}
@@ -196,9 +331,9 @@ export const TrustStats: React.FC = () => {
                 </span>
               </div>
 
-              {/* Stat Metric */}
-              <div className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-none">
-                100%
+              {/* Stat Metric with Scroll-triggered Count-Up */}
+              <div className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-none tabular-nums">
+                {countOntime}%
               </div>
 
               {/* Title */}
@@ -260,9 +395,9 @@ export const TrustStats: React.FC = () => {
                 </span>
               </div>
 
-              {/* Stat Metric */}
-              <div className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-none">
-                14+ Years
+              {/* Stat Metric with Scroll-triggered Count-Up */}
+              <div className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-none tabular-nums">
+                {countYears}{countYears >= 14 || hasFinished ? '+' : ''} Years
               </div>
 
               {/* Title */}

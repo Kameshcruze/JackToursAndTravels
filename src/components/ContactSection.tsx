@@ -46,7 +46,7 @@ export const ContactSection: React.FC = () => {
       ? formData.customPickup.trim()
       : formData.pickupLocation;
 
-    const whatsAppMsg = `Hi Jack Tours & Travels,
+    const whatsAppMsg = `Hi Shri Vari Travels,
 I am submitting an inquiry via your website:
 *Name:* ${formData.name || 'Devotee / Traveler'}
 *Phone:* ${formData.phone}

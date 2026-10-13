@@ -109,7 +109,7 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicle }) =
           >
             {repeatedVehicles.map((vehicle, idx) => {
               const isHighlight = vehicle.id === 'innova-crysta';
-              const whatsappMsg = `Hi Jack Tours,
+              const whatsappMsg = `Hi Shri Vari Travels,
 I would like to inquire about booking the ${vehicle.name} (${vehicle.capacity}).
 Please confirm availability.`;
 
@@ -134,26 +134,7 @@ Please confirm availability.`;
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-black/30 pointer-events-none" />
 
-                      {/* Top Badges */}
-                      <div className="absolute top-3 left-3 z-10">
-                        <span className="bg-white/95 backdrop-blur-md text-slate-900 text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
-                          {vehicle.category}
-                        </span>
-                      </div>
 
-                      {isHighlight ? (
-                        <div className="absolute top-3 right-3 z-10">
-                          <span className="bg-amber-400 text-slate-950 text-[11px] font-extrabold px-2.5 py-1 rounded-full shadow-sm">
-                            Most Booked
-                          </span>
-                        </div>
-                      ) : (
-                        <div className="absolute top-3 right-3 z-10">
-                          <span className="bg-emerald-500/90 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-sm flex items-center gap-1">
-                            <Wind className="w-2.5 h-2.5" /> Chilled AC
-                          </span>
-                        </div>
-                      )}
 
                       {/* Overlaid Name & Capacity */}
                       <div className="absolute bottom-3 left-4 right-4 text-white">

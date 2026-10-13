@@ -24,7 +24,7 @@ export const DestinationsGallery: React.FC<DestinationsGalleryProps> = ({ onSele
     e.preventDefault();
     if (emailOrPhone.trim()) {
       setSubscribed(true);
-      const url = createWhatsAppLink(`Hi Jack Tours, I would like to get package deals and updates on ${emailOrPhone}.`);
+      const url = createWhatsAppLink(`Hi Shri Vari Travels, I would like to get package deals and updates on ${emailOrPhone}.`);
       window.open(url, '_blank', 'noopener,noreferrer');
     }
   };
@@ -73,7 +73,7 @@ export const DestinationsGallery: React.FC<DestinationsGalleryProps> = ({ onSele
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5">
               {DESTINATIONS_EXPLORE.slice(0, 4).map((dest) => {
                 const isFav = !!favorites[dest.id];
-                const whatsAppMsg = `Hi Jack Tours, I want to book a cab to ${dest.name} (${dest.distance}). Please share rates.`;
+                const whatsAppMsg = `Hi Shri Vari Travels, I want to book a cab to ${dest.name} (${dest.distance}). Please share rates.`;
 
                 return (
                   <div

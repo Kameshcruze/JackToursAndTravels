@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
                 <Navigation className="w-4 h-4 fill-white" />
               </div>
               <span className="text-xl font-extrabold text-white tracking-tight">
-                Jack<span className="text-blue-400">Tours</span>
+                Shri Vari<span className="text-blue-400"> Travels</span>
               </span>
             </div>
             
@@ -124,7 +124,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
           <div>
-            © {new Date().getFullYear()} Jack Tours & Travels. All rights reserved.
+            © {new Date().getFullYear()} Shri Vari Travels. All rights reserved.
           </div>
           <div className="flex items-center gap-4">
             <span>Privacy Policy</span>

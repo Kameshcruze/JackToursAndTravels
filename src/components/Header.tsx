@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, User, Menu, X, Navigation } from 'lucide-react';
+import { Heart, User, Menu, X } from 'lucide-react';
 import { PHONE_PRIMARY_RAW, createWhatsAppLink } from '../data/travelData';
 
 interface HeaderProps {
@@ -23,8 +23,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
 
   const navLinks = [
     { id: 'home', label: 'Home', href: '#' },
-    { id: 'destinations', label: 'Destinations', href: '#destinations' },
     { id: 'tours', label: 'Tours', href: '#packages' },
+    { id: 'destinations', label: 'Destinations', href: '#destinations' },
     { id: 'fleet', label: 'Fleet', href: '#fleet' },
     { id: 'guide', label: 'Pilgrim Guide', href: '#guide' },
     { id: 'about', label: 'Why Us', href: '#why-us' },
@@ -62,18 +62,25 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           
-          {/* Logo matching the brand emblem */}
-          <a href="#" className="flex items-center gap-2 group shrink-0">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
-              <Navigation className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
-            </div>
-            <span className="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-              Jack<span className="text-blue-600">Tours</span>
-            </span>
+          {/* Logo with attached Logo.png and responsive mobile vs desktop sizing */}
+          <a 
+            href="#" 
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="flex items-center group shrink-0 py-1"
+          >
+            <img 
+              src="/Logo.png" 
+              alt="Shri Vari Travels" 
+              className="h-8 sm:h-9 md:h-10 lg:h-11 w-auto max-w-[190px] sm:max-w-[210px] md:max-w-[230px] lg:max-w-none max-h-8 sm:max-h-9 md:max-h-10 lg:max-h-11 object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+              referrerPolicy="no-referrer"
+            />
           </a>
 
-          {/* Center Navigation Links */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-semibold text-slate-600">
+          {/* Center Navigation Links (visible on lg desktop viewports to prevent tablet collision) */}
+          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-7 text-xs xl:text-sm font-semibold text-slate-600">
             {navLinks.map((link) => {
               const isActive = activeNav === link.id;
               return (
@@ -100,7 +107,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
             {/* Heart / Saved tours icon */}
             <a
               href="#packages"
-              className="p-2 text-slate-700 hover:text-blue-600 transition-colors relative hidden sm:block"
+              className="p-2 text-slate-700 hover:text-blue-600 transition-colors relative hidden xl:block"
               aria-label="Wishlist / Saved Packages"
             >
               <Heart className="w-5 h-5" />
@@ -119,15 +126,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
             {/* Pill Button "Book Now" */}
             <button
               onClick={onOpenBooking}
-              className="px-3.5 py-1.5 sm:px-6 sm:py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold tracking-tight shadow-md shadow-blue-500/20 transition-all active:scale-95 whitespace-nowrap"
+              className="px-3.5 py-1.5 sm:px-4 lg:px-5 xl:px-6 sm:py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold tracking-tight shadow-md shadow-blue-500/20 transition-all active:scale-95 whitespace-nowrap"
             >
               Book Now
             </button>
 
-            {/* Mobile menu toggle */}
+            {/* Tablet & Mobile menu toggle (visible on screens < lg) */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-slate-700 hover:bg-slate-100 rounded-xl transition-colors min-h-[40px] min-w-[40px] flex items-center justify-center"
+              className="lg:hidden p-2 text-slate-700 hover:bg-slate-100 rounded-xl transition-colors min-h-[40px] min-w-[40px] flex items-center justify-center"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -137,9 +144,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Tablet & Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-2 shadow-xl animate-in fade-in duration-200">
+        <div className="lg:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-2 shadow-xl animate-in fade-in duration-200">
           {navLinks.map((link) => (
             <a
               key={link.id}

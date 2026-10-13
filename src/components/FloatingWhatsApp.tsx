@@ -5,7 +5,7 @@ import { createWhatsAppLink } from '../data/travelData';
 export const FloatingWhatsApp: React.FC = () => {
   const [showTooltip, setShowTooltip] = useState(true);
 
-  const whatsAppUrl = createWhatsAppLink("Hi Jack Tours & Travels, I'm on your website and want to ask about Chennai to Tirupati packages.");
+  const whatsAppUrl = createWhatsAppLink("Hi Shri Vari Travels, I'm on your website and want to ask about Chennai to Tirupati packages.");
 
   return (
     <div className="hidden sm:flex fixed bottom-8 right-6 z-40 items-end flex-col gap-2">
@@ -30,7 +30,7 @@ export const FloatingWhatsApp: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 bg-[#25D366] hover:bg-[#20ba59] text-white rounded-full flex items-center justify-center shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 ring-4 ring-emerald-500/20"
-        aria-label="Chat with Jack Tours on WhatsApp"
+        aria-label="Chat with Shri Vari Travels on WhatsApp"
       >
         <MessageCircle className="w-7 h-7" />
       </a>

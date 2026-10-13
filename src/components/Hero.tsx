@@ -169,7 +169,7 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
       
       {/* ----------------- TOP HERO PANORAMA ----------------- */}
       <div 
-        className="relative w-full aspect-[2/1] sm:aspect-[2.3/1] lg:aspect-[2.5/1] min-h-[190px] sm:min-h-[340px] max-h-[580px] flex items-center overflow-hidden bg-transparent"
+        className="relative w-full h-[360px] sm:h-auto min-h-[350px] sm:min-h-[340px] sm:aspect-[2.3/1] lg:aspect-[2.5/1] max-h-[580px] flex items-center overflow-hidden bg-transparent"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
@@ -209,23 +209,23 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
                 {/* Slide Caption Wording and Book Now Button - Middle Alignment */}
                 <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-4 sm:p-8 md:p-12 text-center pointer-events-none">
                   <div className="pointer-events-auto flex flex-col items-center max-w-2xl mx-auto space-y-2.5 sm:space-y-4">
-                    {/* Badge - without any star or sparkle icon */}
-                    <div className="inline-flex items-center px-3.5 py-1 rounded-full bg-amber-400 text-slate-950 text-[11px] sm:text-xs font-extrabold uppercase tracking-wider shadow-md">
+                    {/* Badge with clean static styling & premium typography (animation removed) */}
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 text-[11px] sm:text-xs font-black uppercase tracking-wider border border-amber-300/80 shadow-md font-['Outfit']">
                       <span>{slide.badge}</span>
                     </div>
 
-                    {/* Main Sentence / Wording requested by user */}
-                    <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight drop-shadow-lg text-center">
+                    {/* Main Heading with Outfit display font & cool animated glowing text-shadow */}
+                    <h2 className="hero-heading-glow text-2xl sm:text-4xl md:text-5xl lg:text-[54px] font-black text-white tracking-tight leading-[1.15] text-center select-none">
                       {slide.heading}
                     </h2>
 
-                    {/* Descriptive sentence */}
-                    <p className="text-[11px] sm:text-sm md:text-base text-slate-200 max-w-lg font-medium drop-shadow-md text-center line-clamp-2">
+                    {/* Refined Descriptive Tagline with subtle ambient shadow */}
+                    <p className="font-['Outfit'] sm:font-sans text-xs sm:text-sm md:text-base text-slate-100 max-w-lg font-medium drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] text-center line-clamp-2 leading-relaxed">
                       {slide.tagline}
                     </p>
 
-                    {/* Book Now Button Below the Sentence - Centered */}
-                    <div className="pt-1 sm:pt-2 flex justify-center">
+                    {/* Book Now Button with animated ambient glow */}
+                    <div className="pt-1.5 sm:pt-2.5 flex justify-center">
                       <button
                         type="button"
                         onClick={() => {
@@ -240,10 +240,10 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
                             estimatedPrice: slide.estimatedPrice
                           });
                         }}
-                        className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg sm:rounded-xl bg-amber-400 hover:bg-amber-300 active:scale-95 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-500/30 transition-all duration-200 cursor-pointer group"
+                        className="hero-btn-glow inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 active:scale-95 text-slate-950 font-black text-xs sm:text-sm tracking-wide uppercase transition-all duration-200 cursor-pointer group border border-amber-200/50"
                       >
                         <span>Book Now</span>
-                        <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 transition-transform" />
+                        <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
                       </button>
                     </div>
                   </div>

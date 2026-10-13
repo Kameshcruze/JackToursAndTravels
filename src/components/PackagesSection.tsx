@@ -2,13 +2,10 @@ import React, { useState } from 'react';
 import { 
   Check, 
   Clock, 
-  MapPin, 
   MessageCircle, 
   Calendar,
   Eye,
-  ShieldCheck,
-  Award,
-  Sparkles
+  ShieldCheck
 } from 'lucide-react';
 import { TOUR_PACKAGES, TourPackage, createWhatsAppLink } from '../data/travelData';
 import { ImageWithFallback } from './ImageWithFallback';
@@ -23,30 +20,10 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
   onBookPackage 
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'tirupati' | 'temple' | 'weekend'>('all');
-  const [selectedVehicleTab, setSelectedVehicleTab] = useState<'sedan' | 'suv' | 'innova' | 'tempo'>('innova');
 
   const filteredPackages = selectedCategory === 'all' 
     ? TOUR_PACKAGES 
     : TOUR_PACKAGES.filter(p => p.category === selectedCategory);
-
-  const getPrice = (pkg: TourPackage) => {
-    switch (selectedVehicleTab) {
-      case 'sedan': return pkg.priceSedan;
-      case 'suv': return pkg.priceSUV;
-      case 'tempo': return pkg.priceTempo;
-      case 'innova':
-      default: return pkg.priceInnova;
-    }
-  };
-
-  const getVehicleLabel = () => {
-    switch (selectedVehicleTab) {
-      case 'sedan': return 'Swift Dzire / Etios';
-      case 'suv': return 'Maruti Ertiga / Carens';
-      case 'tempo': return 'Force Tempo Traveller (14S)';
-      case 'innova': return 'Toyota Innova Crysta';
-    }
-  };
 
   return (
     <section id="packages" className="py-12 sm:py-20 lg:py-24 bg-white border-b border-slate-200">
@@ -65,11 +42,9 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
           </p>
         </div>
 
-        {/* Filter Controls Bar: Category Tabs + Vehicle Switcher */}
-        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 sm:gap-4 bg-slate-50 p-2 sm:p-3 rounded-2xl sm:rounded-3xl border border-slate-200 shadow-sm mb-8 sm:mb-12">
-          
-          {/* Category Tabs */}
-          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar w-full md:w-auto p-1 bg-white rounded-xl sm:rounded-2xl border border-slate-200/80 shadow-sm">
+        {/* Category Tabs */}
+        <div className="flex items-center justify-center mb-8 sm:mb-12">
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar max-w-full p-1.5 bg-slate-50 rounded-2xl border border-slate-200 shadow-sm">
             <button
               onClick={() => setSelectedCategory('all')}
               className={`px-3 sm:px-4 py-2 text-xs font-bold rounded-lg sm:rounded-xl transition-all whitespace-nowrap shrink-0 ${
@@ -111,83 +86,42 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({
               🏖️ Weekend & Heritage
             </button>
           </div>
-
-          {/* Vehicle Tariff Switcher */}
-          <div className="flex items-center gap-1 overflow-x-auto no-scrollbar w-full md:w-auto justify-start md:justify-end text-xs p-1 bg-white rounded-xl sm:rounded-2xl border border-slate-200/80 shadow-sm">
-            <span className="text-[11px] font-bold text-slate-500 px-2 shrink-0 hidden sm:inline">Cab:</span>
-            {(['sedan', 'suv', 'innova', 'tempo'] as const).map((v) => (
-              <button
-                key={v}
-                onClick={() => setSelectedVehicleTab(v)}
-                className={`px-2.5 sm:px-3 py-1.5 text-xs font-bold rounded-lg sm:rounded-xl transition-all whitespace-nowrap shrink-0 ${
-                  selectedVehicleTab === v
-                    ? 'bg-blue-600 text-white shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
-              >
-                {v === 'sedan' ? 'Dzire Sedan' : v === 'suv' ? 'Ertiga SUV' : v === 'innova' ? 'Innova Crysta' : 'Tempo (14S)'}
-              </button>
-            ))}
-          </div>
-
         </div>
 
-        {/* Package Cards Grid with Authentic Photography */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Package Cards Grid with Clean Editorial Design */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           {filteredPackages.map((pkg) => {
-            const currentPrice = getPrice(pkg);
-            const originalPrice = pkg.originalPrice + (selectedVehicleTab === 'innova' ? 2000 : selectedVehicleTab === 'tempo' ? 4000 : 1000);
-            const savings = originalPrice - currentPrice;
-
-            const whatsAppMsg = `Hi Jack Tours & Travels,
-I would like to book the "${pkg.title}" with vehicle: ${getVehicleLabel()} for ₹${currentPrice.toLocaleString('en-IN')}.
-Please confirm cab availability and darshan slot.`;
+            const whatsAppMsg = `Hi Shri Vari Travels,
+I would like to enquire about the "${pkg.title}".
+Please confirm cab availability, itinerary schedule, and darshan booking assistance.`;
 
             return (
               <div
                 key={pkg.id}
-                className="group bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between"
+                className="group bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   {/* Photo Header Container */}
-                  <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-900">
+                  <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-slate-900">
                     <ImageWithFallback
                       src={pkg.imageUrl}
                       alt={pkg.title}
                       fallbackTitle={pkg.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
 
                     {/* Gradient Overlay for text contrast */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-black/20" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-black/25 pointer-events-none" />
 
-                    {/* Top Badges */}
-                    <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-                      {pkg.popular && (
-                        <span className="bg-amber-500 text-slate-950 text-xs font-extrabold px-3 py-1 rounded-full shadow flex items-center gap-1">
-                          <Award className="w-3.5 h-3.5" />
-                          <span>Bestseller</span>
-                        </span>
-                      )}
-                      <span className="bg-white/95 backdrop-blur-md text-slate-900 text-xs font-bold px-3 py-1 rounded-full shadow">
-                        Doorstep Chennai Pickup
-                      </span>
-                    </div>
-
-                    <div className="absolute top-4 right-4">
-                      <span className="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
-                        Instant Confirmation
-                      </span>
-                    </div>
 
                     {/* Bottom Title on Image */}
-                    <div className="absolute bottom-4 left-4 right-4 text-white">
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <div className="flex items-center gap-1 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded-md text-amber-400 text-xs font-extrabold">
-                          <span>{pkg.rating}</span>
-                          <span className="text-slate-300 font-normal">({pkg.reviewsCount} reviews)</span>
+                    <div className="absolute bottom-3.5 left-4 right-4 text-white">
+                      <div className="flex items-center gap-2 mb-1">
+                        <div className="flex items-center gap-1 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded-md text-amber-400 text-xs font-bold">
+                          <span>★ {pkg.rating}</span>
+                          <span className="text-slate-300 font-normal">({pkg.reviewsCount})</span>
                         </div>
-                        <span className="text-slate-300 text-xs">·</span>
+                        <span className="text-slate-400 text-xs">·</span>
                         <span className="text-slate-200 text-xs font-medium flex items-center gap-1">
                           <Clock className="w-3.5 h-3.5 text-amber-400" />
                           <span>{pkg.duration}</span>
@@ -201,102 +135,71 @@ Please confirm cab availability and darshan slot.`;
                   </div>
 
                   {/* Content Body */}
-                  <div className="p-4 sm:p-6 space-y-3.5 sm:space-y-4">
+                  <div className="p-4 sm:p-5 space-y-3">
                     <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
                       {pkg.tagline}
                     </p>
 
                     {/* Sightseeing Highlights */}
-                    <div>
-                      <div className="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2 flex items-center justify-between">
+                    <div className="pt-0.5">
+                      <div className="text-[11px] font-bold uppercase tracking-wider text-slate-800 mb-2 flex items-center justify-between">
                         <span>Tour Highlights & Inclusions</span>
                         <button
                           onClick={() => onSelectItinerary(pkg)}
-                          className="text-xs font-bold text-blue-900 hover:text-blue-700 underline underline-offset-2 flex items-center gap-1"
+                          className="text-xs font-bold text-blue-600 hover:text-blue-800 underline underline-offset-2 flex items-center gap-1"
                         >
                           <Eye className="w-3.5 h-3.5" />
-                          <span>View Full Timeline</span>
+                          <span>Full Timeline</span>
                         </button>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
                         {pkg.highlightPoints.slice(0, 4).map((pt, idx) => (
-                          <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
+                          <div key={idx} className="flex items-start gap-1.5">
                             <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                            <span>{pt}</span>
+                            <span className="leading-snug">{pt}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    {/* What's Included vs Excluded Strip */}
-                    <div className="bg-slate-50 p-3 rounded-2xl border border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-3 text-[11px]">
-                      <div>
-                        <span className="font-bold text-emerald-800 block mb-1">✓ Included in Tariff:</span>
-                        <ul className="text-slate-600 space-y-0.5">
-                          {pkg.inclusions.slice(0, 2).map((inc, i) => (
-                            <li key={i} className="truncate">· {inc}</li>
-                          ))}
-                        </ul>
+                    {/* Compact Inclusions Strip (Eliminates bulky empty white space) */}
+                    <div className="pt-2 border-t border-slate-100 flex flex-wrap items-center gap-y-1.5 gap-x-4 text-[11px] text-slate-600">
+                      <div className="flex items-center gap-1 text-emerald-700 font-semibold">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <span>All Tolls &amp; Permits Included</span>
                       </div>
-                      <div>
-                        <span className="font-bold text-slate-700 block mb-1">✕ Not Included:</span>
-                        <ul className="text-slate-500 space-y-0.5">
-                          {pkg.exclusions.slice(0, 2).map((exc, i) => (
-                            <li key={i} className="truncate">· {exc}</li>
-                          ))}
-                        </ul>
+                      <div className="flex items-center gap-1 text-emerald-700 font-semibold">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <span>Ghat Certified Driver</span>
+                      </div>
+                      <div className="flex items-center gap-1 text-slate-500">
+                        <span>✕ Excludes Personal Seva / Hotel</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Card Footer: Pricing & Action Buttons */}
-                <div className="p-4 sm:p-6 pt-0 border-t border-slate-100 bg-slate-50/50 mt-2">
-                  <div className="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
-                    
-                    {/* Price Block */}
-                    <div>
-                      <div className="text-[11px] text-slate-500 font-semibold">
-                        All-Inclusive for {getVehicleLabel()}
-                      </div>
-                      <div className="flex items-baseline gap-2 flex-wrap">
-                        <span className="text-2xl sm:text-3xl font-black text-slate-900 font-mono tabular-nums">
-                          ₹{currentPrice.toLocaleString('en-IN')}
-                        </span>
-                        <span className="text-xs text-slate-400 line-through">
-                          ₹{originalPrice.toLocaleString('en-IN')}
-                        </span>
-                        <span className="text-[11px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">
-                          SAVE ₹{savings.toLocaleString('en-IN')}
-                        </span>
-                      </div>
-                      <div className="text-[10px] text-slate-500 mt-0.5">
-                        Zero toll or driver beta surprise
-                      </div>
-                    </div>
+                {/* Card Footer: Streamlined Action Buttons (Price Section Removed) */}
+                <div className="p-4 sm:p-5 pt-3 border-t border-slate-100 bg-slate-50/70">
+                  <div className="grid grid-cols-2 gap-3 w-full">
+                    <button
+                      onClick={() => onSelectItinerary(pkg)}
+                      className="w-full py-2.5 px-3 rounded-xl border border-slate-300 hover:border-slate-800 hover:bg-slate-100 text-slate-800 font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-[0.98]"
+                    >
+                      <Calendar className="w-4 h-4 text-slate-600" />
+                      <span>View Itinerary</span>
+                    </button>
 
-                    {/* Action Buttons */}
-                    <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 w-full sm:w-auto">
-                      <button
-                        onClick={() => onSelectItinerary(pkg)}
-                        className="w-full sm:w-auto px-3.5 sm:px-4 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-800 font-bold text-xs transition-colors flex items-center justify-center gap-1.5"
-                      >
-                        <Calendar className="w-3.5 h-3.5" />
-                        <span>Itinerary</span>
-                      </button>
-
-                      <a
-                        href={createWhatsAppLink(whatsAppMsg)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full sm:w-auto px-3.5 sm:px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-all shadow-md flex items-center justify-center gap-1.5 whitespace-nowrap"
-                      >
-                        <MessageCircle className="w-4 h-4" />
-                        <span>Book WhatsApp</span>
-                      </a>
-                    </div>
-
+                    <a
+                      href={createWhatsAppLink(whatsAppMsg)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-1.5 active:scale-[0.98] whitespace-nowrap"
+                    >
+                      <MessageCircle className="w-4 h-4 text-emerald-400" />
+                      <span>Book on WhatsApp</span>
+                    </a>
                   </div>
                 </div>
 
@@ -313,7 +216,7 @@ Please confirm cab availability and darshan slot.`;
             </div>
             <div>
               <div className="text-base sm:text-xl font-black text-white leading-snug">
-                Jack Tours Assured Guarantee · Trusted by 12,500+ Devotees
+                Shri Vari Travels Assured Guarantee · Trusted by 12,500+ Devotees
               </div>
               <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
                 Tolls, Interstate Andhra Road Tax Permits, Tirumala Ghat parking, and Driver allowances (Bata) are 100% locked in advance. No awkward demands from the driver on your sacred pilgrimage.

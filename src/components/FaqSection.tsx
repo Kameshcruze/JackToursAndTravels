@@ -15,7 +15,7 @@ export const FaqSection: React.FC = () => {
   };
 
   const askCustomQuestion = () => {
-    const url = createWhatsAppLink("Hi Jack Tours, I have a specific question about Tirupati Darshan / Cab booking from Chennai.");
+    const url = createWhatsAppLink("Hi Shri Vari Travels, I have a specific question about Tirupati Darshan / Cab booking from Chennai.");
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 

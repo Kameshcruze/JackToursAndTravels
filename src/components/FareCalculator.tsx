@@ -144,7 +144,7 @@ export const FareCalculator: React.FC = () => {
     };
   }, [selectedDest, selectedVehicle]);
 
-  const whatsAppBookingMsg = `Hi Jack Tours & Travels,
+  const whatsAppBookingMsg = `Hi Shri Vari Travels,
 I used your online Fare Estimator:
 *Pickup Location:* ${effectivePickup}
 *Destination / Route:* ${effectiveDestName}
