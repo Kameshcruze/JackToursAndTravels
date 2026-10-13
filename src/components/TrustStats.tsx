@@ -146,17 +146,17 @@ export const TrustStats: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-14 sm:py-20 lg:py-24 overflow-hidden border-b border-slate-200/60 bg-slate-50">
+    <section ref={sectionRef} className="relative pt-6 sm:pt-8 pb-14 sm:pb-20 lg:pb-24 overflow-hidden border-b border-slate-200/60 bg-slate-50">
       {/* ---------------- SECTION 2 BACKGROUND IMAGE (Home-sec2_bg.webp) ---------------- */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <img 
           src="/images/Home-sec2_bg.webp" 
           alt="Tirupati Temple Scenery Background" 
-          className="w-full h-full object-cover object-[75%_center] sm:object-center opacity-30 sm:opacity-40 filter contrast-110 saturate-110"
+          className="w-full h-full object-cover object-[75%_center] sm:object-center opacity-65 sm:opacity-75 filter contrast-105 saturate-105"
           referrerPolicy="no-referrer"
         />
-        {/* Soft atmospheric gradient overlay ensuring crisp readability across mobile and desktop */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/75 to-white/95 sm:from-sky-50/80 sm:via-white/65 sm:to-white/90" />
+        {/* Atmospheric gradient overlay ensuring crisp readability while keeping temple photo vibrant */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/55 to-white/80 sm:from-sky-50/60 sm:via-white/45 sm:to-white/70" />
         
         {/* Subtle warm golden ambient glow */}
         <div className="absolute top-10 right-0 sm:right-1/4 w-[350px] sm:w-[600px] h-[350px] bg-amber-200/25 blur-3xl rounded-full" />

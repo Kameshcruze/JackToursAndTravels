@@ -6,7 +6,7 @@ export const MobileStickyBar: React.FC = () => {
   const whatsAppUrl = createWhatsAppLink("Hi Shri Vari Travels, I want to book a Chennai to Tirupati Cab / Tour Package.");
 
   return (
-    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-3 py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] shadow-2xl">
+    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-slate-200 px-3 py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] shadow-2xl">
       <div className="flex items-center gap-2.5 max-w-md mx-auto h-11">
         
         {/* Direct Call Button */}

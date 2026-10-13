@@ -203,8 +203,8 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
                   }}
                 />
 
-                {/* Soft gradient overlay for text readability without obscuring photo */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/40 to-transparent sm:bg-radial sm:from-transparent sm:via-slate-950/40 sm:to-slate-950/75 bg-slate-950/30" />
+                {/* Gradient overlay for text readability with rich contrast without excess transparency */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-slate-950/40 sm:bg-radial sm:from-slate-950/45 sm:via-slate-950/65 sm:to-slate-950/85" />
 
                 {/* Slide Caption Wording and Book Now Button - Middle Alignment */}
                 <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-4 sm:p-8 md:p-12 text-center pointer-events-none">
@@ -271,24 +271,6 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
         >
           <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
-
-        {/* Bottom Slide Indicators */}
-        <div className="absolute bottom-2.5 sm:bottom-4 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1.5 sm:gap-2">
-          {HERO_SLIDES.map((_, idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => setCurrentSlide(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-              className={`transition-all duration-300 rounded-full cursor-pointer ${
-                idx === currentSlide
-                  ? 'w-6 sm:w-8 h-1.5 sm:h-2 bg-amber-400 shadow-md'
-                  : 'w-1.5 sm:w-2 h-1.5 sm:h-2 bg-white/50 hover:bg-white/80'
-              }`}
-            />
-          ))}
-        </div>
-
       </div>
 
       {/* ----------------- FLOATING SEARCH WIDGET ----------------- */}
@@ -358,7 +340,7 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
           <form onSubmit={handleSearch} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 sm:gap-3 items-center">
             
             {/* 1. From (Doorstep Pickup) */}
-            <div className="bg-slate-50/80 hover:bg-slate-50 p-3 rounded-xl sm:rounded-2xl border border-slate-200/80 transition-colors">
+            <div className="bg-slate-50 hover:bg-slate-100/70 p-3 rounded-xl sm:rounded-2xl border border-slate-200 transition-colors">
               <div className="flex items-center justify-between mb-0.5">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
                   From (Pickup)
@@ -405,7 +387,7 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
             </div>
 
             {/* 2. To */}
-            <div className="bg-slate-50/80 hover:bg-slate-50 p-3 rounded-xl sm:rounded-2xl border border-slate-200/80 transition-colors">
+            <div className="bg-slate-50 hover:bg-slate-100/70 p-3 rounded-xl sm:rounded-2xl border border-slate-200 transition-colors">
               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
                 To
               </span>
@@ -422,7 +404,7 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
             </div>
 
             {/* 3. Depart */}
-            <div className="bg-slate-50/80 hover:bg-slate-50 p-3 rounded-xl sm:rounded-2xl border border-slate-200/80 transition-colors">
+            <div className="bg-slate-50 hover:bg-slate-100/70 p-3 rounded-xl sm:rounded-2xl border border-slate-200 transition-colors">
               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
                 Depart Date
               </span>
@@ -439,7 +421,7 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
             </div>
 
             {/* 4. Travelers / Vehicle */}
-            <div className="bg-slate-50/80 hover:bg-slate-50 p-3 rounded-xl sm:rounded-2xl border border-slate-200/80 transition-colors">
+            <div className="bg-slate-50 hover:bg-slate-100/70 p-3 rounded-xl sm:rounded-2xl border border-slate-200 transition-colors">
               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
                 Travelers & Cab
               </span>
@@ -475,7 +457,7 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
       </div>
 
       {/* ----------------- 4-COLUMN FEATURE STRIP (Below search card) ----------------- */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-12 mb-12 sm:mb-16">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-12 mb-6 sm:mb-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           
           {/* 1. Best Price Guarantee (Blue) */}

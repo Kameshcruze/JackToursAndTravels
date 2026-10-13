@@ -117,7 +117,7 @@ Please confirm cab availability, itinerary schedule, and darshan booking assista
                     {/* Bottom Title on Image */}
                     <div className="absolute bottom-3.5 left-4 right-4 text-white">
                       <div className="flex items-center gap-2 mb-1">
-                        <div className="flex items-center gap-1 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded-md text-amber-400 text-xs font-bold">
+                        <div className="flex items-center gap-1 bg-slate-900/85 px-2 py-0.5 rounded-md text-amber-400 text-xs font-bold shadow-xs">
                           <span>★ {pkg.rating}</span>
                           <span className="text-slate-300 font-normal">({pkg.reviewsCount})</span>
                         </div>
