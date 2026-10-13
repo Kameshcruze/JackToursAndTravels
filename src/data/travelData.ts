@@ -445,7 +445,7 @@ export const DESTINATIONS_EXPLORE: DestinationCard[] = [
     distance: "160 km from Chennai",
     driveTime: "3.5 hrs drive",
     tagline: "French White Town, Promenade Beach & Auroville",
-    imageUrl: "/pondicherry.webp",
+    imageUrl: "/pondy.webp",
     startingPrice: 4499,
     highlight: "French Heritage & Seaside",
     category: "heritage"

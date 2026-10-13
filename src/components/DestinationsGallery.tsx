@@ -30,7 +30,7 @@ export const DestinationsGallery: React.FC<DestinationsGalleryProps> = ({ onSele
   };
 
   return (
-    <section id="destinations" className="py-12 sm:py-20 lg:py-24 bg-white border-b border-slate-100">
+    <section id="destinations" className="pt-12 pb-8 sm:pt-20 sm:pb-12 lg:pt-24 lg:pb-12 bg-white border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ----------------- ASYMMETRIC POPULAR DESTINATIONS GRID (Matching image) ----------------- */}

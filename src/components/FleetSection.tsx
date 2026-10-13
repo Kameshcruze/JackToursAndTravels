@@ -6,7 +6,6 @@ import {
   MessageCircle, 
   ShieldCheck, 
   Phone, 
-  Sparkles, 
   ChevronRight, 
   CheckCircle2
 } from 'lucide-react';
@@ -37,7 +36,7 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicle }) =
   return (
     <section 
       id="fleet" 
-      className="py-16 sm:py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 border-b border-slate-200/80 relative overflow-hidden"
+      className="pt-6 sm:pt-8 pb-16 sm:pb-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 border-b border-slate-200/80 relative overflow-hidden"
     >
       {/* Ambient decorative glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-amber-100/30 via-sky-100/20 to-transparent blur-3xl pointer-events-none rounded-full -z-10" />
@@ -46,10 +45,6 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicle }) =
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 text-amber-300 text-xs font-semibold tracking-wide uppercase mb-3 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Premium Sanitized AC Fleet</span>
-          </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
             Our Cab Fleet
           </h2>

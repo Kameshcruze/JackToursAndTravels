@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Heart, User, Menu, X } from 'lucide-react';
-import { PHONE_PRIMARY_RAW, createWhatsAppLink } from '../data/travelData';
+import { Menu, X } from 'lucide-react';
+import { PHONE_PRIMARY_RAW } from '../data/travelData';
 
 interface HeaderProps {
   onOpenBooking: () => void;
@@ -103,25 +103,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
 
           {/* Right Action Icons & Book Now Pill Button */}
           <div className="flex items-center gap-2 sm:gap-3">
-            
-            {/* Heart / Saved tours icon */}
-            <a
-              href="#packages"
-              className="p-2 text-slate-700 hover:text-blue-600 transition-colors relative hidden xl:block"
-              aria-label="Wishlist / Saved Packages"
-            >
-              <Heart className="w-5 h-5" />
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-blue-600" />
-            </a>
-
-            {/* Profile / User Icon */}
-            <a
-              href="tel:+919585262522"
-              className="p-2 text-slate-700 hover:text-blue-600 transition-colors hidden sm:block"
-              aria-label="Call Booking Desk"
-            >
-              <User className="w-5 h-5" />
-            </a>
 
             {/* Pill Button "Book Now" */}
             <button
