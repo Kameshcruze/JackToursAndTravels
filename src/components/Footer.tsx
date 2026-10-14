@@ -10,7 +10,7 @@ import {
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#0b132b] text-slate-400 text-xs pt-12 sm:pt-16 pb-24 sm:pb-20 lg:pb-16 border-t border-slate-900">
+    <footer className="bg-[#0b132b] text-slate-300 text-sm pt-6 sm:pt-8 pb-24 sm:pb-20 lg:pb-16 border-t border-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
         
         {/* Top 4 Columns */}
@@ -22,16 +22,16 @@ export const Footer: React.FC = () => {
               <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-md shadow-blue-500/20">
                 <Navigation className="w-4 h-4 fill-white" />
               </div>
-              <span className="text-xl font-extrabold text-white tracking-tight">
+              <span className="text-xl sm:text-2xl font-black text-white tracking-tight">
                 Shri Vari<span className="text-blue-400"> Travels</span>
               </span>
             </div>
             
-            <p className="text-slate-400 leading-relaxed text-xs">
+            <p className="text-slate-400 leading-relaxed text-sm">
               Chennai's premier travel and pilgrimage cab agency. Providing safe doorstep pickups, VIP Tirupati Darshan assistance, and verified professional drivers.
             </p>
 
-            <div className="flex items-center gap-2 text-emerald-400 font-medium">
+            <div className="flex items-center gap-2 text-emerald-400 font-medium text-xs sm:text-sm">
               <ShieldCheck className="w-4 h-4 shrink-0" />
               <span>Government Registered Commercial Fleet</span>
             </div>
@@ -39,14 +39,14 @@ export const Footer: React.FC = () => {
 
           {/* Col 2: Popular Routes */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest">
+            <h4 className="text-xs sm:text-sm font-bold text-white uppercase tracking-widest">
               Popular Chennai Routes
             </h4>
             <ul className="space-y-2">
               {POPULAR_ROUTES.slice(0, 5).map((route, idx) => (
-                <li key={idx} className="flex justify-between items-center text-slate-400 hover:text-white transition-colors">
+                <li key={idx} className="flex justify-between items-center text-slate-400 hover:text-white transition-colors text-xs sm:text-sm">
                   <span>{route.from} to {route.to}</span>
-                  <span className="text-[11px] text-blue-400 font-mono">{route.duration}</span>
+                  <span className="text-xs text-blue-400 font-mono font-medium">{route.duration}</span>
                 </li>
               ))}
             </ul>
@@ -54,7 +54,7 @@ export const Footer: React.FC = () => {
 
           {/* Col 3: Navigation */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest">
+            <h4 className="text-xs sm:text-sm font-bold text-white uppercase tracking-widest">
               Explore
             </h4>
             <ul className="space-y-2">

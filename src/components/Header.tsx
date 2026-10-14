@@ -15,7 +15,45 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
   React.useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
+
+      const headerHeight = window.innerWidth >= 640 ? 80 : 64;
+      const targetLine = headerHeight + 120;
+
+      // 1. If near top of page, active is home
+      if (window.scrollY < 200) {
+        setActiveNav('home');
+        return;
+      }
+
+      // 2. If near bottom of the page, active is contact
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+        setActiveNav('contact');
+        return;
+      }
+
+      // 3. Check sections in reverse DOM order (bottom to top)
+      const navSections = [
+        { id: 'contact', el: document.getElementById('contact') },
+        { id: 'about', el: document.getElementById('why-us') },
+        { id: 'guide', el: document.getElementById('guide') },
+        { id: 'fleet', el: document.getElementById('fleet') },
+        { id: 'destinations', el: document.getElementById('destinations') },
+        { id: 'tours', el: document.getElementById('packages') },
+      ];
+
+      for (const section of navSections) {
+        if (section.el) {
+          const rect = section.el.getBoundingClientRect();
+          if (rect.top <= targetLine) {
+            setActiveNav(section.id);
+            return;
+          }
+        }
+      }
+
+      setActiveNav('home');
     };
+
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -72,15 +110,22 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
             className="flex items-center group shrink-0 py-1"
           >
             <img 
-              src="/Logo.png" 
+              src="/Logo.svg" 
               alt="Shri Vari Travels" 
-              className="h-8 sm:h-9 md:h-10 lg:h-11 w-auto max-w-[190px] sm:max-w-[210px] md:max-w-[230px] lg:max-w-none max-h-8 sm:max-h-9 md:max-h-10 lg:max-h-11 object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+              className="h-9 sm:h-10 md:h-11 lg:h-12 w-auto max-w-[210px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[310px] object-contain transition-transform duration-200 group-hover:scale-[1.02]"
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.dataset.triedFallback) {
+                  target.dataset.triedFallback = '1';
+                  target.src = '/Logo.png';
+                }
+              }}
             />
           </a>
 
           {/* Center Navigation Links (visible on lg desktop viewports to prevent tablet collision) */}
-          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-7 text-xs xl:text-sm font-semibold text-slate-600">
+          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-7 text-sm xl:text-base font-bold text-slate-700">
             {navLinks.map((link) => {
               const isActive = activeNav === link.id;
               return (
@@ -89,12 +134,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link)}
                   className={`relative py-2 transition-colors hover:text-blue-600 whitespace-nowrap ${
-                    isActive ? 'text-blue-600 font-bold' : ''
+                    isActive ? 'text-blue-600 font-extrabold' : ''
                   }`}
                 >
                   <span>{link.label}</span>
                   {isActive && (
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-blue-600 rounded-full" />
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-blue-600 rounded-full" />
                   )}
                 </a>
               );
@@ -107,7 +152,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
             {/* Pill Button "Book Now" */}
             <button
               onClick={onOpenBooking}
-              className="px-3.5 py-1.5 sm:px-4 lg:px-5 xl:px-6 sm:py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold tracking-tight shadow-md shadow-blue-500/20 transition-all active:scale-95 whitespace-nowrap"
+              className="px-4 py-2 sm:px-5 lg:px-6 xl:px-7 sm:py-2.5 rounded-full bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 text-sm sm:text-base font-black tracking-tight shadow-md shadow-amber-500/25 border border-amber-300/80 transition-all active:scale-95 whitespace-nowrap"
             >
               Book Now
             </button>
@@ -141,7 +186,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
           <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
             <button
               onClick={() => { setMobileMenuOpen(false); onOpenBooking(); }}
-              className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-full shadow-md"
+              className="w-full py-2.5 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 text-xs font-black rounded-full shadow-md border border-amber-300/80"
             >
               Book Now
             </button>

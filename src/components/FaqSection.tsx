@@ -20,7 +20,7 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section id="faqs" className="pt-6 sm:pt-8 pb-12 sm:pb-16 lg:pb-20 bg-white border-b border-slate-200">
+    <section id="faqs" className="pt-6 sm:pt-8 pb-6 sm:pb-8 bg-white border-b border-slate-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         
         {/* Header */}
@@ -109,7 +109,7 @@ export const FaqSection: React.FC = () => {
         </div>
 
         {/* Still have questions */}
-        <div className="mt-8 sm:mt-12 bg-slate-900 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 text-center space-y-3 sm:space-y-4 shadow-xl">
+        <div className="mt-6 sm:mt-8 bg-slate-900 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 text-center space-y-3 sm:space-y-4 shadow-xl">
           <h4 className="text-base sm:text-lg font-black text-white">
             Have a custom itinerary in mind?
           </h4>

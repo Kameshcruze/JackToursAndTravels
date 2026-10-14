@@ -61,18 +61,18 @@ Please send quotation and cab availability.`;
   };
 
   return (
-    <section id="contact" className="pt-6 sm:pt-8 pb-12 sm:pb-16 lg:pb-20 bg-slate-50 border-b border-slate-200">
+    <section id="contact" className="pt-6 sm:pt-8 pb-6 sm:pb-8 bg-slate-50 border-b border-slate-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-14">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3.5 py-1 rounded-full mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-14">
+          <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-blue-600 bg-blue-50 px-4 py-1.5 rounded-full mb-3">
             <span>Direct Chennai Dispatch</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
             Book Your Cab or Visit Our Offices
           </h2>
-          <p className="mt-2 sm:mt-3 text-xs sm:text-base text-slate-600 font-normal">
+          <p className="mt-3 text-sm sm:text-lg text-slate-600 font-medium leading-relaxed">
             Headquartered in T. Nagar with dedicated airport dispatch counters across Chennai.
           </p>
         </div>
@@ -162,13 +162,13 @@ Please send quotation and cab availability.`;
           <div className="lg:col-span-6">
             <div className="bg-slate-900 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-9 shadow-2xl border border-slate-800 relative">
               <div className="mb-5 sm:mb-6">
-                <span className="text-[11px] font-bold uppercase tracking-widest text-blue-400 block mb-1">
+                <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-blue-400 block mb-1">
                   Fast Callback
                 </span>
-                <h3 className="text-xl sm:text-2xl font-black text-white">
+                <h3 className="text-2xl sm:text-3xl font-black text-white">
                   Send Your Travel Inquiry
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-400 mt-1">
+                <p className="text-sm text-slate-300 mt-1 font-normal">
                   Our dispatch manager responds within 15 minutes with vehicle availability.
                 </p>
               </div>

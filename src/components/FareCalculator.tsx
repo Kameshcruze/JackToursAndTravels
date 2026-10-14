@@ -176,17 +176,17 @@ Please confirm exact fare and cab allotment for this route.`;
   }, []);
 
   return (
-    <section id="calculator" className="pt-6 sm:pt-8 pb-12 sm:pb-16 lg:pb-20 bg-slate-50 border-b border-slate-200">
+    <section id="calculator" className="pt-6 sm:pt-8 pb-6 sm:pb-8 bg-slate-50 border-b border-slate-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 overflow-hidden">
-          <span className="text-[11px] font-bold text-blue-600 uppercase tracking-widest block mb-2">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 overflow-hidden">
+          <span className="text-xs sm:text-sm font-extrabold text-blue-600 uppercase tracking-widest block mb-2">
             Transparent Pricing
           </span>
           <h2 
             ref={headingRef}
-            className={`text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight transition-all duration-700 ${
+            className={`text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight transition-all duration-700 ${
               isHeadingVisible
                 ? 'animate-text-reveal opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-6 scale-[0.98]'
@@ -194,7 +194,7 @@ Please confirm exact fare and cab allotment for this route.`;
           >
             Instant Trip Cost & Fare Estimator
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-slate-500 font-normal">
+          <p className="mt-2.5 sm:mt-3 text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
             Select your starting locality in Chennai, destination, and vehicle to get an immediate, transparent quote.
           </p>
         </div>

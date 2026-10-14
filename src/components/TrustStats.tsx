@@ -181,7 +181,7 @@ export const TrustStats: React.FC = () => {
               <path d="M5 13H19V17H17V22H15V17H9V22H7V17H5V13Z" />
               <circle cx="12" cy="15" r="1.5" />
             </svg>
-            <span className="text-[11px] sm:text-xs font-bold tracking-wider text-slate-800 uppercase flex items-center gap-2">
+            <span className="text-xs sm:text-sm font-extrabold tracking-wider text-slate-800 uppercase flex items-center gap-2">
               <span>Safe Journey</span>
               <span className="text-amber-500">•</span>
               <span>Trusted Service</span>
@@ -200,7 +200,7 @@ export const TrustStats: React.FC = () => {
           </h2>
 
           {/* Subtitle */}
-          <p className="mt-3.5 sm:mt-4 text-xs sm:text-base text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-3.5 sm:mt-4 text-sm sm:text-lg text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
             Thousands of devotees trust us for a safe, comfortable and hassle-free journey to Tirupati, Tirumala and major spiritual destinations across South India.
           </p>
         </div>
@@ -220,7 +220,7 @@ export const TrustStats: React.FC = () => {
                 <div className="w-11 h-11 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-md shadow-blue-500/25">
                   <Users className="w-5 h-5" />
                 </div>
-                <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100 whitespace-nowrap">
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100 whitespace-nowrap">
                   Devotee Assured
                 </span>
               </div>
@@ -231,19 +231,19 @@ export const TrustStats: React.FC = () => {
               </div>
 
               {/* Title */}
-              <div className="text-xs sm:text-sm font-extrabold text-slate-900 mt-1.5">
+              <div className="text-sm sm:text-base font-extrabold text-slate-900 mt-2">
                 Pilgrims & Devotees Assisted
               </div>
 
               {/* Description */}
-              <p className="text-[11px] sm:text-xs text-slate-500 mt-2 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed">
                 Seamless Tirupati, Tirumala & major temple tours across South India.
               </p>
             </div>
 
             {/* Bottom Pill Link */}
             <div className="relative z-10 mt-6 pt-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50/90 text-blue-600 text-[11px] font-bold border border-blue-100 shadow-xs group-hover:bg-blue-600 group-hover:text-white transition-colors cursor-pointer">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-50/90 text-blue-600 text-xs font-bold border border-blue-100 shadow-xs group-hover:bg-blue-600 group-hover:text-white transition-colors cursor-pointer">
                 <span className="w-2 h-2 rounded-full bg-blue-600 group-hover:bg-white animate-pulse" />
                 <span>Daily Departures</span>
                 <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -281,7 +281,7 @@ export const TrustStats: React.FC = () => {
                 <div className="w-11 h-11 rounded-full bg-amber-400 text-white flex items-center justify-center shadow-md shadow-amber-400/30">
                   <span className="text-lg leading-none font-black text-white">★</span>
                 </div>
-                <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-amber-100/80 text-amber-800 border border-amber-200/60 whitespace-nowrap">
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-amber-100/80 text-amber-800 border border-amber-200/60 whitespace-nowrap">
                   Highest Rated
                 </span>
               </div>
@@ -292,19 +292,19 @@ export const TrustStats: React.FC = () => {
               </div>
 
               {/* Title */}
-              <div className="text-xs sm:text-sm font-extrabold text-slate-900 mt-1.5">
+              <div className="text-sm sm:text-base font-extrabold text-slate-900 mt-2">
                 Google Verified Rating
               </div>
 
               {/* Description */}
-              <p className="text-[11px] sm:text-xs text-slate-500 mt-2 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed">
                 From 1,840+ authentic reviews by devotees and travelers.
               </p>
             </div>
 
             {/* Bottom Pill Link */}
             <div className="relative z-10 mt-6 pt-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-100/80 text-amber-900 text-[11px] font-bold border border-amber-200/80 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors cursor-pointer">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-100/80 text-amber-900 text-xs font-bold border border-amber-200/80 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors cursor-pointer">
                 {/* Micro G Icon */}
                 <span className="w-3.5 h-3.5 rounded-full bg-white flex items-center justify-center text-[9px] font-black text-amber-700">G</span>
                 <span>1,840+ Reviews</span>
@@ -326,7 +326,7 @@ export const TrustStats: React.FC = () => {
                 <div className="w-11 h-11 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-md shadow-blue-500/25">
                   <Clock className="w-5 h-5" />
                 </div>
-                <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-blue-100/80 text-blue-700 border border-blue-200/60 whitespace-nowrap">
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-blue-100/80 text-blue-700 border border-blue-200/60 whitespace-nowrap">
                   Zero Delay
                 </span>
               </div>
@@ -337,19 +337,19 @@ export const TrustStats: React.FC = () => {
               </div>
 
               {/* Title */}
-              <div className="text-xs sm:text-sm font-extrabold text-slate-900 mt-1.5">
+              <div className="text-sm sm:text-base font-extrabold text-slate-900 mt-2">
                 On-Time Doorstep Pickup
               </div>
 
               {/* Description */}
-              <p className="text-[11px] sm:text-xs text-slate-500 mt-2 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed">
                 Guaranteed 4:30 AM – 5:30 AM starts across Chennai for a smooth journey.
               </p>
             </div>
 
             {/* Bottom Pill Link */}
             <div className="relative z-10 mt-6 pt-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 text-blue-600 text-[11px] font-bold border border-blue-200/70 shadow-xs group-hover:bg-blue-600 group-hover:text-white transition-colors cursor-pointer">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 text-blue-600 text-xs font-bold border border-blue-200/70 shadow-xs group-hover:bg-blue-600 group-hover:text-white transition-colors cursor-pointer">
                 <Clock className="w-3.5 h-3.5 text-blue-600 group-hover:text-white" />
                 <span>On-Time Promise</span>
                 <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -390,7 +390,7 @@ export const TrustStats: React.FC = () => {
                 <div className="w-11 h-11 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-md shadow-emerald-500/25">
                   <ShieldCheck className="w-5 h-5" />
                 </div>
-                <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-100/80 text-emerald-800 border border-emerald-200/60">
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-emerald-100/80 text-emerald-800 border border-emerald-200/60">
                   Hill Certified
                 </span>
               </div>
@@ -401,19 +401,19 @@ export const TrustStats: React.FC = () => {
               </div>
 
               {/* Title */}
-              <div className="text-xs sm:text-sm font-extrabold text-slate-900 mt-1.5">
+              <div className="text-sm sm:text-base font-extrabold text-slate-900 mt-2">
                 Ghat Road Driving Record
               </div>
 
               {/* Description */}
-              <p className="text-[11px] sm:text-xs text-slate-500 mt-2 leading-relaxed max-w-[190px]">
+              <p className="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed max-w-[190px]">
                 Experienced, hill-certified drivers with a spotless safety record.
               </p>
             </div>
 
             {/* Bottom Pill Link */}
             <div className="relative z-10 mt-6 pt-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 text-emerald-700 text-[11px] font-bold border border-emerald-200/80 shadow-xs group-hover:bg-emerald-600 group-hover:text-white transition-colors cursor-pointer">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 text-emerald-700 text-xs font-bold border border-emerald-200/80 shadow-xs group-hover:bg-emerald-600 group-hover:text-white transition-colors cursor-pointer">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 group-hover:text-white" />
                 <span>Zero Accident Record</span>
                 <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />

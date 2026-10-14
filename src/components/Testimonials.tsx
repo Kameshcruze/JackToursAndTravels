@@ -4,7 +4,7 @@ import { TESTIMONIALS } from '../data/travelData';
 
 export const Testimonials: React.FC = () => {
   return (
-    <section className="pt-6 sm:pt-8 pb-12 sm:pb-16 lg:pb-20 bg-slate-50 border-b border-slate-200">
+    <section className="pt-6 sm:pt-8 pb-6 sm:pb-8 bg-slate-50 border-b border-slate-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Header */}
@@ -37,20 +37,20 @@ export const Testimonials: React.FC = () => {
                   <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-slate-200" />
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic mb-4 sm:mb-6">
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed italic mb-4 sm:mb-6">
                   "{review.review}"
                 </p>
               </div>
 
-              <div className="pt-3 sm:pt-4 border-t border-slate-100 flex items-center justify-between text-xs gap-2">
+              <div className="pt-3.5 sm:pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
                 <div className="min-w-0">
-                  <div className="font-extrabold text-slate-900 text-xs sm:text-sm truncate">{review.name}</div>
-                  <div className="text-slate-400 text-[11px] sm:text-xs truncate">{review.location} · {review.tourTaken}</div>
+                  <div className="font-black text-slate-900 text-sm sm:text-base truncate">{review.name}</div>
+                  <div className="text-slate-500 text-xs sm:text-sm truncate mt-0.5">{review.location} · {review.tourTaken}</div>
                 </div>
 
                 {review.verified && (
-                  <div className="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-blue-600 bg-blue-50 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full shrink-0">
-                    <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full shrink-0 border border-blue-100">
+                    <ShieldCheck className="w-3.5 h-3.5" />
                     <span>Verified</span>
                   </div>
                 )}

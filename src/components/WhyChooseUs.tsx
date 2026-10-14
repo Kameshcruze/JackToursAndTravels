@@ -30,18 +30,18 @@ export const WhyChooseUs: React.FC = () => {
   ];
 
   return (
-    <section id="why-us" className="pt-6 sm:pt-8 pb-12 sm:pb-16 lg:pb-20 bg-white border-b border-slate-200">
+    <section id="why-us" className="pt-6 sm:pt-8 pb-6 sm:pb-8 bg-white border-b border-slate-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-14">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3.5 py-1 rounded-full mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-14">
+          <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-blue-600 bg-blue-50 px-4 py-1.5 rounded-full mb-3">
             <span>The Shri Vari Travels Standard</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight">
             Why Chennai Devotees Prefer Us
           </h2>
-          <p className="mt-2 sm:mt-3 text-xs sm:text-base text-slate-600 font-normal">
+          <p className="mt-3 text-sm sm:text-lg text-slate-600 font-medium leading-relaxed">
             Pilgrimages to Lord Balaji are sacred family occasions. We deliver the comfort, punctuality, and devotion your journey deserves.
           </p>
         </div>
@@ -53,27 +53,27 @@ export const WhyChooseUs: React.FC = () => {
             return (
               <div 
                 key={idx}
-                className="bg-slate-50 rounded-2xl sm:rounded-3xl p-4 sm:p-7 border border-slate-200/80 hover:border-blue-600 transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-xl"
+                className="bg-slate-50 rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-slate-200/80 hover:border-blue-600 transition-all duration-300 flex flex-col justify-between shadow-sm hover:shadow-xl"
               >
                 <div>
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 sm:mb-5">
-                    <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 sm:mb-5">
+                    <Icon className="w-6 h-6 sm:w-7 sm:h-7" />
                   </div>
                   
-                  <span className="text-[10px] font-bold text-blue-700 bg-blue-100/70 px-2.5 py-0.5 rounded-full uppercase tracking-wider inline-block mb-2 sm:mb-3">
+                  <span className="text-xs font-bold text-blue-700 bg-blue-100/70 px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-2 sm:mb-3">
                     {pillar.badge}
                   </span>
 
-                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-1.5 sm:mb-2 leading-snug">
+                  <h3 className="text-lg sm:text-xl font-black text-slate-900 mb-2 leading-snug">
                     {pillar.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  <p className="text-sm text-slate-600 leading-relaxed font-normal">
                     {pillar.description}
                   </p>
                 </div>
 
-                <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-slate-100 flex items-center gap-1.5 text-xs font-semibold text-emerald-700">
+                <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-slate-100 flex items-center gap-2 text-xs sm:text-sm font-bold text-emerald-700">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                   <span>Verified Standard</span>
                 </div>

@@ -80,7 +80,7 @@ export default function App() {
       <Header onOpenBooking={handleOpenBooking} />
 
       {/* Main Content Area */}
-      <main className="flex-grow pb-16 lg:pb-0">
+      <main className="flex-grow">
         {/* 2. Hero Section: MakeMyTrip-Style Multi-Tab Search Widget */}
         <Hero onQuickBook={handleQuickBook} />
 
@@ -94,9 +94,7 @@ export default function App() {
         />
 
         {/* 5. Trending Destinations Gallery with Rich Place Photography */}
-        <div id="destinations">
-          <DestinationsGallery onSelectDestination={handleSelectDestination} />
-        </div>
+        <DestinationsGallery onSelectDestination={handleSelectDestination} />
 
         {/* 6. Sanitized AC Fleet Showcase with Real Car Photos */}
         <FleetSection onSelectVehicle={handleSelectVehicleForBooking} />
