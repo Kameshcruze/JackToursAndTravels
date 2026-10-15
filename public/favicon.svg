@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="goldLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+  </defs>
+
+  <!-- App Rounded Icon Container -->
+  <rect width="64" height="64" rx="16" fill="url(#bgGrad)" />
+  <rect x="1.5" y="1.5" width="61" height="61" rx="14.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="1.5" />
+
+  <!-- Speed/Motion Road Dash Underneath -->
+  <rect x="14" y="49" width="36" height="2.5" rx="1.25" fill="#F59E0B" opacity="0.8" />
+
+  <!-- Modern Taxi / Cab / Tour Car Silhouette -->
+  <!-- Cabin Glass (Windshield, side windows, rear glass) -->
+  <path d="M19.5 28 L25.5 18 C26.5 16.5 28 16 30 16 L38 16 C40.5 16 42.5 17 43.5 18.5 L48 28 Z" fill="#BAE6FD" />
+  <!-- Pillar division -->
+  <rect x="33.5" y="16.5" width="2" height="11.5" fill="#0F172A" opacity="0.6" />
+
+  <!-- Yellow Taxi / Cab Roof Marker or Crown -->
+  <rect x="31" y="13.5" width="7" height="3" rx="1" fill="url(#goldLight)" />
+
+  <!-- Main Car Body -->
+  <path d="M10 32 C10 29.8 11.5 28 13.5 28 L49.5 28 C51.8 28 53.5 29.8 53.5 32 L54 37 C54 39.5 52.5 41 50.5 41 L47.5 41 C47.5 37.8 44.8 35.2 41.5 35.2 C38.2 35.2 35.5 37.8 35.5 41 L27.5 41 C27.5 37.8 24.8 35.2 21.5 35.2 C18.2 35.2 15.5 37.8 15.5 41 L12.5 41 C10.8 41 9.5 39.5 9.5 37 Z" fill="#FFFFFF" />
+
+  <!-- Headlight beam (Amber gold) -->
+  <polygon points="50.5,31 53.5,31.5 53.5,34.5 50.5,34" fill="url(#goldLight)" />
+
+  <!-- Taillight (Red) -->
+  <rect x="10" y="31.5" width="2.5" height="3" rx="0.8" fill="#EF4444" />
+
+  <!-- Front & Rear Wheels -->
+  <!-- Rear Wheel -->
+  <circle cx="21.5" cy="41" r="5" fill="#1E293B" stroke="#FFFFFF" stroke-width="2" />
+  <circle cx="21.5" cy="41" r="2.2" fill="#F59E0B" />
+
+  <!-- Front Wheel -->
+  <circle cx="41.5" cy="41" r="5" fill="#1E293B" stroke="#FFFFFF" stroke-width="2" />
+  <circle cx="41.5" cy="41" r="2.2" fill="#F59E0B" />
+</svg>

@@ -123,9 +123,9 @@ export const WhyChooseUs: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/15 to-transparent pointer-events-none" />
 
                     {/* Pill Tag pinned on Top-Left of Image */}
-                    <div className="absolute top-3.5 left-3.5 z-10">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-slate-800 font-extrabold text-xs shadow-sm border border-white/60">
-                        <Icon className="w-3.5 h-3.5 text-blue-600" />
+                    <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 z-10">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 backdrop-blur-md text-slate-800 font-bold text-[11px] shadow-xs border border-white/60">
+                        <Icon className="w-3 h-3 text-blue-600 shrink-0" />
                         <span>{pillar.tag}</span>
                       </span>
                     </div>
@@ -143,12 +143,7 @@ export const WhyChooseUs: React.FC = () => {
                   </div>
 
                   {/* Card Content Area */}
-                  <div className="p-5 sm:p-6 pt-2">
-                    {/* Circular Icon Container */}
-                    <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-700 border border-blue-100 flex items-center justify-center mb-3.5 shadow-xs group-hover:scale-110 transition-transform">
-                      <Icon className="w-6 h-6 stroke-[2.2]" />
-                    </div>
-
+                  <div className="p-5 sm:p-6 pt-4 sm:pt-5">
                     {/* Card Title */}
                     <h3 className="text-lg sm:text-xl font-black text-slate-900 group-hover:text-blue-700 transition-colors leading-snug">
                       {pillar.title}

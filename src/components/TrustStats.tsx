@@ -21,10 +21,26 @@ export const TrustStats: React.FC = () => {
   const [countOntime, setCountOntime] = useState(0);
   const [countYears, setCountYears] = useState(0);
   const [hasFinished, setHasFinished] = useState(false);
+  const [isRunning, setIsRunning] = useState(false);
+
+  const resetCountUp = () => {
+    if (animFrameRef.current) {
+      cancelAnimationFrame(animFrameRef.current);
+      animFrameRef.current = null;
+    }
+    hasStartedRef.current = false;
+    setCountDevotees(0);
+    setCountRating(0.0);
+    setCountOntime(0);
+    setCountYears(0);
+    setHasFinished(false);
+    setIsRunning(false);
+  };
 
   const startCountUp = () => {
     if (hasStartedRef.current) return;
     hasStartedRef.current = true;
+    setIsRunning(true);
 
     // Check for prefers-reduced-motion
     const isReduced = typeof window !== 'undefined' && 
@@ -37,10 +53,15 @@ export const TrustStats: React.FC = () => {
       setCountOntime(100);
       setCountYears(14);
       setHasFinished(true);
+      setIsRunning(false);
       return;
     }
 
-    const duration = 1800; // ~1.8 seconds smooth animation
+    if (animFrameRef.current) {
+      cancelAnimationFrame(animFrameRef.current);
+    }
+
+    const duration = 1600; // ~1.6 seconds smooth count-up
     let startTime: number | null = null;
 
     // Smooth cubic deceleration easing
@@ -77,6 +98,8 @@ export const TrustStats: React.FC = () => {
         setCountOntime(100);
         setCountYears(14);
         setHasFinished(true);
+        setIsRunning(false);
+        animFrameRef.current = null;
       }
     };
 
@@ -84,22 +107,25 @@ export const TrustStats: React.FC = () => {
   };
 
   useEffect(() => {
-    if (hasStartedRef.current) return;
-
-    // Check visibility via viewport bounding box
-    const checkVisibility = () => {
-      if (hasStartedRef.current) return;
+    const checkCardVisibility = () => {
       const target = cardsRef.current || sectionRef.current;
       if (!target) return;
       const rect = target.getBoundingClientRect();
       const vh = window.innerHeight || document.documentElement.clientHeight;
-      // Trigger when the section top reaches inside the viewport
-      if (rect.top <= vh * 0.95 && rect.bottom >= 0) {
+
+      // When element is substantially in view (top reaches above 85% of screen and bottom hasn't left top)
+      const isInView = rect.top < vh * 0.85 && rect.bottom > 80;
+      const isCompletelyOutOfView = rect.bottom < -80 || rect.top > vh + 80;
+
+      if (isInView) {
         startCountUp();
+      } else if (isCompletelyOutOfView) {
+        // Reset when user scrolls away so values run again when they reach the section
+        resetCountUp();
       }
     };
 
-    // 1. Intersection Observer trigger
+    // 1. Intersection Observer with thresholds
     let observer: IntersectionObserver | null = null;
     const targetElement = cardsRef.current || sectionRef.current;
 
@@ -107,38 +133,37 @@ export const TrustStats: React.FC = () => {
       observer = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
-            if (entry.isIntersecting) {
+            const vh = window.innerHeight || document.documentElement.clientHeight;
+            const rect = entry.boundingClientRect;
+
+            if (entry.isIntersecting && rect.top < vh * 0.85) {
               startCountUp();
-              if (observer) observer.disconnect();
-              break;
+            } else if (!entry.isIntersecting || rect.bottom < -80 || rect.top > vh + 80) {
+              resetCountUp();
             }
           }
         },
         {
           root: null,
-          threshold: 0.05, // Trigger as soon as 5% becomes visible
+          threshold: [0, 0.15, 0.4],
         }
       );
       observer.observe(targetElement);
     }
 
-    // 2. Direct checks on mount and slightly delayed (handles fast renders / pre-scrolled pages)
-    checkVisibility();
-    const timer1 = setTimeout(checkVisibility, 150);
-    const timer2 = setTimeout(checkVisibility, 500);
+    // 2. Initial check only if already scrolled to this section on load
+    if (window.scrollY > 150) {
+      setTimeout(checkCardVisibility, 200);
+    }
 
-    // 3. Fallback scroll/touch listeners in case IntersectionObserver has delay or container nesting
-    window.addEventListener('scroll', checkVisibility, { passive: true });
-    window.addEventListener('resize', checkVisibility, { passive: true });
-    window.addEventListener('touchmove', checkVisibility, { passive: true });
+    // 3. Scroll and resize listeners for rock-solid cross-browser detection
+    window.addEventListener('scroll', checkCardVisibility, { passive: true });
+    window.addEventListener('resize', checkCardVisibility, { passive: true });
 
     return () => {
       if (observer) observer.disconnect();
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-      window.removeEventListener('scroll', checkVisibility);
-      window.removeEventListener('resize', checkVisibility);
-      window.removeEventListener('touchmove', checkVisibility);
+      window.removeEventListener('scroll', checkCardVisibility);
+      window.removeEventListener('resize', checkCardVisibility);
       if (animFrameRef.current) {
         cancelAnimationFrame(animFrameRef.current);
       }
@@ -200,8 +225,9 @@ export const TrustStats: React.FC = () => {
               </div>
 
               {/* Stat Metric with Scroll-triggered Count-Up */}
-              <div className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-none tabular-nums">
-                {countDevotees.toLocaleString('en-US')}{countDevotees >= 12500 ? '+' : ''}
+              <div className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-none tabular-nums flex items-baseline gap-0.5">
+                <span>{countDevotees.toLocaleString('en-US')}</span>
+                <span className="text-amber-400 font-extrabold text-2xl sm:text-3xl">+</span>
               </div>
 
               {/* Title */}
@@ -261,8 +287,9 @@ export const TrustStats: React.FC = () => {
               </div>
 
               {/* Stat Metric with Scroll-triggered Count-Up */}
-              <div className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-none tabular-nums">
-                {countRating.toFixed(1)} / 5
+              <div className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-none tabular-nums flex items-baseline gap-1">
+                <span>{countRating.toFixed(1)}</span>
+                <span className="text-lg sm:text-xl font-bold text-slate-300">/ 5</span>
               </div>
 
               {/* Title */}
@@ -305,8 +332,9 @@ export const TrustStats: React.FC = () => {
               </div>
 
               {/* Stat Metric with Scroll-triggered Count-Up */}
-              <div className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-none tabular-nums">
-                {countOntime}%
+              <div className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-none tabular-nums flex items-baseline gap-0.5">
+                <span>{countOntime}</span>
+                <span className="text-amber-400 font-extrabold text-2xl sm:text-3xl">%</span>
               </div>
 
               {/* Title */}
@@ -369,8 +397,10 @@ export const TrustStats: React.FC = () => {
               </div>
 
               {/* Stat Metric with Scroll-triggered Count-Up */}
-              <div className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-none tabular-nums">
-                {countYears}{countYears >= 14 || hasFinished ? '+' : ''} Years
+              <div className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-none tabular-nums flex items-baseline gap-1">
+                <span>{countYears}</span>
+                <span className="text-amber-400 font-extrabold text-2xl sm:text-3xl">+</span>
+                <span className="text-lg sm:text-xl font-bold text-slate-300 ml-0.5">Years</span>
               </div>
 
               {/* Title */}
