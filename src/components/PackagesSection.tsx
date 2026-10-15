@@ -100,8 +100,8 @@ Please confirm cab availability, itinerary schedule, and darshan booking assista
                 className="group bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  {/* Photo Header Container */}
-                  <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-slate-900">
+                  {/* Photo Header Container with Increased Height */}
+                  <div className="relative h-64 sm:h-72 md:h-80 w-full overflow-hidden bg-slate-900">
                     <ImageWithFallback
                       src={pkg.imageUrl}
                       alt={pkg.title}
@@ -110,12 +110,11 @@ Please confirm cab availability, itinerary schedule, and darshan booking assista
                     />
 
                     {/* Gradient Overlay for text contrast */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-black/25 pointer-events-none" />
-
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/30 to-black/20 pointer-events-none" />
 
                     {/* Bottom Title on Image */}
-                    <div className="absolute bottom-3.5 left-4 right-4 text-white">
-                      <h3 className="text-xl sm:text-2xl font-black text-white leading-tight drop-shadow-md">
+                    <div className="absolute bottom-4 left-5 right-5 text-white">
+                      <h3 className="text-xl sm:text-2xl md:text-[26px] font-black text-white leading-tight drop-shadow-md">
                         {pkg.title}
                       </h3>
                     </div>

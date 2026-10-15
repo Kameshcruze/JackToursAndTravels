@@ -12,6 +12,7 @@ import {
   PHONE_PRIMARY, 
   PHONE_SECONDARY, 
   PHONE_PRIMARY_RAW, 
+  PHONE_SECONDARY_RAW,
   OFFICE_ADDRESS, 
   SECONDARY_OFFICE, 
   CHENNAI_PICKUP_ZONES, 
@@ -116,7 +117,7 @@ Please send quotation and cab availability.`;
                 </a>
                 <span>·</span>
                 <a
-                  href="tel:+919840376210"
+                  href={`tel:+${PHONE_SECONDARY_RAW}`}
                   className="flex items-center gap-1.5 hover:text-blue-600 transition-colors"
                 >
                   <Phone className="w-3.5 h-3.5 text-slate-500" />

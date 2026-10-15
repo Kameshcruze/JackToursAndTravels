@@ -9,18 +9,21 @@ import {
   Clock,
   ArrowRight,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  ChevronDown,
+  Search
 } from 'lucide-react';
-import { CHENNAI_PICKUP_ZONES, FLEET_VEHICLES, TOUR_PACKAGES, createWhatsAppLink } from '../data/travelData';
-import { ImageWithFallback } from './ImageWithFallback';
+import { CHENNAI_PICKUP_ZONES, FLEET_VEHICLES, TOUR_PACKAGES } from '../data/travelData';
 
 const HERO_SLIDES = [
   {
     id: 'banner-h1',
     url: '/Homepage_banner/H1.png',
+    headingPrefix: 'One Day Chennai to ',
+    headingHighlight: 'Tirupati Tour',
     heading: 'One Day Chennai to Tirupati Tour',
     tagline: 'Same-day round trip with doorstep pickup, breakfast, lunch & smooth ghat travel',
-    badge: 'Best Seller • 1-Day Return',
+    badge: 'BEST SELLER • 1-DAY RETURN',
     packageTitle: 'Chennai to Tirupati 1-Day VIP Package',
     defaultVehicle: 'Toyota Innova Crysta',
     estimatedPrice: 5999
@@ -28,9 +31,11 @@ const HERO_SLIDES = [
   {
     id: 'banner-h2',
     url: '/Homepage_banner/H2.png',
+    headingPrefix: 'VIP ',
+    headingHighlight: 'Tirupati Tour',
     heading: 'VIP Tirupati Tour',
     tagline: 'Premium VIP Special Entry Darshan assistance, sanitized luxury cabs & priority coordinator',
-    badge: 'Exclusive VIP Darshan',
+    badge: 'EXCLUSIVE VIP DARSHAN',
     packageTitle: 'Chennai to Tirupati 1-Day VIP Package',
     defaultVehicle: 'Toyota Innova Crysta',
     estimatedPrice: 8999
@@ -38,9 +43,11 @@ const HERO_SLIDES = [
   {
     id: 'banner-h',
     url: '/Homepage_banner/H.png',
+    headingPrefix: 'Common ',
+    headingHighlight: 'Temple Tour',
     heading: 'Common Temple Tour',
     tagline: 'Customized spiritual temple circuit across South India with door-to-door cab service',
-    badge: 'Popular Pilgrimage Circuit',
+    badge: 'POPULAR PILGRIMAGE CIRCUIT',
     packageTitle: 'Kumbakonam Navagraha Circuit (9 Planet Temples)',
     defaultVehicle: 'Toyota Innova Crysta',
     estimatedPrice: 17999

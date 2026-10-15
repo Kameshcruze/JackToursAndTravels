@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Deep Midnight Royal Navy Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#030c1c" />
+      <stop offset="30%" stop-color="#071b3e" />
+      <stop offset="55%" stop-color="#0c295c" />
+      <stop offset="85%" stop-color="#061633" />
+      <stop offset="100%" stop-color="#020914" />
+    </linearGradient>
+
+    <!-- Warm Golden Central Radiance -->
+    <radialGradient id="centerGoldGlow" cx="50%" cy="48%" r="48%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.32" />
+      <stop offset="35%" stop-color="#D97706" stop-opacity="0.18" />
+      <stop offset="65%" stop-color="#1E3A8A" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#030C1C" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Gold Ribbon Linear Gradient -->
+    <linearGradient id="goldRibbon1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.0" />
+      <stop offset="25%" stop-color="#FBBF24" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#FFFBEB" stop-opacity="0.95" />
+      <stop offset="75%" stop-color="#D97706" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#B45309" stop-opacity="0.0" />
+    </linearGradient>
+
+    <linearGradient id="goldRibbon2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706" stop-opacity="0.0" />
+      <stop offset="30%" stop-color="#F59E0B" stop-opacity="0.85" />
+      <stop offset="60%" stop-color="#FEF3C7" stop-opacity="0.9" />
+      <stop offset="85%" stop-color="#B45309" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#78350F" stop-opacity="0.0" />
+    </linearGradient>
+
+    <!-- Blue Ambient Ribbon -->
+    <linearGradient id="blueRibbon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E40AF" stop-opacity="0.0" />
+      <stop offset="40%" stop-color="#3B82F6" stop-opacity="0.45" />
+      <stop offset="70%" stop-color="#60A5FA" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#1E3A8A" stop-opacity="0.0" />
+    </linearGradient>
+
+    <!-- Soft Glow Filter -->
+    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="softBlur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="24" />
+    </filter>
+  </defs>
+
+  <!-- 1. Base Dark Midnight Sky -->
+  <rect width="100%" height="100%" fill="url(#bgGrad)" />
+
+  <!-- 2. Warm Center Spotlight -->
+  <rect width="100%" height="100%" fill="url(#centerGoldGlow)" />
+
+  <!-- 3. Left Traditional Mandala Watermark -->
+  <g transform="translate(-120, 560)" opacity="0.10" stroke="#F59E0B" fill="none" stroke-width="1.4">
+    <circle r="360" />
+    <circle r="300" stroke-dasharray="6 6" />
+    <circle r="240" />
+    <circle r="180" />
+    <circle r="120" stroke-dasharray="4 4" />
+    <circle r="60" />
+    <!-- 16 Radial Petals -->
+    <path d="M0 -360 L0 360 M-360 0 L360 0 M-254 -254 L254 254 M-254 254 L254 -254" />
+    <path d="M-332 -137 L332 137 M-137 -332 L137 332 M-332 137 L332 -137 M-137 332 L137 -332" />
+    <!-- Scalloped Petals -->
+    <path d="M 0 -300 Q 40 -260 0 -220 Q -40 -260 0 -300" />
+    <path d="M 0 300 Q 40 260 0 220 Q -40 260 0 300" />
+    <path d="M -300 0 Q -260 40 -220 0 Q -260 -40 -300 0" />
+    <path d="M 300 0 Q 260 40 220 0 Q 260 -40 300 0" />
+  </g>
+
+  <!-- 4. Right Traditional Mandala Watermark -->
+  <g transform="translate(1960, 380)" opacity="0.10" stroke="#F59E0B" fill="none" stroke-width="1.4">
+    <circle r="400" />
+    <circle r="330" stroke-dasharray="6 6" />
+    <circle r="260" />
+    <circle r="190" />
+    <circle r="120" stroke-dasharray="4 4" />
+    <circle r="60" />
+    <!-- 16 Radial Petals -->
+    <path d="M0 -400 L0 400 M-400 0 L400 0 M-282 -282 L282 282 M-282 282 L282 -282" />
+    <path d="M-369 -153 L369 153 M-153 -369 L153 369 M-369 153 L369 -153 M-153 369 L153 -369" />
+  </g>
+
+  <!-- 5. Blue Ambient Curved Ribbons -->
+  <path d="M -80 320 C 350 480, 720 300, 1150 420" stroke="url(#blueRibbon)" stroke-width="48" fill="none" filter="url(#softBlur)" />
+  <path d="M 850 620 C 1250 820, 1650 640, 2020 540" stroke="url(#blueRibbon)" stroke-width="40" fill="none" filter="url(#softBlur)" />
+
+  <!-- 6. Left Sweeping Gold Light Ribbon (Matching image.png) -->
+  <!-- Wide soft ambient aura -->
+  <path d="M -60 220 C 180 360, 360 460, 620 560" stroke="#F59E0B" stroke-width="26" fill="none" opacity="0.25" filter="url(#softBlur)" />
+  <!-- Vibrant middle band -->
+  <path d="M -60 230 C 180 370, 360 465, 640 565" stroke="url(#goldRibbon1)" stroke-width="8" fill="none" filter="url(#goldGlow)" />
+  <!-- Sharp gleaming core stroke -->
+  <path d="M -60 232 C 180 371, 360 466, 640 566" stroke="#FFFBEB" stroke-width="2.5" fill="none" opacity="0.9" />
+
+  <!-- Secondary inner gold arc on left -->
+  <path d="M -40 330 C 160 430, 320 520, 560 620" stroke="url(#goldRibbon1)" stroke-width="4.5" fill="none" opacity="0.7" />
+  <path d="M -40 331 C 160 431, 320 521, 560 621" stroke="#FEF3C7" stroke-width="1.5" fill="none" opacity="0.85" />
+
+  <!-- 7. Right Sweeping Gold Light Ribbon (Matching image.png) -->
+  <!-- Wide soft ambient aura -->
+  <path d="M 1320 620 C 1580 520, 1780 430, 2000 350" stroke="#F59E0B" stroke-width="28" fill="none" opacity="0.25" filter="url(#softBlur)" />
+  <!-- Vibrant middle band -->
+  <path d="M 1300 630 C 1570 530, 1770 440, 2000 360" stroke="url(#goldRibbon2)" stroke-width="8" fill="none" filter="url(#goldGlow)" />
+  <!-- Sharp gleaming core stroke -->
+  <path d="M 1300 631 C 1570 531, 1770 441, 2000 361" stroke="#FFFBEB" stroke-width="2.5" fill="none" opacity="0.9" />
+
+  <!-- Secondary gold line on right -->
+  <path d="M 1420 720 C 1660 630, 1840 560, 2020 510" stroke="url(#goldRibbon2)" stroke-width="4" fill="none" opacity="0.65" />
+
+  <!-- 8. Floating Golden Bokeh & Stardust Particles -->
+  <g fill="#FBBF24" opacity="0.85">
+    <circle cx="280" cy="240" r="3" />
+    <circle cx="340" cy="380" r="2" opacity="0.6" />
+    <circle cx="160" cy="460" r="2.5" />
+    <circle cx="520" cy="480" r="1.8" opacity="0.7" />
+    <circle cx="780" cy="280" r="2.2" opacity="0.8" />
+    <circle cx="920" cy="210" r="3.2" opacity="0.9" />
+    <circle cx="1060" cy="260" r="2" opacity="0.75" />
+    <circle cx="1220" cy="340" r="2.8" opacity="0.8" />
+    <circle cx="1520" cy="440" r="3.5" opacity="0.9" />
+    <circle cx="1680" cy="320" r="2" opacity="0.6" />
+    <circle cx="1780" cy="480" r="2.5" opacity="0.85" />
+    <circle cx="1400" cy="580" r="1.8" opacity="0.7" />
+  </g>
+
+  <!-- Large soft glowing light orbs -->
+  <circle cx="480" cy="360" r="6" fill="#FFFBEB" opacity="0.85" filter="url(#goldGlow)" />
+  <circle cx="1480" cy="520" r="7" fill="#FFFBEB" opacity="0.85" filter="url(#goldGlow)" />
+  <circle cx="960" cy="380" r="90" fill="#F59E0B" opacity="0.12" filter="url(#softBlur)" />
+</svg>

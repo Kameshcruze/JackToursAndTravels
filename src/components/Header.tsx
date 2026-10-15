@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { PHONE_PRIMARY_RAW } from '../data/travelData';
+import { Menu, X, Phone } from 'lucide-react';
+import { 
+  PHONE_PRIMARY, 
+  PHONE_SECONDARY, 
+  PHONE_PRIMARY_RAW, 
+  PHONE_SECONDARY_RAW 
+} from '../data/travelData';
 
 interface HeaderProps {
   onOpenBooking: () => void;
@@ -100,28 +105,29 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           
-          {/* Logo with attached Logo.png and responsive mobile vs desktop sizing */}
+          {/* Pure Typography Brand Wordmark - Without Car Logo */}
           <a 
             href="#" 
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="flex items-center group shrink-0 py-1"
+            className="flex flex-col justify-center group shrink-0 py-1 select-none"
+            aria-label="Shri Vari Travels - Home"
           >
-            <img 
-              src="/Logo.svg" 
-              alt="Shri Vari Travels" 
-              className="h-9 sm:h-10 md:h-11 lg:h-12 w-auto max-w-[210px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[310px] object-contain transition-transform duration-200 group-hover:scale-[1.02]"
-              referrerPolicy="no-referrer"
-              onError={(e) => {
-                const target = e.currentTarget;
-                if (!target.dataset.triedFallback) {
-                  target.dataset.triedFallback = '1';
-                  target.src = '/Logo.png';
-                }
-              }}
-            />
+            <div className="flex items-center gap-1.5 sm:gap-2 leading-none">
+              <span className="text-xl sm:text-2xl lg:text-[26px] font-black tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
+                SHRI VARI
+              </span>
+              <span className="text-xl sm:text-2xl lg:text-[26px] font-black tracking-tight text-blue-600">
+                TRAVELS
+              </span>
+            </div>
+            <div className="flex items-center gap-1 text-[9px] sm:text-[10px] lg:text-[11px] font-extrabold tracking-[0.16em] sm:tracking-[0.2em] uppercase mt-1 leading-none">
+              <span className="text-amber-500">CHENNAI</span>
+              <span className="text-slate-300">•</span>
+              <span className="text-slate-500 font-bold">TIRUPATI &amp; OUTSTATION CABS</span>
+            </div>
           </a>
 
           {/* Center Navigation Links (visible on lg desktop viewports to prevent tablet collision) */}
@@ -146,21 +152,33 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
             })}
           </nav>
 
-          {/* Right Action Icons & Book Now Pill Button */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* Right Action: Phone Numbers with Call Icon (Replacing Book Now) */}
+          <div className="flex items-center gap-1.5 sm:gap-2">
 
-            {/* Pill Button "Book Now" */}
-            <button
-              onClick={onOpenBooking}
-              className="px-4 py-2 sm:px-5 lg:px-6 xl:px-7 sm:py-2.5 rounded-full bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 text-sm sm:text-base font-black tracking-tight shadow-md shadow-amber-500/25 border border-amber-300/80 transition-all active:scale-95 whitespace-nowrap"
+            {/* Primary Mobile Number: 94929 21997 (Warm Amber/Gold Pill) */}
+            <a
+              href={`tel:+${PHONE_PRIMARY_RAW}`}
+              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-[#fde68a] hover:bg-[#fcd34d] text-slate-950 text-xs sm:text-sm font-bold tracking-tight shadow-sm border border-amber-300 transition-all active:scale-95 whitespace-nowrap"
+              title={`Call ${PHONE_PRIMARY}`}
             >
-              Book Now
-            </button>
+              <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-slate-900 text-slate-900 shrink-0" />
+              <span>94929 21997</span>
+            </a>
+
+            {/* Secondary Mobile Number: 91502 67924 (Deep Navy Pill) */}
+            <a
+              href={`tel:+${PHONE_SECONDARY_RAW}`}
+              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-[#0e2138] hover:bg-[#152e4d] text-white text-xs sm:text-sm font-bold tracking-tight shadow-sm transition-all active:scale-95 whitespace-nowrap border border-slate-700/60"
+              title={`Call ${PHONE_SECONDARY}`}
+            >
+              <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white text-white shrink-0" />
+              <span>91502 67924</span>
+            </a>
 
             {/* Tablet & Mobile menu toggle (visible on screens < lg) */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-slate-700 hover:bg-slate-100 rounded-xl transition-colors min-h-[40px] min-w-[40px] flex items-center justify-center"
+              className="lg:hidden p-2 text-slate-700 hover:bg-slate-100 rounded-xl transition-colors min-h-[40px] min-w-[40px] flex items-center justify-center ml-0.5"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -184,17 +202,21 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
             </a>
           ))}
           <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
-            <button
-              onClick={() => { setMobileMenuOpen(false); onOpenBooking(); }}
-              className="w-full py-2.5 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 text-xs font-black rounded-full shadow-md border border-amber-300/80"
-            >
-              Book Now
-            </button>
             <a
               href={`tel:+${PHONE_PRIMARY_RAW}`}
-              className="w-full text-center py-2.5 bg-slate-900 text-white text-xs font-bold rounded-full"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full text-center py-2.5 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 text-xs font-black rounded-full shadow-md border border-amber-300/80 flex items-center justify-center gap-2"
             >
-              Call Booking Desk: +91 95852 62522
+              <Phone className="w-4 h-4 fill-slate-950" />
+              <span>Call: +91 94929 21997</span>
+            </a>
+            <a
+              href={`tel:+${PHONE_SECONDARY_RAW}`}
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full text-center py-2.5 bg-slate-900 text-white text-xs font-bold rounded-full flex items-center justify-center gap-2"
+            >
+              <Phone className="w-4 h-4 fill-amber-400 text-amber-400" />
+              <span>Call: +91 91502 67924</span>
             </a>
           </div>
         </div>
