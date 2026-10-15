@@ -155,33 +155,33 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
           {/* Right Action: Phone Numbers with Call Icon (Replacing Book Now) */}
           <div className="flex items-center gap-1.5 sm:gap-2">
 
-            {/* Primary Mobile Number: 94929 21997 (Warm Amber/Gold Pill) */}
+            {/* Primary Mobile Number: 94929 21997 (Warm Amber/Gold Pill) - Desktop only */}
             <a
               href={`tel:+${PHONE_PRIMARY_RAW}`}
-              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-[#fde68a] hover:bg-[#fcd34d] text-slate-950 text-xs sm:text-sm font-bold tracking-tight shadow-sm border border-amber-300 transition-all active:scale-95 whitespace-nowrap"
+              className="hidden lg:inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-[#fde68a] hover:bg-[#fcd34d] text-slate-950 text-xs sm:text-sm font-bold tracking-tight shadow-sm border border-amber-300 transition-all active:scale-95 whitespace-nowrap"
               title={`Call ${PHONE_PRIMARY}`}
             >
               <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-slate-900 text-slate-900 shrink-0" />
               <span>94929 21997</span>
             </a>
 
-            {/* Secondary Mobile Number: 91502 67924 (Deep Navy Pill) */}
+            {/* Secondary Mobile Number: 91502 67924 (Deep Navy Pill) - Desktop only */}
             <a
               href={`tel:+${PHONE_SECONDARY_RAW}`}
-              className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-[#0e2138] hover:bg-[#152e4d] text-white text-xs sm:text-sm font-bold tracking-tight shadow-sm transition-all active:scale-95 whitespace-nowrap border border-slate-700/60"
+              className="hidden lg:inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-[#0e2138] hover:bg-[#152e4d] text-white text-xs sm:text-sm font-bold tracking-tight shadow-sm transition-all active:scale-95 whitespace-nowrap border border-slate-700/60"
               title={`Call ${PHONE_SECONDARY}`}
             >
               <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white text-white shrink-0" />
               <span>91502 67924</span>
             </a>
 
-            {/* Tablet & Mobile menu toggle (visible on screens < lg) */}
+            {/* Tablet & Mobile menu toggle (kept alone on mobile/tablet screens) */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-slate-700 hover:bg-slate-100 rounded-xl transition-colors min-h-[40px] min-w-[40px] flex items-center justify-center ml-0.5"
+              className="lg:hidden p-2 text-slate-700 hover:bg-slate-100 rounded-xl transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
 
