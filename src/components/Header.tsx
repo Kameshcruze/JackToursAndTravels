@@ -115,18 +115,18 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
             className="flex flex-col justify-center group shrink-0 py-1 select-none"
             aria-label="Shri Vari Travels - Home"
           >
-            <div className="flex items-center gap-1.5 sm:gap-2 leading-none">
-              <span className="text-xl sm:text-2xl lg:text-[26px] font-black tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
+            <div className="flex items-center gap-1.5 sm:gap-2 leading-none font-logo">
+              <span className="text-xl sm:text-2xl lg:text-[27px] font-normal tracking-[0.06em] text-slate-900 group-hover:text-blue-600 transition-colors">
                 SHRI VARI
               </span>
-              <span className="text-xl sm:text-2xl lg:text-[26px] font-black tracking-tight text-blue-600">
+              <span className="text-xl sm:text-2xl lg:text-[27px] font-normal tracking-[0.06em] text-blue-600">
                 TRAVELS
               </span>
             </div>
-            <div className="flex items-center gap-1 text-[9px] sm:text-[10px] lg:text-[11px] font-extrabold tracking-[0.16em] sm:tracking-[0.2em] uppercase mt-1 leading-none">
-              <span className="text-amber-500">CHENNAI</span>
+            <div className="flex items-center gap-1.5 text-[9px] sm:text-[10px] lg:text-[11px] font-logo tracking-[0.18em] sm:tracking-[0.22em] uppercase mt-1 leading-none">
+              <span className="text-amber-600 font-normal">CHENNAI</span>
               <span className="text-slate-300">•</span>
-              <span className="text-slate-500 font-bold">TIRUPATI &amp; OUTSTATION CABS</span>
+              <span className="text-slate-500 font-normal">TIRUPATI &amp; OUTSTATION CABS</span>
             </div>
           </a>
 

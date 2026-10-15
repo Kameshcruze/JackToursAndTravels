@@ -20,18 +20,18 @@ export const Footer: React.FC = () => {
           {/* Col 1: Brand - Pure Typography Wordmark */}
           <div className="space-y-3">
             <div className="flex flex-col select-none">
-              <div className="flex items-center gap-1.5 sm:gap-2 leading-none">
-                <span className="text-xl sm:text-2xl font-black text-white tracking-tight">
+              <div className="flex items-center gap-1.5 sm:gap-2 leading-none font-logo">
+                <span className="text-xl sm:text-2xl font-normal tracking-[0.06em] text-white">
                   SHRI VARI
                 </span>
-                <span className="text-xl sm:text-2xl font-black text-blue-300 tracking-tight">
+                <span className="text-xl sm:text-2xl font-normal tracking-[0.06em] text-blue-300">
                   TRAVELS
                 </span>
               </div>
-              <div className="flex items-center gap-1 text-[9.5px] sm:text-[10px] font-extrabold tracking-[0.16em] uppercase text-amber-400 mt-1.5 leading-none">
+              <div className="flex items-center gap-1.5 text-[9.5px] sm:text-[10px] font-logo tracking-[0.18em] uppercase text-amber-400 mt-1.5 leading-none">
                 <span>CHENNAI</span>
                 <span className="text-slate-400">•</span>
-                <span className="text-slate-200 font-bold">TIRUPATI &amp; OUTSTATION CABS</span>
+                <span className="text-slate-200">TIRUPATI &amp; OUTSTATION CABS</span>
               </div>
             </div>
             

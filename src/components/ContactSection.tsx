@@ -161,45 +161,48 @@ Please send quotation and cab availability.`;
 
           {/* Right Column: Direct Form */}
           <div className="lg:col-span-6">
-            <div className="bg-slate-900 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-9 shadow-2xl border border-slate-800 relative">
-              <div className="mb-5 sm:mb-6">
-                <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-blue-400 block mb-1">
+            <div className="bg-gradient-to-br from-[#b3d8ed] via-[#c6e4f6] to-[#a2d1eb] text-slate-900 rounded-2xl sm:rounded-3xl p-5 sm:p-9 shadow-2xl shadow-sky-950/10 border border-[#96c7e3] relative overflow-hidden">
+              {/* Subtle ambient light glow */}
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-white/40 rounded-full blur-2xl pointer-events-none" />
+
+              <div className="mb-5 sm:mb-6 relative z-10">
+                <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-blue-800 block mb-1">
                   Fast Callback
                 </span>
-                <h3 className="text-2xl sm:text-3xl font-black text-white">
+                <h3 className="text-2xl sm:text-3xl font-black text-slate-950">
                   Send Your Travel Inquiry
                 </h3>
-                <p className="text-sm text-slate-300 mt-1 font-normal">
+                <p className="text-sm text-slate-700 mt-1 font-medium">
                   Our dispatch manager responds within 15 minutes with vehicle availability.
                 </p>
               </div>
 
               {formSubmitted ? (
-                <div className="p-6 sm:p-8 bg-slate-900 border border-slate-800 rounded-2xl text-center space-y-3">
-                  <CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto" />
-                  <h4 className="text-base sm:text-lg font-bold text-white">Inquiry Forwarded via WhatsApp!</h4>
-                  <p className="text-xs text-slate-400">
+                <div className="p-6 sm:p-8 bg-white/80 backdrop-blur-sm border border-[#9ecae4] rounded-2xl text-center space-y-3 relative z-10">
+                  <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
+                  <h4 className="text-base sm:text-lg font-bold text-slate-900">Inquiry Forwarded via WhatsApp!</h4>
+                  <p className="text-xs text-slate-600">
                     Our reservation manager will contact you promptly at {formData.phone}.
                   </p>
                   <button
                     type="button"
                     onClick={() => setFormSubmitted(false)}
-                    className="text-xs text-blue-400 underline font-semibold mt-2"
+                    className="text-xs text-blue-700 hover:text-blue-900 underline font-semibold mt-2 cursor-pointer"
                   >
                     Submit another inquiry
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4 relative z-10">
                   {phoneError && (
-                    <div className="p-3 rounded-xl bg-red-950/80 border border-red-800 text-red-200 text-xs">
+                    <div className="p-3 rounded-xl bg-red-100 border border-red-300 text-red-800 text-xs font-semibold">
                       {phoneError}
                     </div>
                   )}
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                         Your Full Name
                       </label>
                       <input
@@ -207,12 +210,12 @@ Please send quotation and cab availability.`;
                         placeholder="Ramesh Kumar"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full bg-white/90 focus:bg-white border border-[#96c6e3] rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs transition-all"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                         Mobile Number *
                       </label>
                       <input
@@ -223,7 +226,7 @@ Please send quotation and cab availability.`;
                           setFormData({ ...formData, phone: e.target.value });
                           if (phoneError) setPhoneError('');
                         }}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full bg-white/90 focus:bg-white border border-[#96c6e3] rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs transition-all"
                         required
                       />
                     </div>
@@ -232,13 +235,13 @@ Please send quotation and cab availability.`;
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <div className="flex items-center justify-between mb-1.5">
-                        <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                        <label className="text-xs font-bold text-slate-800 uppercase tracking-wider">
                           Pickup Location
                         </label>
                         <button
                           type="button"
                           onClick={() => setIsCustomPickup(!isCustomPickup)}
-                          className="text-[11px] font-bold text-blue-400 hover:text-blue-300 underline"
+                          className="text-[11px] font-bold text-blue-700 hover:text-blue-900 underline cursor-pointer"
                         >
                           {isCustomPickup ? "Choose area" : "Type address"}
                         </button>
@@ -249,7 +252,7 @@ Please send quotation and cab availability.`;
                           placeholder="e.g. Besant Nagar 3rd Cross / Hotel Leela"
                           value={formData.customPickup}
                           onChange={(e) => setFormData({ ...formData, customPickup: e.target.value })}
-                          className="w-full bg-slate-950 border border-slate-800 rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full bg-white/90 focus:bg-white border border-[#96c6e3] rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs transition-all"
                           autoFocus
                         />
                       ) : (
@@ -264,7 +267,7 @@ Please send quotation and cab availability.`;
                               setFormData({ ...formData, pickupLocation: val });
                             }
                           }}
-                          className="w-full bg-slate-950 border border-slate-800 rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full bg-white/90 focus:bg-white border border-[#96c6e3] rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs transition-all cursor-pointer"
                         >
                           {CHENNAI_PICKUP_ZONES.map((zone) => (
                             <option key={zone} value={zone}>{zone}</option>
@@ -275,7 +278,7 @@ Please send quotation and cab availability.`;
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                         Destination or Package
                       </label>
                       <input
@@ -283,14 +286,14 @@ Please send quotation and cab availability.`;
                         placeholder="e.g. Tirupati VIP / Pondicherry / Custom Outstation"
                         value={formData.destination}
                         onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full bg-white/90 focus:bg-white border border-[#96c6e3] rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs transition-all"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                         Planned Date
                       </label>
                       <input
@@ -298,18 +301,18 @@ Please send quotation and cab availability.`;
                         min={new Date().toISOString().split('T')[0]}
                         value={formData.date}
                         onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full bg-white/90 focus:bg-white border border-[#96c6e3] rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs transition-all cursor-pointer"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                      <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                         Number of Passengers
                       </label>
                       <select
                         value={formData.passengers}
                         onChange={(e) => setFormData({ ...formData, passengers: e.target.value })}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full bg-white/90 focus:bg-white border border-[#96c6e3] rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs transition-all cursor-pointer"
                       >
                         <option value="1-3">1 - 3 Passengers (Sedan)</option>
                         <option value="4-6">4 - 6 Passengers (SUV / Ertiga)</option>
@@ -321,7 +324,7 @@ Please send quotation and cab availability.`;
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
                       Notes (Senior Citizens, Mottai, Luggage)
                     </label>
                     <textarea
@@ -329,14 +332,14 @@ Please send quotation and cab availability.`;
                       placeholder="e.g. Traveling with elderly parents, early 4:30 AM pickup from Adyar."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full bg-white/90 focus:bg-white border border-[#96c6e3] rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs transition-all"
                     />
                   </div>
 
                   <div className="pt-1 sm:pt-2">
                     <button
                       type="submit"
-                      className="w-full py-3 sm:py-3.5 px-5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm rounded-full transition-transform active:scale-95 shadow-xl shadow-blue-600/25 flex items-center justify-center gap-2"
+                      className="w-full py-3 sm:py-3.5 px-5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm rounded-full transition-transform active:scale-95 shadow-xl shadow-blue-600/25 flex items-center justify-center gap-2 cursor-pointer"
                     >
                       <Send className="w-4 h-4 text-white" />
                       <span>Send Inquiry to Dispatch Team</span>

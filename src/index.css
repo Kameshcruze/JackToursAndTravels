@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+@theme {
+  --color-blue-50: #f0f8fd;
+  --color-blue-100: #dcf1fc;
+  --color-blue-200: #b8e2fa;
+  --color-blue-300: #7ecbf5;
+  --color-blue-400: #39b2ee;
+  --color-blue-500: #0ba1e5;
+  --color-blue-600: #0084d1;
+  --color-blue-700: #006cb0;
+  --color-blue-800: #04588e;
+  --color-blue-900: #094a74;
+  --color-blue-950: #052e4a;
+}
+
 @layer base {
   html {
     font-size: 17px;
@@ -38,6 +52,10 @@
 
 .font-handwriting {
   font-family: 'Caveat', cursive, sans-serif;
+}
+
+.font-logo {
+  font-family: 'Share Tech Mono', monospace, ui-monospace, SFMono-Regular;
 }
 
 /* Custom scrollbar */

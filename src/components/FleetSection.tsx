@@ -16,6 +16,50 @@ interface FleetSectionProps {
   onSelectVehicle: (vehicle: Vehicle) => void;
 }
 
+const VEHICLE_CARD_CONFIG: Record<string, {
+  seatLabel: string;
+  shortLuggage: string;
+  acLabel: string;
+  keyPerks: string[];
+  recommendation: string;
+}> = {
+  'sedan': {
+    seatLabel: '4 Seats',
+    shortLuggage: '2 Trolleys',
+    acLabel: 'Chilled AC',
+    keyPerks: ['Fastag Enabled', 'Live GPS Tracking', 'Mobile Charger', 'Bottled Water'],
+    recommendation: 'Perfect for couples & small families on 1-day Tirupati darshan.'
+  },
+  'suv-ertiga': {
+    seatLabel: '6 Seats',
+    shortLuggage: '3 Trolleys',
+    acLabel: 'Chilled AC',
+    keyPerks: ['Split Fold Seats', 'Extra Legroom', 'Dual Airbags', 'Smooth Hill Ride'],
+    recommendation: 'Spacious family SUV with generous boot space & hill stability.'
+  },
+  'innova-crysta': {
+    seatLabel: '7 Seats',
+    shortLuggage: '4 Trolleys',
+    acLabel: 'Chilled AC',
+    keyPerks: ['Captain Recliners', 'Ghat Hill Certified', 'Ultra-Silent Cabin', 'Highway Stability'],
+    recommendation: 'Gold standard for senior citizens, NRI pilgrims & luxury comfort.'
+  },
+  'tempo-traveller': {
+    seatLabel: '12-18 Seats',
+    shortLuggage: '12+ Luggage',
+    acLabel: 'Roof AC',
+    keyPerks: ['Pushback Recliners', 'LED TV & Audio', 'Stand-Up Roof', 'Hill Highway Driver'],
+    recommendation: 'Spacious group coach for joint family yatras & temple circuits.'
+  },
+  'urbania': {
+    seatLabel: '10-13 Seats',
+    shortLuggage: '10+ Luggage',
+    acLabel: 'Dual AC',
+    keyPerks: ['Aircraft Recliners', 'Monocoque Safety', 'Reading Lights & USB', 'Panoramic Windows'],
+    recommendation: 'VIP ultra-modern luxury van for executive comfort & spiritual visits.'
+  }
+};
+
 export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicle }) => {
   const [activeCategory, setActiveCategory] = useState<'all' | 'sedan' | 'suv' | 'coach'>('all');
   const [isPaused, setIsPaused] = useState(false);
@@ -77,7 +121,7 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicle }) =
 
       </div>
 
-      {/* Infinite Scroll Marquee Carousel (Right to Left, Auto-scrolls by default, Pauses on hover or touch/hold) */}
+      {/* Infinite Scroll Marquee Carousel */}
       <div 
         className="relative w-full overflow-hidden py-3 select-none"
         onMouseEnter={() => setIsPaused(true)}
@@ -89,11 +133,11 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicle }) =
         onPointerUp={() => setIsPaused(false)}
         onPointerCancel={() => setIsPaused(false)}
       >
-        {/* Left & Right Edge Gradient Fade Masks for High-End Cinematic Look */}
+        {/* Edge Gradient Fade Masks */}
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-16 md:w-28 bg-gradient-to-r from-slate-50 via-slate-50/90 to-transparent z-10" />
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-16 md:w-28 bg-gradient-to-l from-slate-50 via-slate-50/90 to-transparent z-10" />
 
-        {/* Scrollable Container with Infinite Right-to-Left Animation */}
+        {/* Scrollable Container */}
         <div className="overflow-x-auto no-scrollbar scroll-smooth">
           <div 
             className="animate-infinite-scroll-rtl flex items-stretch gap-5 sm:gap-6 px-4"
@@ -103,7 +147,14 @@ export const FleetSection: React.FC<FleetSectionProps> = ({ onSelectVehicle }) =
             }}
           >
             {repeatedVehicles.map((vehicle, idx) => {
-              const isHighlight = vehicle.id === 'innova-crysta';
+              const config = VEHICLE_CARD_CONFIG[vehicle.id] || {
+                seatLabel: `${vehicle.capacity.split(' ')[0]} Seats`,
+                shortLuggage: 'Ample Boot',
+                acLabel: 'Chilled AC',
+                keyPerks: vehicle.features.slice(0, 4),
+                recommendation: vehicle.idealFor.slice(0, 75)
+              };
+
               const whatsappMsg = `Hi Shri Vari Travels,
 I would like to inquire about booking the ${vehicle.name} (${vehicle.capacity}).
 Please confirm availability.`;
@@ -111,15 +162,11 @@ Please confirm availability.`;
               return (
                 <div
                   key={`${vehicle.id}-${idx}`}
-                  className={`w-[290px] sm:w-[340px] md:w-[360px] lg:w-[380px] shrink-0 bg-white rounded-2xl sm:rounded-3xl border overflow-hidden transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 hover:shadow-xl group ${
-                    isHighlight 
-                      ? 'border-amber-400/80 shadow-md shadow-amber-500/10 ring-1 ring-amber-400/40' 
-                      : 'border-slate-200/90 shadow-sm'
-                  }`}
+                  className="w-[290px] sm:w-[340px] md:w-[360px] lg:w-[380px] shrink-0 bg-white rounded-2xl sm:rounded-3xl border border-slate-200/90 shadow-sm overflow-hidden transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 hover:shadow-xl group"
                 >
-                  <div>
+                  <div className="flex flex-col flex-grow">
                     {/* Vehicle Image Banner */}
-                    <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-950">
+                    <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-950 shrink-0">
                       <ImageWithFallback
                         src={vehicle.imageUrl}
                         alt={vehicle.name}
@@ -128,8 +175,6 @@ Please confirm availability.`;
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-black/30 pointer-events-none" />
-
-
 
                       {/* Overlaid Name & Capacity */}
                       <div className="absolute bottom-3 left-4 right-4 text-white">
@@ -142,64 +187,75 @@ Please confirm availability.`;
                       </div>
                     </div>
 
-                    {/* Clean Specs Bar (Minimal, No Prices, No Verbose Text) */}
-                    <div className="p-4 sm:p-5 space-y-3.5">
+                    {/* Specs & Features Body */}
+                    <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between space-y-3.5">
+                      {/* 1. Quick Specs Bar (Never Truncates) */}
                       <div className="grid grid-cols-3 gap-2 py-1 border-b border-slate-100 pb-3 text-center">
                         <div className="p-2 sm:p-2.5 rounded-xl bg-slate-50 border border-slate-100/80">
                           <Users className="w-4 h-4 text-slate-600 mx-auto mb-1" />
-                          <span className="text-xs sm:text-sm font-extrabold text-slate-800 block truncate">
-                            {vehicle.capacity.split(' ')[0]} Seats
+                          <span className="text-xs sm:text-sm font-extrabold text-slate-800 block whitespace-nowrap">
+                            {config.seatLabel}
                           </span>
                         </div>
 
                         <div className="p-2 sm:p-2.5 rounded-xl bg-slate-50 border border-slate-100/80">
                           <Luggage className="w-4 h-4 text-slate-600 mx-auto mb-1" />
-                          <span className="text-xs sm:text-sm font-extrabold text-slate-800 block truncate">
-                            {vehicle.luggage.split('+')[0].trim()}
+                          <span className="text-xs sm:text-sm font-extrabold text-slate-800 block whitespace-nowrap">
+                            {config.shortLuggage}
                           </span>
                         </div>
 
                         <div className="p-2 sm:p-2.5 rounded-xl bg-slate-50 border border-slate-100/80">
                           <Wind className="w-4 h-4 text-slate-600 mx-auto mb-1" />
-                          <span className="text-xs sm:text-sm font-extrabold text-slate-800 block truncate">
-                            Chilled AC
+                          <span className="text-xs sm:text-sm font-extrabold text-slate-800 block whitespace-nowrap">
+                            {config.acLabel}
                           </span>
                         </div>
                       </div>
 
-                      {/* Clean Minimal Feature Tags */}
-                      <div className="flex flex-wrap gap-1.5">
-                        {vehicle.features.slice(0, 3).map((feat, fIdx) => (
-                          <span 
-                            key={fIdx}
-                            className="inline-flex items-center gap-1.5 text-xs bg-slate-100 text-slate-700 px-2.5 py-1 rounded-lg font-semibold"
+                      {/* 2. Structured 2x2 Key Features (No Cut-off Words) */}
+                      <div className="grid grid-cols-2 gap-2 text-xs">
+                        {config.keyPerks.map((perk, pIdx) => (
+                          <div 
+                            key={pIdx}
+                            className="flex items-center gap-1.5 bg-slate-50 border border-slate-100 rounded-lg px-2.5 py-1.5 text-slate-700 font-semibold text-[11px] sm:text-xs"
                           >
                             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                            <span className="truncate max-w-[140px]">{feat}</span>
-                          </span>
+                            <span className="truncate">{perk}</span>
+                          </div>
                         ))}
+                      </div>
+
+                      {/* 3. Purpose & Devotee Recommendation Bar (Fills Any Gaps Neatly) */}
+                      <div className="p-2.5 rounded-xl bg-blue-50/50 border border-blue-100/80 flex items-start gap-2">
+                        <span className="text-[10px] font-bold text-blue-700 uppercase tracking-wider bg-blue-100/80 px-1.5 py-0.5 rounded shrink-0 mt-0.5">
+                          Best For
+                        </span>
+                        <p className="text-[11px] sm:text-xs text-slate-600 font-medium leading-snug">
+                          {config.recommendation}
+                        </p>
                       </div>
                     </div>
                   </div>
 
-                  {/* Clean Action Buttons */}
+                  {/* Clean Action Buttons matching website brand color */}
                   <div className="p-4 sm:p-5 pt-0 flex items-center gap-2">
                     <a
                       href={createWhatsAppLink(whatsappMsg)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 py-3 px-3 bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 group text-center"
+                      className="flex-1 py-3 px-3 bg-blue-50 hover:bg-blue-100 text-blue-700 font-extrabold text-xs sm:text-sm rounded-xl transition-all border border-blue-200 shadow-xs flex items-center justify-center gap-2 group text-center active:scale-95"
                     >
-                      <MessageCircle className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
+                      <MessageCircle className="w-4 h-4 text-blue-600 group-hover:scale-110 transition-transform" />
                       <span>WhatsApp</span>
                     </a>
 
                     <button
                       onClick={() => onSelectVehicle(vehicle)}
-                      className="py-3 px-4 sm:px-5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs sm:text-sm rounded-xl transition-all shadow-sm flex items-center justify-center gap-1 whitespace-nowrap active:scale-95"
+                      className="py-3 px-4 sm:px-5 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs sm:text-sm rounded-xl transition-all shadow-md shadow-blue-500/20 flex items-center justify-center gap-1 whitespace-nowrap active:scale-95"
                     >
                       <span>Select</span>
-                      <ChevronRight className="w-4 h-4" />
+                      <ChevronRight className="w-4 h-4 text-white" />
                     </button>
                   </div>
 
