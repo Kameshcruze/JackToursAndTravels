@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" width="260" height="200" fill="none">
+  <defs>
+    <!-- Dark Tech Gadgets Gradient -->
+    <linearGradient id="phoneBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Camera Lens Reflection Gradient -->
+    <linearGradient id="lensGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="35%" stop-color="#0284c7" />
+      <stop offset="70%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+
+    <!-- Leather Belt Gradient -->
+    <linearGradient id="leatherBrown" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#78350f" />
+      <stop offset="50%" stop-color="#451a03" />
+      <stop offset="100%" stop-color="#290e02" />
+    </linearGradient>
+
+    <!-- Metallic Buckle Gradient -->
+    <linearGradient id="metalSilver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="30%" stop-color="#cbd5e1" />
+      <stop offset="70%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+
+    <!-- Gadget Drop Shadow -->
+    <filter id="gadgetShadow" x="-15%" y="-15%" width="135%" height="135%">
+      <feDropShadow dx="3" dy="6" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.25" />
+    </filter>
+
+    <!-- Red Ban Sign Shadow -->
+    <filter id="redBanGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#dc2626" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- 1. Modern Smartphone (Standing at Back-Left) -->
+  <g transform="translate(48, 16) rotate(-6)" filter="url(#gadgetShadow)">
+    <rect width="64" height="126" rx="12" fill="url(#phoneBody)" stroke="#475569" stroke-width="1.2" />
+    <!-- Screen Bezel -->
+    <rect x="3" y="4" width="58" height="118" rx="9" fill="#020617" />
+    <!-- Camera Island on Top Left of Back -->
+    <rect x="6" y="8" width="22" height="26" rx="6" fill="#1e293b" stroke="#334155" stroke-width="0.8" />
+    <circle cx="17" cy="15" r="4.5" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+    <circle cx="17" cy="27" r="4.5" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+    <!-- Front Dynamic Island / Speaker Notch -->
+    <rect x="22" y="6" width="14" height="3" rx="1.5" fill="#334155" />
+  </g>
+
+  <!-- 2. DSLR Professional Camera with Zoom Lens (Center) -->
+  <g transform="translate(94, 48)" filter="url(#gadgetShadow)">
+    <!-- Camera Body Silhouette -->
+    <path d="M6 32 C6 28 10 26 14 26 L22 26 L26 18 L52 18 L56 26 L72 26 C76 26 80 28 80 32 L82 72 C82 76 78 80 74 80 L14 80 C10 80 6 76 6 72 Z" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <!-- Flash / Viewfinder Prism Top -->
+    <polygon points="26,18 32,10 46,10 52,18" fill="#0f172a" stroke="#475569" stroke-width="0.8" />
+    <!-- Red Accent Ring on Lens Mount -->
+    <circle cx="44" cy="52" r="23" fill="none" stroke="#ef4444" stroke-width="1.5" />
+    <!-- Outer Lens Barrel -->
+    <circle cx="44" cy="52" r="21" fill="#0f172a" stroke="#475569" stroke-width="2" />
+    <!-- Zoom Ribbed Grip Ring -->
+    <circle cx="44" cy="52" r="17" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+    <!-- Front Glass Element with Cyan/Blue Optical Reflection -->
+    <circle cx="44" cy="52" r="12" fill="url(#lensGlass)" />
+    <path d="M38 45 A 8 8 0 0 1 50 45" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.7" />
+    <!-- Brand Label "Canon / DSLR" -->
+    <text x="39" y="24" fill="#ffffff" font-size="4.5" font-family="system-ui, sans-serif" font-weight="900" letter-spacing="0.5">Canon</text>
+  </g>
+
+  <!-- 3. Portable Power Bank (Foreground Left) -->
+  <g transform="translate(22, 78) rotate(10)" filter="url(#gadgetShadow)">
+    <rect width="48" height="88" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <!-- Matte finish panel -->
+    <rect x="3" y="4" width="42" height="80" rx="6" fill="#1e293b" />
+    <!-- LED Battery Indicator Dots -->
+    <circle cx="16" cy="12" r="1.5" fill="#38bdf8" />
+    <circle cx="21" cy="12" r="1.5" fill="#38bdf8" />
+    <circle cx="26" cy="12" r="1.5" fill="#38bdf8" />
+    <circle cx="31" cy="12" r="1.5" fill="#64748b" />
+    <!-- USB Ports on Top -->
+    <rect x="14" y="2" width="8" height="2" rx="0.5" fill="#020617" />
+    <rect x="26" y="2" width="8" height="2" rx="0.5" fill="#020617" />
+  </g>
+
+  <!-- 4. Rolled Leather Belt with Metal Buckle (Bottom Foreground Right) -->
+  <g transform="translate(112, 110)" filter="url(#gadgetShadow)">
+    <!-- Rolled Belt Layers -->
+    <ellipse cx="50" cy="35" rx="42" ry="16" fill="url(#leatherBrown)" stroke="#290e02" stroke-width="1.5" />
+    <ellipse cx="50" cy="35" rx="36" ry="13" fill="#290e02" />
+    <ellipse cx="50" cy="35" rx="30" ry="10" fill="url(#leatherBrown)" stroke="#78350f" stroke-width="1" />
+    <!-- Belt Stitching Line -->
+    <ellipse cx="50" cy="35" rx="39" ry="14.5" fill="none" stroke="#d97706" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6" />
+
+    <!-- Sturdy Metallic Belt Buckle -->
+    <g transform="translate(18, 16)">
+      <!-- Outer Metal Frame -->
+      <rect width="32" height="24" rx="4" fill="url(#metalSilver)" stroke="#64748b" stroke-width="1" />
+      <rect x="4" y="4" width="24" height="16" rx="2" fill="#290e02" />
+      <!-- Buckle Pin -->
+      <line x1="4" y1="12" x2="28" y2="12" stroke="url(#metalSilver)" stroke-width="2.5" stroke-linecap="round" />
+    </g>
+  </g>
+
+  <!-- 5. Prominent Red Prohibition Sign (Overlay on Right) -->
+  <g transform="translate(178, 38)" filter="url(#redBanGlow)">
+    <!-- Red Outer Ring -->
+    <circle cx="32" cy="32" r="28" fill="#ffffff" fill-opacity="0.9" stroke="#ef4444" stroke-width="7" />
+    <!-- Diagonal Prohibition Slash -->
+    <line x1="12" y1="12" x2="52" y2="52" stroke="#ef4444" stroke-width="7" stroke-linecap="round" />
+  </g>
+</svg>

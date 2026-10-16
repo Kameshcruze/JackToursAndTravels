@@ -58,6 +58,23 @@
   font-family: 'Share Tech Mono', monospace, ui-monospace, SFMono-Regular;
 }
 
+.font-serif-display {
+  font-family: 'Bodoni Moda', 'Playfair Display', Georgia, serif;
+}
+
+.font-brand-serif {
+  font-family: 'Bodoni Moda', 'Playfair Display', Georgia, serif;
+}
+
+.font-brand-italic {
+  font-family: 'Bodoni Moda', 'Playfair Display', Georgia, serif;
+  font-style: italic;
+}
+
+.font-brand-sans {
+  font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 7px;

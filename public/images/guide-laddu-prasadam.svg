@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" width="260" height="200" fill="none">
+  <defs>
+    <!-- Sunny Temple Sky Gradient -->
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bae6fd" />
+      <stop offset="50%" stop-color="#e0f2fe" />
+      <stop offset="100%" stop-color="#fef08a" />
+    </linearGradient>
+
+    <!-- Golden Temple Gopuram (Ananda Nilayam) Gradient -->
+    <linearGradient id="templeGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="35%" stop-color="#f59e0b" />
+      <stop offset="75%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#92400e" />
+    </linearGradient>
+
+    <!-- Fresh Green Banana Leaf Gradient -->
+    <linearGradient id="bananaLeaf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#84cc16" />
+      <stop offset="45%" stop-color="#4d7c0f" />
+      <stop offset="100%" stop-color="#1e3a15" />
+    </linearGradient>
+
+    <!-- Tirupati Laddu Rich Boondi Gold Gradient -->
+    <radialGradient id="ladduSphere1" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="25%" stop-color="#fbbf24" />
+      <stop offset="60%" stop-color="#f59e0b" />
+      <stop offset="85%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#92400e" />
+    </radialGradient>
+
+    <radialGradient id="ladduSphere2" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="25%" stop-color="#fbbf24" />
+      <stop offset="60%" stop-color="#f59e0b" />
+      <stop offset="85%" stop-color="#b45309" />
+      <stop offset="100%" stop-color="#78350f" />
+    </radialGradient>
+
+    <filter id="ladduShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="6" stdDeviation="5" flood-color="#1e3a15" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- 1. Background Seshachalam Hills & Golden Tirumala Temple Tower -->
+  <g opacity="0.95">
+    <!-- Blue Sky Pill Container on Top Right -->
+    <path d="M110 0 C160 0 260 20 260 80 L260 160 C260 180 230 190 200 190 C150 190 100 170 100 130 Z" fill="url(#skyGrad)" opacity="0.65" />
+    
+    <!-- Seshachalam Mountain Ridge Silhouette -->
+    <path d="M120 110 Q160 70 200 85 T260 65 L260 150 L120 150 Z" fill="#93c5fd" opacity="0.4" />
+    <path d="M140 120 Q185 85 220 95 T260 80 L260 160 L140 160 Z" fill="#60a5fa" opacity="0.35" />
+
+    <!-- Golden Ananda Nilayam Gopuram Tower Silhouette -->
+    <g transform="translate(192, 22) scale(0.68)">
+      <!-- Base Sanctum Sanctorum Tier -->
+      <rect x="10" y="70" width="70" height="40" fill="url(#templeGold)" rx="2" />
+      <rect x="25" y="80" width="40" height="30" fill="#78350f" rx="3" />
+      
+      <!-- Tier 2 -->
+      <polygon points="12,70 20,45 70,45 78,70" fill="url(#templeGold)" />
+      <!-- Tier 3 -->
+      <polygon points="22,45 28,26 62,26 68,45" fill="url(#templeGold)" />
+      <!-- Tier 4 Spire -->
+      <polygon points="30,26 35,12 55,12 60,26" fill="url(#templeGold)" />
+      
+      <!-- Kalasams on Top -->
+      <polygon points="40,12 45,2 50,12" fill="#fef08a" />
+      <circle cx="45" cy="2" r="2.5" fill="#fef08a" />
+      <polygon points="33,14 36,4 39,14" fill="#fde047" />
+      <polygon points="51,14 54,4 57,14" fill="#fde047" />
+
+      <!-- Golden Niches & Pilasters -->
+      <line x1="25" y1="45" x2="25" y2="70" stroke="#78350f" stroke-width="1.2" />
+      <line x1="45" y1="45" x2="45" y2="70" stroke="#78350f" stroke-width="1.5" />
+      <line x1="65" y1="45" x2="65" y2="70" stroke="#78350f" stroke-width="1.2" />
+      <circle cx="45" cy="35" r="4" fill="#78350f" />
+    </g>
+  </g>
+
+  <!-- 2. Fresh Green Banana Leaf Base (Curved & Veined) -->
+  <g transform="translate(10, 115)">
+    <!-- Broad Leaf Surface -->
+    <path d="M0 50 C20 15 120 5 240 30 C220 75 140 85 20 80 Z" fill="url(#bananaLeaf)" />
+    <!-- Leaf Center Spine / Midrib -->
+    <path d="M0 50 C60 38 150 36 240 30" stroke="#bef264" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.85" />
+    <!-- Side Veins -->
+    <path d="M35 46 L20 62 M65 42 L52 64 M95 39 L85 64 M125 37 L116 63 M155 35 L148 60 M185 33 L180 56 M215 31 L210 50" stroke="#bef264" stroke-width="1.2" stroke-linecap="round" opacity="0.5" />
+  </g>
+
+  <!-- 3. Two Large Authentic Tirupati Balaji Laddus with Cashews, Raisins & Boondi Texture -->
+  
+  <!-- Left Laddu (Front) -->
+  <g transform="translate(32, 68)" filter="url(#ladduShadow)">
+    <!-- Textured Sphere Silhouette -->
+    <circle cx="44" cy="48" r="40" fill="url(#ladduSphere1)" />
+    
+    <!-- Boondi Pearls Surface Bumps & Highlights -->
+    <g fill="#fde047" opacity="0.85">
+      <circle cx="26" cy="30" r="5" />
+      <circle cx="38" cy="24" r="6" />
+      <circle cx="52" cy="22" r="5.5" />
+      <circle cx="64" cy="30" r="5" />
+      <circle cx="32" cy="40" r="6" />
+      <circle cx="46" cy="36" r="6.5" />
+      <circle cx="58" cy="42" r="6" />
+      <circle cx="24" cy="52" r="5.5" />
+      <circle cx="36" cy="56" r="6" />
+      <circle cx="50" cy="52" r="6.5" />
+      <circle cx="62" cy="56" r="5.5" />
+      <circle cx="32" cy="68" r="5" />
+      <circle cx="44" cy="70" r="6" />
+      <circle cx="58" cy="68" r="5" />
+    </g>
+
+    <!-- Deep Golden / Amber Boondi Shadow Pearls -->
+    <g fill="#b45309" opacity="0.7">
+      <circle cx="20" cy="42" r="4.5" />
+      <circle cx="28" cy="46" r="4" />
+      <circle cx="40" cy="44" r="4.5" />
+      <circle cx="54" cy="46" r="4" />
+      <circle cx="68" cy="46" r="4.5" />
+      <circle cx="26" cy="60" r="4.5" />
+      <circle cx="42" cy="62" r="5" />
+      <circle cx="54" cy="62" r="4.5" />
+      <circle cx="68" cy="60" r="4" />
+      <circle cx="38" cy="76" r="4" />
+      <circle cx="50" cy="78" r="4.5" />
+    </g>
+
+    <!-- Authentic Roasted Cashew Nuts (Kaju) Embedded in Laddu -->
+    <g fill="#fffbeb" stroke="#fde68a" stroke-width="0.8">
+      <!-- Curved Cashew 1 -->
+      <path d="M40 32 C46 28 54 32 52 38 C50 44 42 42 38 36 Z" />
+      <!-- Cashew 2 -->
+      <path d="M24 50 C28 46 34 48 33 54 C31 58 26 56 23 52 Z" />
+    </g>
+
+    <!-- Kishmish / Black Raisins Embedded -->
+    <ellipse cx="58" cy="36" rx="4.5" ry="3.5" fill="#3b0764" />
+    <ellipse cx="36" cy="64" rx="4" ry="3" fill="#451a03" />
+    
+    <!-- Fragrant Cardamom / Sugar Crystal Specks -->
+    <circle cx="48" cy="42" r="1.5" fill="#ffffff" opacity="0.9" />
+    <circle cx="32" cy="36" r="1.2" fill="#ffffff" opacity="0.9" />
+    <circle cx="52" cy="58" r="1.4" fill="#ffffff" opacity="0.9" />
+  </g>
+
+  <!-- Right Laddu (Overlapping Slightly to the Right) -->
+  <g transform="translate(112, 74)" filter="url(#ladduShadow)">
+    <!-- Textured Sphere Silhouette -->
+    <circle cx="42" cy="46" r="38" fill="url(#ladduSphere2)" />
+    
+    <!-- Boondi Pearls Surface Bumps & Highlights -->
+    <g fill="#fde047" opacity="0.85">
+      <circle cx="26" cy="28" r="5" />
+      <circle cx="38" cy="22" r="5.5" />
+      <circle cx="52" cy="24" r="5" />
+      <circle cx="32" cy="38" r="6" />
+      <circle cx="44" cy="34" r="6.5" />
+      <circle cx="56" cy="38" r="5.5" />
+      <circle cx="24" cy="50" r="5" />
+      <circle cx="36" cy="52" r="6" />
+      <circle cx="48" cy="48" r="6" />
+      <circle cx="60" cy="52" r="5" />
+      <circle cx="32" cy="64" r="5" />
+      <circle cx="44" cy="66" r="5.5" />
+      <circle cx="56" cy="64" r="5" />
+    </g>
+
+    <!-- Deep Golden / Amber Boondi Shadow Pearls -->
+    <g fill="#92400e" opacity="0.75">
+      <circle cx="20" cy="40" r="4" />
+      <circle cx="40" cy="42" r="4.5" />
+      <circle cx="52" cy="44" r="4" />
+      <circle cx="66" cy="44" r="4" />
+      <circle cx="24" cy="58" r="4" />
+      <circle cx="42" cy="60" r="4.5" />
+      <circle cx="54" cy="58" r="4" />
+      <circle cx="38" cy="72" r="4" />
+      <circle cx="50" cy="74" r="4" />
+    </g>
+
+    <!-- Authentic Roasted Cashews -->
+    <g fill="#fffbeb" stroke="#fde68a" stroke-width="0.8">
+      <path d="M42 28 C48 24 55 28 54 34 C52 40 44 38 40 32 Z" />
+      <path d="M26 48 C30 44 36 46 35 52 C33 56 28 54 25 50 Z" />
+    </g>
+
+    <!-- Kishmish / Raisins -->
+    <ellipse cx="54" cy="48" rx="4.5" ry="3.5" fill="#3b0764" />
+    <ellipse cx="36" cy="60" rx="4" ry="3" fill="#451a03" />
+
+    <!-- Sugar Crystals -->
+    <circle cx="46" cy="40" r="1.5" fill="#ffffff" opacity="0.9" />
+    <circle cx="34" cy="34" r="1.2" fill="#ffffff" opacity="0.9" />
+  </g>
+</svg>

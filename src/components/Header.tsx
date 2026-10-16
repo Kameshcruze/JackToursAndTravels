@@ -112,26 +112,18 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="flex flex-col justify-center group shrink-0 py-1 select-none"
+            className="flex items-center group shrink-0 py-1 select-none"
             aria-label="Shri Vari Travels - Home"
           >
-            <div className="flex items-center gap-1.5 sm:gap-2 leading-none font-logo">
-              <span className="text-xl sm:text-2xl lg:text-[27px] font-normal tracking-[0.06em] text-slate-900 group-hover:text-blue-600 transition-colors">
-                SHRI VARI
-              </span>
-              <span className="text-xl sm:text-2xl lg:text-[27px] font-normal tracking-[0.06em] text-blue-600">
-                TRAVELS
-              </span>
-            </div>
-            <div className="flex items-center gap-1.5 text-[9px] sm:text-[10px] lg:text-[11px] font-logo tracking-[0.18em] sm:tracking-[0.22em] uppercase mt-1 leading-none">
-              <span className="text-amber-600 font-normal">CHENNAI</span>
-              <span className="text-slate-300">•</span>
-              <span className="text-slate-500 font-normal">TIRUPATI &amp; OUTSTATION CABS</span>
-            </div>
+            <img 
+              src="/images/shri%20vari%20logo-01.png" 
+              alt="Shri Vari Travels - Chennai to Tirupati Cabs" 
+              className="h-10 sm:h-12 md:h-13 lg:h-14 w-auto max-w-[190px] sm:max-w-[220px] lg:max-w-[250px] object-contain transition-transform group-hover:scale-[1.02]"
+            />
           </a>
 
-          {/* Center Navigation Links (visible on lg desktop viewports to prevent tablet collision) */}
-          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-7 text-sm xl:text-base font-bold text-slate-700">
+          {/* Center Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-7 text-[15px] xl:text-[16px] font-semibold text-slate-800">
             {navLinks.map((link) => {
               const isActive = activeNav === link.id;
               return (
@@ -139,13 +131,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
                   key={link.id}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link)}
-                  className={`relative py-2 transition-colors hover:text-blue-600 whitespace-nowrap ${
-                    isActive ? 'text-blue-600 font-extrabold' : ''
+                  className={`relative py-1.5 transition-colors whitespace-nowrap ${
+                    isActive ? 'text-blue-600 font-bold' : 'text-slate-800 hover:text-blue-600'
                   }`}
                 >
                   <span>{link.label}</span>
                   {isActive && (
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-blue-600 rounded-full" />
+                    <span className="absolute -bottom-1 left-0 right-0 h-[2.5px] bg-blue-600 rounded-full" />
                   )}
                 </a>
               );

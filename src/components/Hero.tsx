@@ -17,11 +17,12 @@ import { CHENNAI_PICKUP_ZONES, FLEET_VEHICLES, TOUR_PACKAGES } from '../data/tra
 
 const HERO_SLIDES = [
   {
-    id: 'banner-h1',
-    url: '/Homepage_banner/H1.png',
-    headingPrefix: 'One Day Chennai to ',
-    headingHighlight: 'Tirupati Tour',
-    heading: 'One Day Chennai to Tirupati Tour',
+    id: 'banner-h2',
+    url: '/Homepage_banner/H2.png',
+    line1: 'One Day',
+    line2Prefix: 'Chennai to ',
+    line2Highlight: 'Tirupati',
+    heading: 'One Day Chennai to Tirupati',
     tagline: 'Same-day round trip with doorstep pickup, breakfast, lunch & smooth ghat travel',
     badge: 'BEST SELLER • 1-DAY RETURN',
     packageTitle: 'Chennai to Tirupati 1-Day VIP Package',
@@ -29,23 +30,25 @@ const HERO_SLIDES = [
     estimatedPrice: 5999
   },
   {
-    id: 'banner-h2',
-    url: '/Homepage_banner/H2.png',
-    headingPrefix: 'VIP ',
-    headingHighlight: 'Tirupati Tour',
-    heading: 'VIP Tirupati Tour',
-    tagline: 'Premium VIP Special Entry Darshan assistance, sanitized luxury cabs & priority coordinator',
-    badge: 'EXCLUSIVE VIP DARSHAN',
+    id: 'banner-h1',
+    url: '/Homepage_banner/H1.png',
+    line1: 'One Day',
+    line2Prefix: 'Chennai to ',
+    line2Highlight: 'Tirupati',
+    heading: 'One Day Chennai to Tirupati',
+    tagline: 'Same-day round trip with doorstep pickup, breakfast, lunch & smooth ghat travel',
+    badge: 'BEST SELLER • 1-DAY RETURN',
     packageTitle: 'Chennai to Tirupati 1-Day VIP Package',
     defaultVehicle: 'Toyota Innova Crysta',
-    estimatedPrice: 8999
+    estimatedPrice: 5999
   },
   {
     id: 'banner-h',
     url: '/Homepage_banner/H.png',
-    headingPrefix: 'Common ',
-    headingHighlight: 'Temple Tour',
-    heading: 'Common Temple Tour',
+    line1: 'Sacred South',
+    line2Prefix: 'Temple ',
+    line2Highlight: 'Circuits',
+    heading: 'South India Temple Circuits',
     tagline: 'Customized spiritual temple circuit across South India with door-to-door cab service',
     badge: 'POPULAR PILGRIMAGE CIRCUIT',
     packageTitle: 'Kumbakonam Navagraha Circuit (9 Planet Temples)',
@@ -220,23 +223,48 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
                 {/* Slide Caption Wording and Book Now Button - Middle Alignment */}
                 <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-4 sm:p-8 md:p-12 text-center pointer-events-none">
                   <div className="pointer-events-auto flex flex-col items-center max-w-2xl mx-auto space-y-2.5 sm:space-y-4">
-                    {/* Badge with clean static styling & premium typography (animation removed) */}
-                    <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 text-[11px] sm:text-xs font-black uppercase tracking-wider border border-amber-300/80 shadow-md font-['Outfit']">
+                    {/* Badge: Golden rounded pill with Crown matching screenshot */}
+                    <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#fce5a9] border border-[#f5d278] text-slate-950 text-[10.5px] sm:text-[11.5px] font-extrabold uppercase tracking-wider shadow-sm">
+                      <span className="text-xs">👑</span>
                       <span>{slide.badge}</span>
                     </div>
 
-                    {/* Main Heading with Outfit display font & cool animated glowing text-shadow */}
-                    <h2 className="hero-heading-glow text-2xl sm:text-4xl md:text-5xl lg:text-[54px] font-black text-white tracking-tight leading-[1.15] text-center select-none">
-                      {slide.heading}
+                    {/* Main Heading: High-contrast brand serif (Bold) with Orange highlight in brand italic */}
+                    <h2 className={`font-brand-serif text-3xl sm:text-5xl md:text-6xl lg:text-[68px] font-bold sm:font-extrabold leading-[1.06] text-white text-center select-none drop-shadow-[0_4px_24px_rgba(0,0,0,0.92)] tracking-tight ${
+                      slide.id === 'banner-h1'
+                        ? 'bg-slate-950/80 sm:bg-slate-950/75 backdrop-blur-md px-5 sm:px-9 py-2.5 sm:py-4 rounded-2xl sm:rounded-3xl border border-white/15 shadow-2xl shadow-slate-950/60'
+                        : ''
+                    }`}>
+                      <span className="block font-brand-serif font-bold sm:font-extrabold tracking-tight">{slide.line1}</span>
+                      <span className="block mt-0.5">
+                        <span className="font-bold sm:font-extrabold">{slide.line2Prefix}</span>
+                        <span className="text-[#ff7a00] font-brand-italic relative inline-block font-bold sm:font-extrabold drop-shadow-[0_2px_14px_rgba(255,122,0,0.45)]">
+                          {slide.line2Highlight}
+                          {/* Curved Wave Underline Swash */}
+                          <svg 
+                            className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-2.5 sm:h-3 text-[#ff7a00] pointer-events-none" 
+                            viewBox="0 0 100 12" 
+                            fill="none" 
+                            preserveAspectRatio="none"
+                          >
+                            <path 
+                              d="M2 6 Q 25 12, 50 6 T 98 6" 
+                              stroke="currentColor" 
+                              strokeWidth="3.5" 
+                              strokeLinecap="round" 
+                            />
+                          </svg>
+                        </span>
+                      </span>
                     </h2>
 
-                    {/* Refined Descriptive Tagline with subtle ambient shadow */}
-                    <p className="font-['Outfit'] sm:font-sans text-xs sm:text-sm md:text-base text-slate-100 max-w-lg font-medium drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] text-center line-clamp-2 leading-relaxed">
+                    {/* Refined Descriptive Tagline */}
+                    <p className="text-xs sm:text-sm md:text-base lg:text-[17px] text-slate-100 max-w-xl font-normal drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] text-center leading-relaxed">
                       {slide.tagline}
                     </p>
 
-                    {/* Book Now Button with animated ambient glow */}
-                    <div className="pt-1.5 sm:pt-2.5 flex justify-center">
+                    {/* Book Now Button: Golden-yellow pill with Arrow matching screenshot */}
+                    <div className="pt-2 sm:pt-3 flex justify-center">
                       <button
                         type="button"
                         onClick={() => {
@@ -251,10 +279,10 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
                             estimatedPrice: slide.estimatedPrice
                           });
                         }}
-                        className="hero-btn-glow inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 active:scale-95 text-slate-950 font-black text-xs sm:text-sm tracking-wide uppercase transition-all duration-200 cursor-pointer group border border-amber-200/50"
+                        className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-[#fed049] hover:bg-[#fcc832] text-slate-950 font-black text-xs sm:text-sm tracking-wider uppercase shadow-xl hover:shadow-amber-500/25 active:scale-95 transition-all cursor-pointer"
                       >
-                        <span>Book Now</span>
-                        <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
+                        <span>BOOK NOW</span>
+                        <ArrowRight className="w-4 h-4 stroke-[2.5]" />
                       </button>
                     </div>
                   </div>

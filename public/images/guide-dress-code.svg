@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" width="260" height="200" fill="none">
+  <defs>
+    <!-- Soft Cyan Temple Glow Background -->
+    <linearGradient id="templeGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0f9ff" />
+      <stop offset="100%" stop-color="#e0f2fe" />
+    </linearGradient>
+
+    <!-- Silk Dhoti White Gradient with Soft Folds -->
+    <linearGradient id="dhotiWhite" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="25%" stop-color="#f8fafc" />
+      <stop offset="50%" stop-color="#e2e8f0" />
+      <stop offset="75%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#ffffff" />
+    </linearGradient>
+
+    <!-- Rich Gold Zari Gradient -->
+    <linearGradient id="goldZari" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="40%" stop-color="#eab308" />
+      <stop offset="70%" stop-color="#ca8a04" />
+      <stop offset="100%" stop-color="#a16207" />
+    </linearGradient>
+
+    <!-- Deep Maroon Silk Saree Gradient -->
+    <linearGradient id="maroonSilk" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#881337" />
+      <stop offset="35%" stop-color="#9f1239" />
+      <stop offset="70%" stop-color="#4c0519" />
+      <stop offset="100%" stop-color="#881337" />
+    </linearGradient>
+
+    <!-- Soft Drop Shadow for Garments -->
+    <filter id="garmentShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="2" dy="5" stdDeviation="5" flood-color="#0369a1" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <!-- Background Ambient Tint with Gopuram Outline -->
+  <rect width="260" height="200" rx="16" fill="url(#templeGlow)" opacity="0.6" />
+
+  <!-- Temple Gopuram Line Art Watermark in Soft Azure -->
+  <g stroke="#38bdf8" stroke-width="1.2" opacity="0.45" fill="none">
+    <!-- Base tier -->
+    <rect x="180" y="70" width="56" height="110" />
+    <path d="M192 180 L192 120 C192 110 224 110 224 120 L224 180" />
+    
+    <!-- Tier 2 -->
+    <polygon points="184,70 188,42 228,42 232,70" />
+    <!-- Tier 3 -->
+    <polygon points="190,42 194,22 222,22 226,42" />
+    <!-- Kalasam Spire on Top -->
+    <polygon points="204,22 208,6 212,22" />
+    <circle cx="208" cy="4" r="2.5" fill="#38bdf8" />
+    
+    <!-- Decorative niches -->
+    <circle cx="198" cy="56" r="3" />
+    <circle cx="208" cy="56" r="3" />
+    <circle cx="218" cy="56" r="3" />
+    <circle cx="202" cy="32" r="2" />
+    <circle cx="214" cy="32" r="2" />
+  </g>
+
+  <!-- Left: Traditional Men's White Dhoti (Veshti) with Golden Border & Angavastram -->
+  <g transform="translate(30, 20)" filter="url(#garmentShadow)">
+    <!-- Main Draped Dhoti Body with Natural Vertical Folds -->
+    <path d="M15 15 C15 10 70 8 75 14 L78 140 C78 148 10 148 12 140 Z" fill="url(#dhotiWhite)" stroke="#cbd5e1" stroke-width="0.8" />
+    
+    <!-- Vertical Pleat Lines -->
+    <path d="M28 15 L26 142" stroke="#cbd5e1" stroke-width="1.2" stroke-opacity="0.8" />
+    <path d="M42 14 L40 144" stroke="#cbd5e1" stroke-width="1.5" stroke-opacity="0.9" />
+    <path d="M56 13 L55 143" stroke="#cbd5e1" stroke-width="1.2" stroke-opacity="0.8" />
+
+    <!-- Draped Angavastram / Uttariyam (Across Shoulders / Torso) -->
+    <path d="M10 28 C25 22 65 30 76 42 L72 75 C58 60 25 50 8 60 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8" />
+    
+    <!-- Rich Golden Zari Border on Uttariyam -->
+    <path d="M8 52 C25 43 58 52 72 67 L72 75 C58 60 25 50 8 60 Z" fill="url(#goldZari)" />
+    <!-- Zari Accent Stripe -->
+    <path d="M9 44 C25 35 58 44 73 59" stroke="url(#goldZari)" stroke-width="1.5" fill="none" />
+
+    <!-- Bottom Wide Golden Border of Dhoti -->
+    <rect x="12" y="126" width="66" height="15" fill="url(#goldZari)" />
+    <line x1="12" y1="123" x2="78" y2="123" stroke="url(#goldZari)" stroke-width="1.5" />
+    <!-- Zari Pattern Motifs (Small Diamonds) -->
+    <g fill="#78350f" opacity="0.6">
+      <polygon points="20,133 23,130 26,133 23,136" />
+      <polygon points="32,133 35,130 38,133 35,136" />
+      <polygon points="44,133 47,130 50,133 47,136" />
+      <polygon points="56,133 59,130 62,133 59,136" />
+      <polygon points="68,133 71,130 74,133 71,136" />
+    </g>
+  </g>
+
+  <!-- Right: Traditional Women's Maroon & Gold Kanchipuram Silk Saree Display -->
+  <g transform="translate(118, 16)" filter="url(#garmentShadow)">
+    <!-- Saree Torso / Blouse Silhouette -->
+    <path d="M24 16 C30 10 58 10 64 16 L66 42 C60 48 30 48 22 42 Z" fill="#881337" />
+    <path d="M34 16 C38 24 50 24 54 16" fill="url(#goldZari)" />
+
+    <!-- Flowing Pleated Saree Body -->
+    <path d="M18 42 C24 38 64 38 72 42 L78 148 C78 154 14 154 12 148 Z" fill="url(#maroonSilk)" stroke="#4c0519" stroke-width="0.8" />
+    
+    <!-- Rich Golden Zari Pallu Draping Diagonally -->
+    <path d="M20 32 L74 88 L72 108 L18 52 Z" fill="url(#goldZari)" />
+    <!-- Pallu Zari Diamond Details -->
+    <path d="M22 42 L74 98" stroke="#78350f" stroke-width="1" stroke-dasharray="2 3" />
+
+    <!-- Saree Pleats Line Work -->
+    <path d="M30 42 L26 150" stroke="#4c0519" stroke-width="1.5" />
+    <path d="M42 42 L38 151" stroke="#4c0519" stroke-width="1.8" />
+    <path d="M54 42 L52 150" stroke="#4c0519" stroke-width="1.5" />
+    <path d="M64 42 L66 149" stroke="#4c0519" stroke-width="1.2" />
+
+    <!-- Bottom Grand Golden Temple Border -->
+    <rect x="13" y="132" width="65" height="18" fill="url(#goldZari)" />
+    <!-- Temple Triangles Motif on Border -->
+    <g fill="#881337">
+      <polygon points="18,132 22,126 26,132" />
+      <polygon points="28,132 32,126 36,132" />
+      <polygon points="38,132 42,126 46,132" />
+      <polygon points="48,132 52,126 56,132" />
+      <polygon points="58,132 62,126 66,132" />
+      <polygon points="68,132 72,126 76,132" />
+    </g>
+  </g>
+</svg>
