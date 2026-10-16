@@ -17,12 +17,12 @@ import { CHENNAI_PICKUP_ZONES, FLEET_VEHICLES, TOUR_PACKAGES } from '../data/tra
 
 const HERO_SLIDES = [
   {
-    id: 'banner-h2',
-    url: '/Homepage_banner/H2.png',
-    line1: 'One Day',
-    line2Prefix: 'Chennai to ',
-    line2Highlight: 'Tirupati',
-    heading: 'One Day Chennai to Tirupati',
+    id: 'banner-h1',
+    url: '/Homepage_banner/H1.png',
+    line1: 'One Day Chennai to Tirupati',
+    line2Prefix: '',
+    line2Highlight: 'Tour',
+    heading: 'One Day Chennai to Tirupati Tour',
     tagline: 'Same-day round trip with doorstep pickup, breakfast, lunch & smooth ghat travel',
     badge: 'BEST SELLER • 1-DAY RETURN',
     packageTitle: 'Chennai to Tirupati 1-Day VIP Package',
@@ -30,28 +30,28 @@ const HERO_SLIDES = [
     estimatedPrice: 5999
   },
   {
-    id: 'banner-h1',
-    url: '/Homepage_banner/H1.png',
-    line1: 'One Day',
-    line2Prefix: 'Chennai to ',
-    line2Highlight: 'Tirupati',
-    heading: 'One Day Chennai to Tirupati',
-    tagline: 'Same-day round trip with doorstep pickup, breakfast, lunch & smooth ghat travel',
-    badge: 'BEST SELLER • 1-DAY RETURN',
-    packageTitle: 'Chennai to Tirupati 1-Day VIP Package',
+    id: 'banner-h2',
+    url: '/Homepage_banner/H2.png',
+    line1: '',
+    line2Prefix: 'VIP Tirupati ',
+    line2Highlight: 'Tour',
+    heading: 'VIP Tirupati Tour',
+    tagline: 'Premium VIP Special Entry Darshan assistance, sanitized luxury cabs & priority coordinator',
+    badge: 'EXCLUSIVE VIP DARSHAN',
+    packageTitle: 'VIP Tirupati Special Darshan Tour',
     defaultVehicle: 'Toyota Innova Crysta',
-    estimatedPrice: 5999
+    estimatedPrice: 6999
   },
   {
     id: 'banner-h',
     url: '/Homepage_banner/H.png',
-    line1: 'Sacred South',
-    line2Prefix: 'Temple ',
-    line2Highlight: 'Circuits',
-    heading: 'South India Temple Circuits',
+    line1: '',
+    line2Prefix: 'Common Temple ',
+    line2Highlight: 'Tour',
+    heading: 'Common Temple Tour',
     tagline: 'Customized spiritual temple circuit across South India with door-to-door cab service',
     badge: 'POPULAR PILGRIMAGE CIRCUIT',
-    packageTitle: 'Kumbakonam Navagraha Circuit (9 Planet Temples)',
+    packageTitle: 'South India Common Temple Tour',
     defaultVehicle: 'Toyota Innova Crysta',
     estimatedPrice: 17999
   }
@@ -205,7 +205,7 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
                   className={`w-full h-full object-cover object-center ${
                     slide.id === 'banner-h1' ? '' : 'brightness-[0.96] contrast-[1.03]'
                   }`}
-                  loading={index === 0 ? 'eager' : 'lazy'}
+                  loading="eager"
                   onError={(e) => {
                     const target = e.currentTarget as HTMLImageElement;
                     if (!target.dataset.triedFallback) {
@@ -229,20 +229,20 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
                       <span>{slide.badge}</span>
                     </div>
 
-                    {/* Main Heading: High-contrast brand serif (Bold) with Orange highlight in brand italic */}
-                    <h2 className={`font-brand-serif text-3xl sm:text-5xl md:text-6xl lg:text-[68px] font-bold sm:font-extrabold leading-[1.06] text-white text-center select-none drop-shadow-[0_4px_24px_rgba(0,0,0,0.92)] tracking-tight ${
-                      slide.id === 'banner-h1'
-                        ? 'bg-slate-950/80 sm:bg-slate-950/75 backdrop-blur-md px-5 sm:px-9 py-2.5 sm:py-4 rounded-2xl sm:rounded-3xl border border-white/15 shadow-2xl shadow-slate-950/60'
-                        : ''
-                    }`}>
-                      <span className="block font-brand-serif font-bold sm:font-extrabold tracking-tight">{slide.line1}</span>
-                      <span className="block mt-0.5">
-                        <span className="font-bold sm:font-extrabold">{slide.line2Prefix}</span>
-                        <span className="text-[#ff7a00] font-brand-italic relative inline-block font-bold sm:font-extrabold drop-shadow-[0_2px_14px_rgba(255,122,0,0.45)]">
+                    {/* Main Heading: High-contrast brand serif with deep font shadow background */}
+                    <h2 className="font-brand-serif text-3xl sm:text-5xl md:text-6xl lg:text-[68px] font-bold sm:font-extrabold leading-[1.06] text-white text-center select-none tracking-tight hero-heading-shadow drop-shadow-[0_4px_28px_rgba(0,0,0,0.95)]">
+                      {slide.line1 ? (
+                        <span className="block font-brand-serif font-bold sm:font-extrabold tracking-tight hero-heading-shadow mb-0.5 sm:mb-1">{slide.line1}</span>
+                      ) : null}
+                      <span className="block">
+                        {slide.line2Prefix ? (
+                          <span className="font-bold sm:font-extrabold hero-heading-shadow">{slide.line2Prefix}</span>
+                        ) : null}
+                        <span className="text-[#ff7a00] font-brand-italic relative inline-block font-bold sm:font-extrabold hero-heading-shadow drop-shadow-[0_2px_14px_rgba(255,122,0,0.55)]">
                           {slide.line2Highlight}
-                          {/* Curved Wave Underline Swash */}
+                          {/* Curved Wave Underline Swash with dark drop shadow */}
                           <svg 
-                            className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-2.5 sm:h-3 text-[#ff7a00] pointer-events-none" 
+                            className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-2.5 sm:h-3 text-[#ff7a00] pointer-events-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]" 
                             viewBox="0 0 100 12" 
                             fill="none" 
                             preserveAspectRatio="none"
@@ -310,6 +310,23 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
         >
           <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
+
+        {/* Slide Indicator Dots (1, 2, 3) */}
+        <div className="absolute bottom-10 sm:bottom-14 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 pointer-events-auto">
+          {HERO_SLIDES.map((slide, idx) => (
+            <button
+              key={slide.id}
+              type="button"
+              onClick={() => setCurrentSlide(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`transition-all duration-300 rounded-full cursor-pointer ${
+                idx === currentSlide 
+                  ? 'w-7 sm:w-8 h-2 sm:h-2.5 bg-[#fed049] shadow-md shadow-amber-500/50' 
+                  : 'w-2 sm:w-2.5 h-2 sm:h-2.5 bg-white/50 hover:bg-white/80'
+              }`}
+            />
+          ))}
+        </div>
       </div>
 
       {/* ----------------- FLOATING SEARCH WIDGET ----------------- */}
