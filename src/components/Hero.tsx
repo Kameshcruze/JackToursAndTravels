@@ -179,7 +179,7 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
       
       {/* ----------------- TOP HERO PANORAMA ----------------- */}
       <div 
-        className="relative w-full h-[360px] sm:h-auto min-h-[350px] sm:min-h-[340px] sm:aspect-[2.3/1] lg:aspect-[2.5/1] max-h-[580px] flex items-center overflow-hidden bg-transparent"
+        className="relative w-full h-[470px] sm:h-[520px] md:h-[570px] lg:h-[620px] max-h-[660px] flex items-center overflow-hidden bg-transparent"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
@@ -220,17 +220,17 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-slate-950/40 sm:bg-radial sm:from-slate-950/45 sm:via-slate-950/65 sm:to-slate-950/85" />
                 )}
 
-                {/* Slide Caption Wording and Book Now Button - Middle Alignment */}
-                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-4 sm:p-8 md:p-12 text-center pointer-events-none">
-                  <div className="pointer-events-auto flex flex-col items-center max-w-2xl mx-auto space-y-2.5 sm:space-y-4">
+                {/* Slide Caption Wording and Book Now Button - Middle Alignment with tablet-optimized padding */}
+                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 pt-3 sm:pt-4 pb-14 sm:pb-18 md:pb-22 text-center pointer-events-none">
+                  <div className="pointer-events-auto flex flex-col items-center max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto space-y-2 sm:space-y-3 md:space-y-3.5">
                     {/* Badge: Golden rounded pill with Crown matching screenshot */}
-                    <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#fce5a9] border border-[#f5d278] text-slate-950 text-[10.5px] sm:text-[11.5px] font-extrabold uppercase tracking-wider shadow-sm">
+                    <div className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#fce5a9] border border-[#f5d278] text-slate-950 text-[10px] sm:text-[11px] md:text-[11.5px] font-extrabold uppercase tracking-wider shadow-sm">
                       <span className="text-xs">👑</span>
                       <span>{slide.badge}</span>
                     </div>
 
-                    {/* Main Heading: High-contrast brand serif with deep font shadow background */}
-                    <h2 className="font-brand-serif text-3xl sm:text-5xl md:text-6xl lg:text-[68px] font-bold sm:font-extrabold leading-[1.06] text-white text-center select-none tracking-tight hero-heading-shadow drop-shadow-[0_4px_28px_rgba(0,0,0,0.95)]">
+                    {/* Main Heading: High-contrast brand serif with responsive tablet scaling */}
+                    <h2 className="font-brand-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[58px] font-bold sm:font-extrabold leading-[1.08] sm:leading-[1.1] text-white text-center select-none tracking-tight hero-heading-shadow drop-shadow-[0_4px_28px_rgba(0,0,0,0.95)]">
                       {slide.line1 ? (
                         <span className="block font-brand-serif font-bold sm:font-extrabold tracking-tight hero-heading-shadow mb-0.5 sm:mb-1">{slide.line1}</span>
                       ) : null}
@@ -259,12 +259,12 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
                     </h2>
 
                     {/* Refined Descriptive Tagline */}
-                    <p className="text-xs sm:text-sm md:text-base lg:text-[17px] text-slate-100 max-w-xl font-normal drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] text-center leading-relaxed">
+                    <p className="text-xs sm:text-[13px] md:text-sm lg:text-base text-slate-100 max-w-md sm:max-w-lg md:max-w-xl font-normal drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] text-center leading-relaxed">
                       {slide.tagline}
                     </p>
 
                     {/* Book Now Button: Golden-yellow pill with Arrow matching screenshot */}
-                    <div className="pt-2 sm:pt-3 flex justify-center">
+                    <div className="pt-1 sm:pt-2 flex justify-center">
                       <button
                         type="button"
                         onClick={() => {
@@ -279,7 +279,7 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
                             estimatedPrice: slide.estimatedPrice
                           });
                         }}
-                        className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-[#fed049] hover:bg-[#fcc832] text-slate-950 font-black text-xs sm:text-sm tracking-wider uppercase shadow-xl hover:shadow-amber-500/25 active:scale-95 transition-all cursor-pointer"
+                        className="inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full bg-[#fed049] hover:bg-[#fcc832] text-slate-950 font-black text-xs sm:text-sm tracking-wider uppercase shadow-xl hover:shadow-amber-500/25 active:scale-95 transition-all cursor-pointer"
                       >
                         <span>BOOK NOW</span>
                         <ArrowRight className="w-4 h-4 stroke-[2.5]" />
@@ -312,7 +312,7 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
         </button>
 
         {/* Slide Indicator Dots (1, 2, 3) */}
-        <div className="absolute bottom-10 sm:bottom-14 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 pointer-events-auto">
+        <div className="absolute bottom-12 sm:bottom-16 md:bottom-20 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 pointer-events-auto">
           {HERO_SLIDES.map((slide, idx) => (
             <button
               key={slide.id}
@@ -330,7 +330,7 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
       </div>
 
       {/* ----------------- FLOATING SEARCH WIDGET ----------------- */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-10 lg:-mt-14 relative z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 md:-mt-10 lg:-mt-14 relative z-20">
         <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl shadow-slate-200/80 p-5 sm:p-8 lg:p-9 border border-slate-100">
           
           {/* Top Category Tabs */}
