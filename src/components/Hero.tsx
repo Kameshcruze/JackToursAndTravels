@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   MapPin, 
   Calendar, 
@@ -86,6 +86,26 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlayPaused, setIsAutoPlayPaused] = useState(false);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  // References and automatic centering for Category Tabs on Mobile
+  const tabsContainerRef = useRef<HTMLDivElement>(null);
+  const tabButtonRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
+
+  useEffect(() => {
+    const container = tabsContainerRef.current;
+    const button = tabButtonRefs.current[activeTab];
+    if (container && button) {
+      const containerRect = container.getBoundingClientRect();
+      const buttonRect = button.getBoundingClientRect();
+      const currentScroll = container.scrollLeft;
+      const targetScroll = currentScroll + (buttonRect.left - containerRect.left) - (containerRect.width / 2) + (buttonRect.width / 2);
+
+      container.scrollTo({
+        left: Math.max(0, targetScroll),
+        behavior: 'smooth'
+      });
+    }
+  }, [activeTab]);
 
   // Preload all banner images for instantaneous auto-switch
   useEffect(() => {
@@ -333,12 +353,16 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 md:-mt-10 lg:-mt-14 relative z-20">
         <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl shadow-slate-200/80 p-5 sm:p-8 lg:p-9 border border-slate-100">
           
-          {/* Top Category Tabs */}
-          <div className="flex items-center justify-center gap-5 sm:gap-10 pb-4 sm:pb-5 mb-5 sm:mb-6 border-b border-slate-100 overflow-x-auto no-scrollbar text-base sm:text-lg lg:text-xl font-bold text-slate-500">
+          {/* Top Category Tabs - Auto Centered on Mobile */}
+          <div 
+            ref={tabsContainerRef}
+            className="flex items-center justify-start sm:justify-center gap-5 sm:gap-10 pb-4 sm:pb-5 mb-5 sm:mb-6 border-b border-slate-100 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory px-6 sm:px-0 text-base sm:text-lg lg:text-xl font-bold text-slate-500"
+          >
             <button
+              ref={(el) => { tabButtonRefs.current['tirupati'] = el; }}
               type="button"
               onClick={() => handleTabChange('tirupati')}
-              className={`flex items-center gap-2.5 pb-2 transition-colors whitespace-nowrap shrink-0 relative ${
+              className={`flex items-center gap-2.5 pb-2 transition-colors whitespace-nowrap shrink-0 relative snap-center cursor-pointer ${
                 activeTab === 'tirupati' ? 'text-blue-600 font-extrabold' : 'hover:text-slate-900'
               }`}
             >
@@ -350,9 +374,10 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
             </button>
 
             <button
+              ref={(el) => { tabButtonRefs.current['outstation'] = el; }}
               type="button"
               onClick={() => handleTabChange('outstation')}
-              className={`flex items-center gap-2.5 pb-2 transition-colors whitespace-nowrap shrink-0 relative ${
+              className={`flex items-center gap-2.5 pb-2 transition-colors whitespace-nowrap shrink-0 relative snap-center cursor-pointer ${
                 activeTab === 'outstation' ? 'text-blue-600 font-extrabold' : 'hover:text-slate-900'
               }`}
             >
@@ -366,9 +391,10 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
             </button>
 
             <button
+              ref={(el) => { tabButtonRefs.current['temple'] = el; }}
               type="button"
               onClick={() => handleTabChange('temple')}
-              className={`flex items-center gap-2.5 pb-2 transition-colors whitespace-nowrap shrink-0 relative ${
+              className={`flex items-center gap-2.5 pb-2 transition-colors whitespace-nowrap shrink-0 relative snap-center cursor-pointer ${
                 activeTab === 'temple' ? 'text-blue-600 font-extrabold' : 'hover:text-slate-900'
               }`}
             >
@@ -380,9 +406,10 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
             </button>
 
             <button
+              ref={(el) => { tabButtonRefs.current['airport'] = el; }}
               type="button"
               onClick={() => handleTabChange('airport')}
-              className={`flex items-center gap-2.5 pb-2 transition-colors whitespace-nowrap shrink-0 relative ${
+              className={`flex items-center gap-2.5 pb-2 transition-colors whitespace-nowrap shrink-0 relative snap-center cursor-pointer ${
                 activeTab === 'airport' ? 'text-blue-600 font-extrabold' : 'hover:text-slate-900'
               }`}
             >

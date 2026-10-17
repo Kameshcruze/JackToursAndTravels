@@ -12,10 +12,10 @@ import {
 export const Footer: React.FC = () => {
   return (
     <footer className="bg-[#1c2a4f] text-slate-200 text-sm pt-6 sm:pt-8 pb-16 sm:pb-8 lg:pb-8 border-t border-slate-700/60">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top 4 Columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
           
           {/* Col 1: Brand - Pure Typography Wordmark */}
           <div className="space-y-3">
@@ -127,7 +127,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Developer Credit - Above the Copyrights */}
-        <div className="pt-2.5 border-t border-slate-700/60 !mt-3 sm:!mt-4 text-center text-xs text-slate-300 flex items-center justify-center gap-1.5 flex-wrap">
+        <div className="pt-3 border-t border-slate-700/60 pb-1 text-center text-xs text-slate-300 flex items-center justify-center gap-1.5 flex-wrap">
           <span>Developed by</span>
           <a
             href="https://elitewebdevelopers.vercel.app/"
@@ -140,7 +140,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar: Copyrights */}
-        <div className="!pt-0 !mt-1.5 sm:!mt-1.5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-400">
+        <div className="pt-0.5 pb-0 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-400">
           <div>
             © {new Date().getFullYear()} Shri Vari Travels. All rights reserved.
           </div>
