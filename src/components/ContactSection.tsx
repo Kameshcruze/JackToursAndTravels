@@ -161,18 +161,18 @@ Please send quotation and cab availability.`;
 
           {/* Right Column: Direct Form */}
           <div className="lg:col-span-6">
-            <div className="bg-gradient-to-br from-[#b3d8ed] via-[#c6e4f6] to-[#a2d1eb] text-slate-900 rounded-2xl sm:rounded-3xl p-5 sm:p-9 shadow-2xl shadow-sky-950/10 border border-[#96c7e3] relative overflow-hidden">
+            <div className="bg-gradient-to-br from-[#7bb7dd] via-[#61a8d5] to-[#4794c9] text-slate-900 rounded-2xl sm:rounded-3xl p-5 sm:p-9 shadow-2xl shadow-sky-950/20 border border-[#3e8ec0] relative overflow-hidden">
               {/* Subtle ambient light glow */}
-              <div className="absolute -top-24 -right-24 w-48 h-48 bg-white/40 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-white/30 rounded-full blur-2xl pointer-events-none" />
 
               <div className="mb-5 sm:mb-6 relative z-10">
-                <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-blue-800 block mb-1">
+                <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-blue-950 block mb-1">
                   Fast Callback
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-black text-slate-950">
                   Send Your Travel Inquiry
                 </h3>
-                <p className="text-sm text-slate-700 mt-1 font-medium">
+                <p className="text-sm text-slate-800 mt-1 font-medium">
                   Our dispatch manager responds within 15 minutes with vehicle availability.
                 </p>
               </div>
@@ -339,9 +339,9 @@ Please send quotation and cab availability.`;
                   <div className="pt-1 sm:pt-2">
                     <button
                       type="submit"
-                      className="w-full py-3 sm:py-3.5 px-5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm rounded-full transition-transform active:scale-95 shadow-xl shadow-blue-600/25 flex items-center justify-center gap-2 cursor-pointer"
+                      className="w-full py-3 sm:py-3.5 px-5 bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 hover:from-amber-500 hover:via-orange-500 hover:to-orange-600 text-slate-950 font-black text-xs sm:text-sm tracking-wide uppercase rounded-full transition-all active:scale-95 shadow-xl shadow-orange-950/20 flex items-center justify-center gap-2 cursor-pointer border border-amber-300/60"
                     >
-                      <Send className="w-4 h-4 text-white" />
+                      <Send className="w-4 h-4 text-slate-950 stroke-[2.5]" />
                       <span>Send Inquiry to Dispatch Team</span>
                     </button>
                   </div>

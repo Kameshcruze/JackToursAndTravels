@@ -59,11 +59,11 @@ export interface FaqItem {
 
 export { createWhatsAppLink, openWhatsApp } from '../utils/whatsapp';
 
-export const PHONE_PRIMARY = "+91 94929 21997";
+export const PHONE_PRIMARY = "+91 94909 01997";
 export const PHONE_SECONDARY = "+91 91502 67924";
-export const PHONE_PRIMARY_RAW = "919492921997";
+export const PHONE_PRIMARY_RAW = "919490901997";
 export const PHONE_SECONDARY_RAW = "919150267924";
-export const WHATSAPP_NUMBER = "919492921997";
+export const WHATSAPP_NUMBER = "919490901997";
 export const OFFICE_ADDRESS = "No. 42/1, North Usman Road, Near Panagal Park, T. Nagar, Chennai - 600017, Tamil Nadu";
 export const SECONDARY_OFFICE = "Koyambedu CMBT Hub & Chennai Airport Kiosk, GST Road, Meenambakkam, Chennai - 600027";
 

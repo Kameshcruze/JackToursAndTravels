@@ -147,14 +147,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
           {/* Right Action: Phone Numbers with Call Icon (Replacing Book Now) */}
           <div className="flex items-center gap-1.5 sm:gap-2">
 
-            {/* Primary Mobile Number: 94929 21997 (Warm Amber/Gold Pill) - Desktop only */}
+            {/* Primary Mobile Number: 94909 01997 (Warm Amber/Gold Pill) - Desktop only */}
             <a
               href={`tel:+${PHONE_PRIMARY_RAW}`}
               className="hidden lg:inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full bg-[#fde68a] hover:bg-[#fcd34d] text-slate-950 text-xs sm:text-sm font-bold tracking-tight shadow-sm border border-amber-300 transition-all active:scale-95 whitespace-nowrap"
               title={`Call ${PHONE_PRIMARY}`}
             >
               <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-slate-900 text-slate-900 shrink-0" />
-              <span>94929 21997</span>
+              <span>94909 01997</span>
             </a>
 
             {/* Secondary Mobile Number: 91502 67924 (Deep Navy Pill) - Desktop only */}
@@ -200,7 +200,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
               className="w-full text-center py-2.5 bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 text-slate-950 text-xs font-black rounded-full shadow-md border border-amber-300/80 flex items-center justify-center gap-2"
             >
               <Phone className="w-4 h-4 fill-slate-950" />
-              <span>Call: +91 94929 21997</span>
+              <span>Call: +91 94909 01997</span>
             </a>
             <a
               href={`tel:+${PHONE_SECONDARY_RAW}`}

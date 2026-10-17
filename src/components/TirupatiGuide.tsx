@@ -7,7 +7,7 @@ export const TirupatiGuide: React.FC = () => {
       id: 'dress-code',
       icon: Shirt,
       title: "Mandatory TTD Dress Code",
-      image: "/images/guide-dress-code.svg",
+      image: "/images/dhoti-sarree.png",
       rules: [
         {
           prefix: "Men:",
@@ -136,7 +136,7 @@ export const TirupatiGuide: React.FC = () => {
                         <img 
                           src={card.image} 
                           alt={card.title} 
-                          className="w-full h-full object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
                           loading="lazy"
                         />
                       </div>

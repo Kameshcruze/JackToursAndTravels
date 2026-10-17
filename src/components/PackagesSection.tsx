@@ -181,9 +181,9 @@ Please confirm cab availability, itinerary schedule, and darshan booking assista
                       href={createWhatsAppLink(whatsAppMsg)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full py-3 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-1.5 active:scale-[0.98] whitespace-nowrap"
+                      className="w-full py-3 px-3 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-extrabold text-xs sm:text-sm transition-all shadow-md shadow-emerald-600/20 flex items-center justify-center gap-1.5 active:scale-[0.98] whitespace-nowrap"
                     >
-                      <MessageCircle className="w-4 h-4 text-emerald-400" />
+                      <MessageCircle className="w-4 h-4 text-white fill-white/20 stroke-[2.5]" />
                       <span>Book on WhatsApp</span>
                     </a>
                   </div>
