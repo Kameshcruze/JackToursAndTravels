@@ -126,8 +126,21 @@ export const Footer: React.FC = () => {
 
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-5 sm:pt-6 border-t border-slate-700/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-300">
+        {/* Developer Credit - Above the Copyrights */}
+        <div className="pt-2.5 border-t border-slate-700/60 !mt-3 sm:!mt-4 text-center text-xs text-slate-300 flex items-center justify-center gap-1.5 flex-wrap">
+          <span>Developed by</span>
+          <a
+            href="https://elitewebdevelopers.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-amber-400 hover:text-amber-300 font-semibold underline underline-offset-4 transition-colors"
+          >
+            Elite Web Developers
+          </a>
+        </div>
+
+        {/* Bottom Bar: Copyrights */}
+        <div className="!pt-0 !mt-1.5 sm:!mt-1.5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-400">
           <div>
             © {new Date().getFullYear()} Shri Vari Travels. All rights reserved.
           </div>
