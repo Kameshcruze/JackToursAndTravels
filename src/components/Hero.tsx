@@ -19,7 +19,6 @@ const HERO_SLIDES = [
   {
     id: 'banner-h1',
     url: '/Homepage_banner/H1.webp',
-    mobileUrl: '/Homepage_banner/H1-mobile.webp',
     pngFallback: '/Homepage_banner/H1.png',
     line1: 'One Day Chennai to Tirupati',
     line2Prefix: '',
@@ -34,7 +33,6 @@ const HERO_SLIDES = [
   {
     id: 'banner-h2',
     url: '/Homepage_banner/H2.webp',
-    mobileUrl: '/Homepage_banner/H2-mobile.webp',
     pngFallback: '/Homepage_banner/H2.png',
     line1: '',
     line2Prefix: 'VIP Tirupati ',
@@ -49,7 +47,6 @@ const HERO_SLIDES = [
   {
     id: 'banner-h',
     url: '/Homepage_banner/H.webp',
-    mobileUrl: '/Homepage_banner/H-mobile.webp',
     pngFallback: '/Homepage_banner/H.png',
     line1: '',
     line2Prefix: 'Common Temple ',
@@ -113,13 +110,27 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
     }
   }, [activeTab]);
 
-  // Preload all banner images for instantaneous auto-switch
+  // Only load active and viewed slide images to save bandwidth on mobile
+  const [loadedSlideIndexes, setLoadedSlideIndexes] = useState<number[]>([0]);
+
   useEffect(() => {
-    HERO_SLIDES.forEach(slide => {
+    if (!loadedSlideIndexes.includes(currentSlide)) {
+      setLoadedSlideIndexes(prev => [...prev, currentSlide]);
+    }
+  }, [currentSlide, loadedSlideIndexes]);
+
+  // Preload next slide in sequence after delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const nextIdx = (currentSlide + 1) % HERO_SLIDES.length;
+      const nextSlide = HERO_SLIDES[nextIdx];
       const img = new Image();
-      img.src = slide.url;
-    });
-  }, []);
+      img.src = nextSlide.url;
+      setLoadedSlideIndexes(prev => (prev.includes(nextIdx) ? prev : [...prev, nextIdx]));
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, [currentSlide]);
 
   useEffect(() => {
     if (isAutoPlayPaused) return;
@@ -225,14 +236,12 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
                   isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
                 }`}
               >
-                <picture className="w-full h-full block">
-                  <source media="(max-width: 768px)" srcSet={slide.mobileUrl} type="image/webp" />
-                  <source srcSet={slide.url} type="image/webp" />
+                {(loadedSlideIndexes.includes(index) || index === 0) ? (
                   <img
                     src={slide.url}
                     alt={slide.heading}
-                    width="1920"
-                    height="1080"
+                    width="1981"
+                    height="793"
                     className={`w-full h-full object-cover object-center ${
                       slide.id === 'banner-h1' ? '' : 'brightness-[0.96] contrast-[1.03]'
                     }`}
@@ -247,7 +256,9 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
                       }
                     }}
                   />
-                </picture>
+                ) : (
+                  <div className="w-full h-full bg-slate-950" />
+                )}
 
                 {/* Dark gradient overlay for other slides; omitted completely for H1 to preserve the original image without any black tint */}
                 {slide.id !== 'banner-h1' && (

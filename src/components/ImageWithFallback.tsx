@@ -7,6 +7,8 @@ interface ImageWithFallbackProps {
   className?: string;
   fallbackTitle?: string;
   type?: 'place' | 'car';
+  width?: number | string;
+  height?: number | string;
 }
 
 export const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
@@ -14,7 +16,9 @@ export const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
   alt,
   className = '',
   fallbackTitle,
-  type = 'place'
+  type = 'place',
+  width = 800,
+  height = 500
 }) => {
   const [error, setError] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -48,6 +52,8 @@ export const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
       <img
         src={src}
         alt={alt}
+        width={width}
+        height={height}
         loading="lazy"
         decoding="async"
         referrerPolicy="no-referrer"

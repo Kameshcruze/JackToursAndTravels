@@ -23,6 +23,7 @@ Please share cab availability, darshan coordination and booking details.`;
         className="bg-white w-full max-w-2xl rounded-2xl sm:rounded-[36px] shadow-2xl border border-slate-200 overflow-hidden my-4 sm:my-8"
         role="dialog"
         aria-modal="true"
+        aria-labelledby="itinerary-modal-title"
       >
         {/* Header */}
         <div className="bg-slate-900 text-white p-5 sm:p-7 relative border-b border-slate-800">
@@ -37,7 +38,7 @@ Please share cab availability, darshan coordination and booking details.`;
           <span className="text-[11px] font-bold uppercase tracking-widest text-blue-400 block mb-1.5">
             Hour-by-Hour Pilgrimage Schedule
           </span>
-          <h3 className="text-lg sm:text-2xl font-black text-white pr-8">
+          <h3 id="itinerary-modal-title" className="text-lg sm:text-2xl font-black text-white pr-8">
             {packageData.title}
           </h3>
           <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs text-slate-300 mt-2">

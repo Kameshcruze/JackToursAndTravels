@@ -72,7 +72,7 @@
 }
 
 .font-brand-sans {
-  font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
 .hero-heading-shadow {
@@ -241,16 +241,16 @@
 }
 
 .hero-heading-glow {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   animation: textShadowGlow 3.5s ease-in-out infinite;
 }
 
 .hero-badge-glow {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 
 .hero-btn-glow {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   animation: btnPulseGlow 3s ease-in-out infinite;
 }

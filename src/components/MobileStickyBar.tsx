@@ -12,6 +12,7 @@ export const MobileStickyBar: React.FC = () => {
         {/* Direct Call Button */}
         <a
           href={`tel:+${PHONE_PRIMARY_RAW}`}
+          aria-label="Call Shri Vari Travels booking desk"
           className="flex-1 h-full bg-slate-900 active:bg-slate-800 text-white rounded-full flex items-center justify-center gap-2 text-xs font-bold transition-colors shadow-sm"
         >
           <Phone className="w-3.5 h-3.5 text-blue-400" />
@@ -23,6 +24,7 @@ export const MobileStickyBar: React.FC = () => {
           href={whatsAppUrl}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Book Chennai to Tirupati cab on WhatsApp"
           className="flex-1 h-full bg-[#25D366] active:bg-[#20ba59] text-white rounded-full flex items-center justify-center gap-2 text-xs font-bold transition-transform active:scale-95 shadow-md shadow-emerald-500/25"
         >
           <MessageCircle className="w-4 h-4 text-white" />

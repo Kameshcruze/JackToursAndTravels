@@ -126,6 +126,7 @@ Please confirm driver allotment and route quotation.`;
         className="bg-white w-full max-w-lg rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-100 overflow-hidden max-h-[92vh] flex flex-col"
         role="dialog"
         aria-modal="true"
+        aria-labelledby="booking-modal-title"
       >
         {/* Header */}
         <div className="bg-slate-900 text-white p-4 sm:p-6 flex items-center justify-between border-b border-slate-800 shrink-0">
@@ -133,7 +134,7 @@ Please confirm driver allotment and route quotation.`;
             <span className="text-[11px] font-bold text-blue-400 uppercase tracking-widest block mb-0.5">
               Reservation Desk
             </span>
-            <h3 className="text-lg sm:text-xl font-extrabold text-white">
+            <h3 id="booking-modal-title" className="text-lg sm:text-xl font-extrabold text-white">
               Instant Booking & Fare Lock
             </h3>
           </div>
