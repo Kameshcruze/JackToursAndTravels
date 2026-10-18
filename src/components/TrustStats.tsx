@@ -177,6 +177,10 @@ export const TrustStats: React.FC = () => {
         <img 
           src="/images/trust-stats-bg.svg" 
           alt="Royal Navy Blue & Gold Ribbons Background" 
+          width="1920"
+          height="600"
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover object-center"
           referrerPolicy="no-referrer"
         />

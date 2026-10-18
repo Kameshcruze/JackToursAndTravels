@@ -118,6 +118,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking, savedCount = 3 })
             <img 
               src="/images/shri%20vari%20logo-01.png" 
               alt="Shri Vari Travels - Chennai to Tirupati Cabs" 
+              width="2015"
+              height="864"
+              fetchPriority="high"
+              decoding="sync"
               className="h-10 sm:h-12 md:h-13 lg:h-14 w-auto max-w-[190px] sm:max-w-[220px] lg:max-w-[250px] object-contain transition-transform group-hover:scale-[1.02]"
             />
           </a>

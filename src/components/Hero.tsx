@@ -19,6 +19,7 @@ const HERO_SLIDES = [
   {
     id: 'banner-h1',
     url: '/Homepage_banner/H1.webp',
+    mobileUrl: '/Homepage_banner/H1-mobile.webp',
     pngFallback: '/Homepage_banner/H1.png',
     line1: 'One Day Chennai to Tirupati',
     line2Prefix: '',
@@ -33,6 +34,7 @@ const HERO_SLIDES = [
   {
     id: 'banner-h2',
     url: '/Homepage_banner/H2.webp',
+    mobileUrl: '/Homepage_banner/H2-mobile.webp',
     pngFallback: '/Homepage_banner/H2.png',
     line1: '',
     line2Prefix: 'VIP Tirupati ',
@@ -47,6 +49,7 @@ const HERO_SLIDES = [
   {
     id: 'banner-h',
     url: '/Homepage_banner/H.webp',
+    mobileUrl: '/Homepage_banner/H-mobile.webp',
     pngFallback: '/Homepage_banner/H.png',
     line1: '',
     line2Prefix: 'Common Temple ',
@@ -222,25 +225,29 @@ export const Hero: React.FC<HeroProps> = ({ onQuickBook }) => {
                   isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
                 }`}
               >
-                <img
-                  src={slide.url}
-                  alt={slide.heading}
-                  width="1920"
-                  height="1080"
-                  className={`w-full h-full object-cover object-center ${
-                    slide.id === 'banner-h1' ? '' : 'brightness-[0.96] contrast-[1.03]'
-                  }`}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  decoding={index === 0 ? "sync" : "async"}
-                  fetchPriority={index === 0 ? "high" : "low"}
-                  onError={(e) => {
-                    const target = e.currentTarget as HTMLImageElement;
-                    if (!target.dataset.triedFallback && slide.pngFallback) {
-                      target.dataset.triedFallback = '1';
-                      target.src = slide.pngFallback;
-                    }
-                  }}
-                />
+                <picture className="w-full h-full block">
+                  <source media="(max-width: 768px)" srcSet={slide.mobileUrl} type="image/webp" />
+                  <source srcSet={slide.url} type="image/webp" />
+                  <img
+                    src={slide.url}
+                    alt={slide.heading}
+                    width="1920"
+                    height="1080"
+                    className={`w-full h-full object-cover object-center ${
+                      slide.id === 'banner-h1' ? '' : 'brightness-[0.96] contrast-[1.03]'
+                    }`}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding={index === 0 ? "sync" : "async"}
+                    fetchPriority={index === 0 ? "high" : "low"}
+                    onError={(e) => {
+                      const target = e.currentTarget as HTMLImageElement;
+                      if (!target.dataset.triedFallback && slide.pngFallback) {
+                        target.dataset.triedFallback = '1';
+                        target.src = slide.pngFallback;
+                      }
+                    }}
+                  />
+                </picture>
 
                 {/* Dark gradient overlay for other slides; omitted completely for H1 to preserve the original image without any black tint */}
                 {slide.id !== 'banner-h1' && (

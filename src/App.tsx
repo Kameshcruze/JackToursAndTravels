@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { TrustStats } from './components/TrustStats';
 import { PackagesSection } from './components/PackagesSection';
-import { DestinationsGallery } from './components/DestinationsGallery';
-import { FareCalculator } from './components/FareCalculator';
-import { FleetSection } from './components/FleetSection';
-import { TirupatiGuide } from './components/TirupatiGuide';
-import { WhyChooseUs } from './components/WhyChooseUs';
-import { Testimonials } from './components/Testimonials';
-import { FaqSection } from './components/FaqSection';
-import { ContactSection } from './components/ContactSection';
-import { Footer } from './components/Footer';
 import { MobileStickyBar } from './components/MobileStickyBar';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { TourPackage, Vehicle, DestinationCard } from './data/travelData';
+
+// Code-split below-the-fold sections to drastically reduce initial mobile JS parsing and execution time (TBT)
+const DestinationsGallery = React.lazy(() => import('./components/DestinationsGallery').then(m => ({ default: m.DestinationsGallery })));
+const FleetSection = React.lazy(() => import('./components/FleetSection').then(m => ({ default: m.FleetSection })));
+const FareCalculator = React.lazy(() => import('./components/FareCalculator').then(m => ({ default: m.FareCalculator })));
+const TirupatiGuide = React.lazy(() => import('./components/TirupatiGuide').then(m => ({ default: m.TirupatiGuide })));
+const WhyChooseUs = React.lazy(() => import('./components/WhyChooseUs').then(m => ({ default: m.WhyChooseUs })));
+const Testimonials = React.lazy(() => import('./components/Testimonials').then(m => ({ default: m.Testimonials })));
+const FaqSection = React.lazy(() => import('./components/FaqSection').then(m => ({ default: m.FaqSection })));
+const ContactSection = React.lazy(() => import('./components/ContactSection').then(m => ({ default: m.ContactSection })));
+const Footer = React.lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 
 // Code-split heavy modals to minimize initial bundle size and speed up first paint
 const ItineraryModal = React.lazy(() => import('./components/ItineraryModal').then(m => ({ default: m.ItineraryModal })));
@@ -95,33 +97,38 @@ export default function App() {
           onBookPackage={handleSelectPackageForBooking}
         />
 
-        {/* 5. Trending Destinations Gallery with Rich Place Photography */}
-        <DestinationsGallery onSelectDestination={handleSelectDestination} />
+        {/* Below-the-fold sections loaded asynchronously */}
+        <Suspense fallback={null}>
+          {/* 5. Trending Destinations Gallery with Rich Place Photography */}
+          <DestinationsGallery onSelectDestination={handleSelectDestination} />
 
-        {/* 6. Sanitized AC Fleet Showcase with Real Car Photos */}
-        <FleetSection onSelectVehicle={handleSelectVehicleForBooking} />
+          {/* 6. Sanitized AC Fleet Showcase with Real Car Photos */}
+          <FleetSection onSelectVehicle={handleSelectVehicleForBooking} />
 
-        {/* 7. Interactive Fare Calculator Matrix */}
-        <FareCalculator />
+          {/* 7. Interactive Fare Calculator Matrix */}
+          <FareCalculator />
 
-        {/* 8. Devotee Tirupati Guide (Dress Code, Aadhaar, Mottai, Laddus) */}
-        <TirupatiGuide />
+          {/* 8. Devotee Tirupati Guide (Dress Code, Aadhaar, Mottai, Laddus) */}
+          <TirupatiGuide />
 
-        {/* 9. Value Proposition: Why Choose Shri Vari Travels */}
-        <WhyChooseUs />
+          {/* 9. Value Proposition: Why Choose Shri Vari Travels */}
+          <WhyChooseUs />
 
-        {/* 10. Pilgrim Testimonials & Social Proof */}
-        <Testimonials />
+          {/* 10. Pilgrim Testimonials & Social Proof */}
+          <Testimonials />
 
-        {/* 11. Frequently Asked Questions */}
-        <FaqSection />
+          {/* 11. Frequently Asked Questions */}
+          <FaqSection />
 
-        {/* 12. Office Locations & Contact Form */}
-        <ContactSection />
+          {/* 12. Office Locations & Contact Form */}
+          <ContactSection />
+        </Suspense>
       </main>
 
       {/* 13. Comprehensive Footer */}
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
 
       {/* 14. Mobile Sticky Bottom Action Bar (<15% Viewport Cap) */}
       <MobileStickyBar />

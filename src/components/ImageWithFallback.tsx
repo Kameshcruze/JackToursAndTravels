@@ -48,6 +48,8 @@ export const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
       <img
         src={src}
         alt={alt}
+        loading="lazy"
+        decoding="async"
         referrerPolicy="no-referrer"
         onLoad={() => setLoaded(true)}
         onError={() => setError(true)}

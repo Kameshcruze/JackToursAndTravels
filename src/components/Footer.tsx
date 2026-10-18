@@ -23,6 +23,10 @@ export const Footer: React.FC = () => {
               <img 
                 src="/images/shri-vari-logo-white.png" 
                 alt="Shri Vari Travels Chennai" 
+                width="2015"
+                height="864"
+                loading="lazy"
+                decoding="async"
                 className="h-10 sm:h-12 w-auto max-w-[200px] object-contain -ml-0.5"
               />
               <div className="flex items-center gap-1.5 text-[9px] sm:text-[10px] font-extrabold tracking-[0.18em] uppercase text-amber-400 mt-2 leading-none">
