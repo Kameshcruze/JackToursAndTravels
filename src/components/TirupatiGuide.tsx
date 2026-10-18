@@ -59,7 +59,7 @@ export const TirupatiGuide: React.FC = () => {
       id: 'laddu',
       icon: Gift,
       title: "Laddu Prasadam & Additional Laddus",
-      image: "/images/guide-laddu-prasadam.svg",
+      image: "/images/laddu.png",
       rules: [
         {
           prefix: "",
@@ -132,11 +132,15 @@ export const TirupatiGuide: React.FC = () => {
 
                     {/* Right Illustration Column */}
                     <div className="sm:col-span-5 flex items-center justify-center">
-                      <div className="w-full h-44 sm:h-48 rounded-2xl flex items-center justify-center p-2 relative">
+                      <div className={`w-full ${card.id === 'laddu' ? 'h-48 sm:h-52' : 'h-44 sm:h-48'} rounded-2xl flex items-center justify-center p-2 relative`}>
                         <img 
                           src={card.image} 
                           alt={card.title} 
-                          className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
+                          className={`w-full h-full object-contain mix-blend-multiply transition-transform duration-300 ${
+                            card.id === 'laddu'
+                              ? 'scale-[1.24] sm:scale-[1.28] group-hover:scale-[1.34]'
+                              : 'group-hover:scale-105'
+                          }`}
                           loading="lazy"
                         />
                       </div>
