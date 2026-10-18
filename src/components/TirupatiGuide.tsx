@@ -7,7 +7,7 @@ export const TirupatiGuide: React.FC = () => {
       id: 'dress-code',
       icon: Shirt,
       title: "Mandatory TTD Dress Code",
-      image: "/images/dhoti-sarree.png",
+      image: "/images/dhoti-sarree.webp",
       rules: [
         {
           prefix: "Men:",
@@ -59,7 +59,7 @@ export const TirupatiGuide: React.FC = () => {
       id: 'laddu',
       icon: Gift,
       title: "Laddu Prasadam & Additional Laddus",
-      image: "/images/laddu.png",
+      image: "/images/laddu.webp",
       rules: [
         {
           prefix: "",
@@ -136,12 +136,15 @@ export const TirupatiGuide: React.FC = () => {
                         <img 
                           src={card.image} 
                           alt={card.title} 
+                          width="380"
+                          height="280"
                           className={`w-full h-full object-contain mix-blend-multiply transition-transform duration-300 ${
                             card.id === 'laddu'
                               ? 'scale-[1.24] sm:scale-[1.28] group-hover:scale-[1.34]'
                               : 'group-hover:scale-105'
                           }`}
                           loading="lazy"
+                          decoding="async"
                         />
                       </div>
                     </div>

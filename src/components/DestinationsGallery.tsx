@@ -98,7 +98,7 @@ export const DestinationsGallery: React.FC<DestinationsGalleryProps> = ({ onSele
                           className={`absolute top-3.5 right-3.5 w-8 h-8 rounded-full flex items-center justify-center transition-colors shadow-md ${
                             isFav ? 'bg-white text-red-500' : 'bg-white/90 text-slate-400 hover:text-red-500'
                           }`}
-                          aria-label="Save destination"
+                          aria-label={`Save ${dest.name} to favorites`}
                         >
                           <Heart className={`w-4 h-4 ${isFav ? 'fill-red-500' : ''}`} />
                         </button>
@@ -135,7 +135,7 @@ export const DestinationsGallery: React.FC<DestinationsGalleryProps> = ({ onSele
             </div>
 
             {/* Pagination dots matching the screenshot */}
-            <div className="flex items-center justify-center gap-1.5 mt-4">
+            <div className="flex items-center justify-center gap-1.5 mt-4" aria-hidden="true">
               <span className="w-4 h-1.5 rounded-full bg-blue-600" />
               <span className="w-1.5 h-1.5 rounded-full bg-slate-300" />
               <span className="w-1.5 h-1.5 rounded-full bg-slate-300" />
@@ -171,17 +171,23 @@ export const DestinationsGallery: React.FC<DestinationsGalleryProps> = ({ onSele
 
             {/* Inline subscription form */}
             <form onSubmit={handleSubscribe} className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 max-w-md">
+              <label htmlFor="dest-subscribe-input" className="sr-only">
+                Enter your mobile number or email address
+              </label>
               <input
+                id="dest-subscribe-input"
                 type="text"
                 value={emailOrPhone}
                 onChange={(e) => setEmailOrPhone(e.target.value)}
                 placeholder="Enter your phone or email"
+                aria-label="Enter your mobile number or email address for package deals"
                 className="w-full sm:flex-1 px-4 py-2.5 sm:py-3 bg-white text-slate-900 rounded-xl text-xs sm:text-sm focus:outline-none placeholder:text-slate-400 shadow-sm"
                 required
               />
               <button
                 type="submit"
-                className="w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold rounded-xl transition-all shadow-md active:scale-95 whitespace-nowrap flex items-center justify-center gap-1.5"
+                aria-label="Subscribe to exclusive VIP travel deals"
+                className="w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold rounded-xl transition-all shadow-md active:scale-95 whitespace-nowrap flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <span>Subscribe</span>
                 <span className="text-xs">✈</span>

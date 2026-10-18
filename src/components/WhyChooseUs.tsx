@@ -37,7 +37,7 @@ export const WhyChooseUs: React.FC = () => {
       icon: BadgeDollarSign,
       title: "Transparent Fixed Pricing",
       tag: "Zero Hidden Surcharges",
-      image: "/images/fixedprice.png",
+      image: "/images/fixedprice.webp",
       description: "100% all-inclusive pricing with zero hidden charges. Toll gates, Interstate Andhra permit taxes, parking fees, and driver allowances are completely included in your quote.",
       features: [
         "NH-716 Tolls & AP state tax included",
@@ -80,7 +80,7 @@ export const WhyChooseUs: React.FC = () => {
       {/* Faint Temple Gopuram Outline Watermark in Background */}
       <div 
         className="absolute right-0 top-0 bottom-0 w-80 sm:w-96 opacity-[0.035] pointer-events-none bg-no-repeat bg-contain bg-right-top"
-        style={{ backgroundImage: "url('/Homepage_banner/H2.png')" }}
+        style={{ backgroundImage: "url('/Homepage_banner/H2.webp')" }}
         aria-hidden="true"
       />
 

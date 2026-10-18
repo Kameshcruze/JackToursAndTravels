@@ -14,9 +14,11 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { MobileStickyBar } from './components/MobileStickyBar';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
-import { ItineraryModal } from './components/ItineraryModal';
-import { BookingModal } from './components/BookingModal';
 import { TourPackage, Vehicle, DestinationCard } from './data/travelData';
+
+// Code-split heavy modals to minimize initial bundle size and speed up first paint
+const ItineraryModal = React.lazy(() => import('./components/ItineraryModal').then(m => ({ default: m.ItineraryModal })));
+const BookingModal = React.lazy(() => import('./components/BookingModal').then(m => ({ default: m.BookingModal })));
 
 export default function App() {
   const [selectedItinerary, setSelectedItinerary] = useState<TourPackage | null>(null);
@@ -127,17 +129,19 @@ export default function App() {
       {/* 15. Floating WhatsApp Chat Widget */}
       <FloatingWhatsApp />
 
-      {/* 16. Modals */}
-      <ItineraryModal 
-        packageData={selectedItinerary} 
-        onClose={() => setSelectedItinerary(null)} 
-      />
+      {/* 16. Modals (Deferred chunk loading) */}
+      <React.Suspense fallback={null}>
+        <ItineraryModal 
+          packageData={selectedItinerary} 
+          onClose={() => setSelectedItinerary(null)} 
+        />
 
-      <BookingModal 
-        isOpen={isBookingModalOpen} 
-        onClose={() => setIsBookingModalOpen(false)} 
-        initialData={bookingInitialData}
-      />
+        <BookingModal 
+          isOpen={isBookingModalOpen} 
+          onClose={() => setIsBookingModalOpen(false)} 
+          initialData={bookingInitialData}
+        />
+      </React.Suspense>
     </div>
   );
 }

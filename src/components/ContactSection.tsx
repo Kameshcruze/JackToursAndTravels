@@ -202,23 +202,26 @@ Please send quotation and cab availability.`;
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                      <label htmlFor="contact-full-name" className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5 cursor-pointer">
                         Your Full Name
                       </label>
                       <input
+                        id="contact-full-name"
                         type="text"
                         placeholder="Ramesh Kumar"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        aria-label="Your full name"
                         className="w-full bg-white/90 focus:bg-white border border-[#96c6e3] rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs transition-all"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                      <label htmlFor="contact-mobile-phone" className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5 cursor-pointer">
                         Mobile Number *
                       </label>
                       <input
+                        id="contact-mobile-phone"
                         type="tel"
                         placeholder="10-digit mobile number"
                         value={formData.phone}
@@ -226,6 +229,7 @@ Please send quotation and cab availability.`;
                           setFormData({ ...formData, phone: e.target.value });
                           if (phoneError) setPhoneError('');
                         }}
+                        aria-label="10-digit mobile phone number"
                         className="w-full bg-white/90 focus:bg-white border border-[#96c6e3] rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs transition-all"
                         required
                       />
@@ -235,12 +239,13 @@ Please send quotation and cab availability.`;
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <div className="flex items-center justify-between mb-1.5">
-                        <label className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                        <label htmlFor="contact-pickup-locality" className="text-xs font-bold text-slate-800 uppercase tracking-wider cursor-pointer">
                           Pickup Location
                         </label>
                         <button
                           type="button"
                           onClick={() => setIsCustomPickup(!isCustomPickup)}
+                          aria-label={isCustomPickup ? "Switch to locality area selector" : "Switch to custom address input"}
                           className="text-[11px] font-bold text-blue-700 hover:text-blue-900 underline cursor-pointer"
                         >
                           {isCustomPickup ? "Choose area" : "Type address"}
@@ -248,16 +253,20 @@ Please send quotation and cab availability.`;
                       </div>
                       {isCustomPickup ? (
                         <input
+                          id="contact-pickup-locality"
                           type="text"
                           placeholder="e.g. Besant Nagar 3rd Cross / Hotel Leela"
                           value={formData.customPickup}
                           onChange={(e) => setFormData({ ...formData, customPickup: e.target.value })}
+                          aria-label="Enter specific pickup address in Chennai"
                           className="w-full bg-white/90 focus:bg-white border border-[#96c6e3] rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs transition-all"
                           autoFocus
                         />
                       ) : (
                         <select
+                          id="contact-pickup-locality"
                           value={formData.pickupLocation}
+                          aria-label="Select Chennai doorstep pickup locality"
                           onChange={(e) => {
                             const val = e.target.value;
                             if (val === 'Other (Custom Address / Area)') {
@@ -278,14 +287,16 @@ Please send quotation and cab availability.`;
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                      <label htmlFor="contact-destination-field" className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5 cursor-pointer">
                         Destination or Package
                       </label>
                       <input
+                        id="contact-destination-field"
                         type="text"
                         placeholder="e.g. Tirupati VIP / Pondicherry / Custom Outstation"
                         value={formData.destination}
                         onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
+                        aria-label="Destination or tour package name"
                         className="w-full bg-white/90 focus:bg-white border border-[#96c6e3] rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs transition-all"
                       />
                     </div>
@@ -293,25 +304,29 @@ Please send quotation and cab availability.`;
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                      <label htmlFor="contact-planned-date" className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5 cursor-pointer">
                         Planned Date
                       </label>
                       <input
+                        id="contact-planned-date"
                         type="date"
                         min={new Date().toISOString().split('T')[0]}
                         value={formData.date}
                         onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                        aria-label="Planned departure date"
                         className="w-full bg-white/90 focus:bg-white border border-[#96c6e3] rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs transition-all cursor-pointer"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                      <label htmlFor="contact-passengers-count" className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5 cursor-pointer">
                         Number of Passengers
                       </label>
                       <select
+                        id="contact-passengers-count"
                         value={formData.passengers}
                         onChange={(e) => setFormData({ ...formData, passengers: e.target.value })}
+                        aria-label="Select passenger count and recommended vehicle"
                         className="w-full bg-white/90 focus:bg-white border border-[#96c6e3] rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs transition-all cursor-pointer"
                       >
                         <option value="1-3">1 - 3 Passengers (Sedan)</option>
@@ -324,14 +339,16 @@ Please send quotation and cab availability.`;
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5">
+                    <label htmlFor="contact-notes-textarea" className="block text-xs font-bold text-slate-800 uppercase tracking-wider mb-1.5 cursor-pointer">
                       Notes (Senior Citizens, Mottai, Luggage)
                     </label>
                     <textarea
+                      id="contact-notes-textarea"
                       rows={3}
                       placeholder="e.g. Traveling with elderly parents, early 4:30 AM pickup from Adyar."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      aria-label="Additional pilgrimage or cab trip requirements"
                       className="w-full bg-white/90 focus:bg-white border border-[#96c6e3] rounded-xl sm:rounded-2xl px-4 py-2.5 sm:py-3 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-xs transition-all"
                     />
                   </div>

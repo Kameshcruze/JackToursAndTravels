@@ -212,13 +212,14 @@ Please confirm exact fare and cab allotment for this route.`;
             {/* 1. Chennai Pickup Zone */}
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
-                  <MapPin className="w-4 h-4 text-blue-600" />
+                <label htmlFor="calc-pickup-input" className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5 cursor-pointer">
+                  <MapPin className="w-4 h-4 text-blue-600" aria-hidden="true" />
                   <span>Pickup Locality (Doorstep)</span>
                 </label>
                 <button
                   type="button"
                   onClick={() => setIsCustomPickup(!isCustomPickup)}
+                  aria-label={isCustomPickup ? "Switch to preset pickup locality list" : "Switch to custom address input"}
                   className="text-[11px] font-bold text-blue-600 hover:text-blue-700 underline"
                 >
                   {isCustomPickup ? "Select preset area" : "Type custom address"}
@@ -227,16 +228,20 @@ Please confirm exact fare and cab allotment for this route.`;
 
               {isCustomPickup ? (
                 <input
+                  id="calc-pickup-input"
                   type="text"
                   placeholder="e.g. 24th Cross Street, Indira Nagar, Adyar"
                   value={customPickupText}
                   onChange={(e) => setCustomPickupText(e.target.value)}
+                  aria-label="Enter custom doorstep pickup address in Chennai"
                   className="w-full bg-slate-50 border border-blue-400 focus:border-blue-600 rounded-2xl px-4 py-2.5 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600"
                   autoFocus
                 />
               ) : (
                 <select
+                  id="calc-pickup-input"
                   value={pickup}
+                  aria-label="Select Chennai doorstep pickup locality"
                   onChange={(e) => {
                     const val = e.target.value;
                     if (val === 'Other (Custom Address / Area)') {
@@ -259,13 +264,14 @@ Please confirm exact fare and cab allotment for this route.`;
             {/* 2. Destination Route */}
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
-                  <Navigation className="w-4 h-4 text-blue-600" />
+                <label htmlFor="calc-destination-input" className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5 cursor-pointer">
+                  <Navigation className="w-4 h-4 text-blue-600" aria-hidden="true" />
                   <span>Destination Route</span>
                 </label>
                 <button
                   type="button"
                   onClick={() => setIsCustomDest(!isCustomDest)}
+                  aria-label={isCustomDest ? "Switch to fixed package destination list" : "Switch to custom destination input"}
                   className="text-[11px] font-bold text-blue-600 hover:text-blue-700 underline"
                 >
                   {isCustomDest ? "Choose fixed package" : "Type custom route"}
@@ -275,10 +281,12 @@ Please confirm exact fare and cab allotment for this route.`;
               {isCustomDest ? (
                 <div className="space-y-1">
                   <input
+                    id="calc-destination-input"
                     type="text"
                     placeholder="e.g. Chennai to Madurai Meenakshi Amman Temple / Mysore / Custom"
                     value={customDestText}
                     onChange={(e) => setCustomDestText(e.target.value)}
+                    aria-label="Enter custom destination or spiritual tour route"
                     className="w-full bg-slate-50 border border-blue-400 focus:border-blue-600 rounded-2xl px-4 py-2.5 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600"
                   />
                   <p className="text-[11px] text-slate-500">
@@ -288,8 +296,10 @@ Please confirm exact fare and cab allotment for this route.`;
               ) : (
                 <>
                   <select
+                    id="calc-destination-input"
                     value={destinationId}
                     onChange={(e) => setDestinationId(e.target.value)}
+                    aria-label="Select destination pilgrimage or outstation route"
                     className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-2.5 text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all"
                   >
                     {DESTINATIONS.map((dest) => (
@@ -307,17 +317,18 @@ Please confirm exact fare and cab allotment for this route.`;
 
             {/* 3. Vehicle Category Choice */}
             <div>
-              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
-                <Car className="w-4 h-4 text-blue-600" />
+              <span className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                <Car className="w-4 h-4 text-blue-600" aria-hidden="true" />
                 <span>Vehicle Fleet Model</span>
-              </label>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              </span>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2" role="group" aria-label="Select fleet vehicle">
                 {FLEET_VEHICLES.map((v) => (
                   <button
                     type="button"
                     key={v.id}
                     onClick={() => setVehicleId(v.id)}
-                    className={`p-3 rounded-2xl border text-left transition-all ${
+                    aria-pressed={vehicleId === v.id}
+                    className={`p-3 rounded-2xl border text-left transition-all cursor-pointer ${
                       vehicleId === v.id
                         ? 'bg-blue-600 text-white border-blue-600 shadow-md'
                         : 'bg-slate-50 hover:bg-slate-100 text-slate-800 border-slate-200'
@@ -335,29 +346,33 @@ Please confirm exact fare and cab allotment for this route.`;
             {/* 4. Travel Date & Passenger Count */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-slate-500" />
+                <label htmlFor="calc-travel-date" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 flex items-center gap-1.5 cursor-pointer">
+                  <Calendar className="w-3.5 h-3.5 text-slate-500" aria-hidden="true" />
                   <span>Travel Date</span>
                 </label>
                 <input
+                  id="calc-travel-date"
                   type="date"
                   value={travelDate}
                   min={new Date().toISOString().split('T')[0]}
                   onChange={(e) => setTravelDate(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-3 py-2 text-xs sm:text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  aria-label="Select trip travel date"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-3 py-2 text-xs sm:text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 cursor-pointer"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                <label htmlFor="calc-passengers-count" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1 cursor-pointer">
                   Passengers Count
                 </label>
                 <input
+                  id="calc-passengers-count"
                   type="number"
                   min={1}
                   max={24}
                   value={passengers}
                   onChange={(e) => setPassengers(Math.max(1, parseInt(e.target.value) || 1))}
+                  aria-label="Number of passengers"
                   className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-3 py-2 text-xs sm:text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600"
                 />
               </div>
